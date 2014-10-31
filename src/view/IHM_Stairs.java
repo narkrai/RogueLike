@@ -1,12 +1,17 @@
 package view;
 
-public class IHM_Stairs {
+import javax.swing.*;
+import java.awt.*;
+
+public class IHM_Stairs extends JFrame{
     
     boolean reponse;
 
 
     public IHM_Stairs() {
-        super();
+        this.setTitle("Entering new room");
+        this.setSize(400,350);
+        this.setLocationRelativeTo(null);
     }
     
     public void message() {

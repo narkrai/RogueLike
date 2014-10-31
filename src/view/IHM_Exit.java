@@ -1,7 +1,12 @@
 package view;
 
-public class IHM_Exit {
+import javax.swing.*;
+import java.awt.*;
+
+public class IHM_Exit extends JFrame{
     public IHM_Exit() {
-        super();
+        this.setTitle("Congratulation!");
+        this.setSize(400,350);
+        this.setLocationRelativeTo(null);
     }
 }
