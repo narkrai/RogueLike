@@ -1,9 +1,14 @@
 package view;
 
-public class IHM_Options {
+import javax.swing.*;
+import java.awt.*;
 
-    public IHM_Options() {
-        super();
+public class IHM_Options  extends JFrame{
+
+    public IHM_Options(){
+        this.setTitle("Option");
+        this.setSize(400,250);
+        this.setLocationRelativeTo(null);
     }
 
     public void CngeOption() {

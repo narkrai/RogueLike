@@ -20,7 +20,7 @@ public class OptionData {
    
    
    
-    private OptionData DataInstance = new OptionData();
+    public static OptionData DataInstance = new OptionData();
 
 
     private OptionData() {

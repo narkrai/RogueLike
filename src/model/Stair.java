@@ -10,7 +10,7 @@ public class Stair extends Item {
         return 0;
     }
     
-    public Door() {
+    public Stair() {
         super();
     }
     
