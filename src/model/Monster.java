@@ -23,7 +23,7 @@ public class Monster extends Character {
     }
 
     public int getStrength() {
-        return strength;
+        return this.strength;
     }
 
     public void setGold(int gold) {
@@ -31,7 +31,7 @@ public class Monster extends Character {
     }
 
     public int getGold() {
-        return gold;
+        return this.gold;
     }
 
     public void setName(String name) {
@@ -39,7 +39,7 @@ public class Monster extends Character {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
 

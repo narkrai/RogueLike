@@ -4,12 +4,11 @@ import model.Monster;
 
 public  class MonsterFactory {
    
-    private static  MonsterType[] ListMonster = {
+    private static MonsterType[] ListMonster = {
         new MonsterType("Dragon",50, 100, 300, 500, 0),
         new MonsterType("Troll",10, 20, 5, 50, -5),
         new MonsterType("ArcaysXXX", 1, 250, 1, 10, -10)
     };
-    //private G_Monster[] newAtt;
 
     public  static Monster buildMonster() {
         int count = ListMonster.length;

@@ -7,7 +7,7 @@ public class G_Monster {
     /**
      * @associates <{rogue.Monster}>
      */
-    private List Monster;
+    private List ListMonster;
 
 
     public G_Monster() {
