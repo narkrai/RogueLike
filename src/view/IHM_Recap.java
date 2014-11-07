@@ -7,11 +7,14 @@ import javax.swing.border.Border;
 
 public class IHM_Recap extends JPanel{
     
-    String score = "<html><p>Score : </p></html>";
+    String score;
     String monster = "<html><p>Monster : </p></html>";
     
-    public IHM_Recap() {
+    public IHM_Recap(int nbGold , int monsterKilled) {
         this.setPreferredSize(new Dimension(200, 400));
+        
+        score = "<html><p>Score :  "+ nbGold  +" gold</p></html>";
+        monster = "<html><p>Monster : "+monsterKilled+" </p></html>";
         
         
         JLabel jLabelScore = new JLabel();
@@ -28,4 +31,5 @@ public class IHM_Recap extends JPanel{
         Border b =  BorderFactory.createLineBorder(Color.black);
         this.setBorder(b);
     }
+    
 }

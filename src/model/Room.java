@@ -27,6 +27,66 @@ public class Room extends Cell{
         }
         
     }
+    
+    
+    
+    
+    public Cell getCell(int x,int y) {
+        
+        Cell res = null;
+        
+        if( x < tailleX && y < tailleY)
+        {
+        
+            for(Cell c : Contenus) {
+                
+                if( c.getPositionX() == x && c.getPositionY() == y ) 
+                {
+                    res = c;
+                    
+                }
+            
+            }
+        }
+        
+        return res;
+        
+    }
+    
+    public void lightNear(int x,int y) {
+        
+        Cell center = this.getCell(x, y);
+        
+        if(center != null ) {
+            center.setDiscovered(true);
+            
+            if(this.getCell(x-1, y) != null) {
+                this.getCell(x-1, y).setDiscovered(true);
+            }
+            if(this.getCell(x-1, y -1) != null) {
+                this.getCell(x-1, y-1).setDiscovered(true);
+            }
+            if(this.getCell(x, y-1) != null) {
+                this.getCell(x, y-1).setDiscovered(true);
+            }
+            if(this.getCell(x+1, y-1) != null) {
+                this.getCell(x+1, y-1).setDiscovered(true);
+            }
+            if(this.getCell(x+1, y) != null) {
+                this.getCell(x+1, y).setDiscovered(true);
+            }
+            if(this.getCell(x+1, y+1) != null) {
+                this.getCell(x+1, y+1).setDiscovered(true);
+            }
+            if(this.getCell(x+1, y-1) != null) {
+                this.getCell(x+1, y-1).setDiscovered(true);
+            }
+        
+        }
+        
+        
+    }
+
 
 
     public ArrayList<Cell> getContenus() {
