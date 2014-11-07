@@ -30,19 +30,36 @@ public class CellUnit extends Cell {
 
     @Override
     public int numeroEtage() {
-        // TODO Implement this method
-        return 0;
+        
+        return super.getConteneur().numeroEtage();
     }
 
     @Override
     public int GetTotalGold() {
-        // TODO Implement this method
-        return 0;
+      int res = 0;
+      
+      if(this.item instanceof Chest) {
+          Chest t =(Chest) this.item;
+          res = t.getGold();
+          
+      }
+      
+      
+        return res;
     }
 
     @Override
     public int GetTotalMonster() {
-        // TODO Implement this method
+        
+        int i = 0;
+        
+        if(this.item instanceof Monster) {
+            
+            i = 1 ;
+            
+        }
+        
+        
         return 0;
     }
 }

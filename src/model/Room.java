@@ -20,11 +20,13 @@ public class Room extends Cell{
 
     public Room(IStrategy strat) {
         
+        strat.CreationRoom(this);
+        
+        for( Cell c : Contenus) {
+            c = strat.CreationCell(this);
+        }
+        
     }
-    
-    
-    
-    
 
 
     public ArrayList<Cell> getContenus() {
@@ -46,21 +48,58 @@ public class Room extends Cell{
     }
 
 
+    public void setContenus(ArrayList<Cell> Contenus) {
+        this.Contenus = Contenus;
+    }
+
+    public void setTailleX(int tailleX) {
+        this.tailleX = tailleX;
+    }
+
+    public void setTailleY(int tailleY) {
+        this.tailleY = tailleY;
+    }
+
+
     @Override
     public int numeroEtage() {
-        // TODO Implement this method
-        return 0;
+        
+        int res  ;
+        
+        if(super.getConteneur() == null){
+            res = 0;
+            
+        }
+        else {
+            res = super.getConteneur().numeroEtage() + 1;
+        }
+        
+        
+        return res;
     }
 
     @Override
     public int GetTotalGold() {
-        // TODO Implement this method
-        return 0;
+        
+        int res = 0 ;
+        for( Cell c :  Contenus) {
+            
+            res += c.GetTotalGold();
+        }
+        
+        return res;
     }
 
     @Override
     public int GetTotalMonster() {
-        // TODO Implement this method
-        return 0;
+        
+        int res = 0 ;
+        for( Cell c :  Contenus) {
+            
+            res += c.GetTotalMonster();
+        }
+        
+        return res;
+        
     }
 }
