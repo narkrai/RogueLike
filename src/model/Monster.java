@@ -46,7 +46,9 @@ public class Monster extends Character {
 
     @Override
     public int Action(Player p) {
-        // TODO Implement this method
+        int proba = p.getStrength() / (p.getStrength() + this.getStrength());
+        
+        
         return 0;
     }
 }

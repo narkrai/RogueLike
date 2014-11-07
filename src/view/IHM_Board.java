@@ -5,6 +5,6 @@ import java.awt.*;
 
 public class IHM_Board extends JTable{
     public IHM_Board() {
-        super();
+        
     }
 }

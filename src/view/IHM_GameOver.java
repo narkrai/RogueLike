@@ -2,6 +2,8 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class IHM_GameOver extends JFrame{
     public IHM_GameOver() {
@@ -10,16 +12,16 @@ public class IHM_GameOver extends JFrame{
         this.setLocationRelativeTo(null);
         
         JPanel pButton = new JPanel(new GridBagLayout());
-        JButton b1 = new JButton("Ok");
-        JButton b2 = new JButton("Cancel");
+        JButton bReplay = new JButton("Try again");
+        JButton bClose = new JButton("Close");
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(10,10,10,10);
         c.gridx = 0;
         c.gridy = 0;
-        pButton.add(b1,c);
+        pButton.add(bReplay,c);
         c.gridx = 1;
         c.gridy = 0;
-        pButton.add(b2,c);
+        pButton.add(bClose,c);
         this.add(pButton, BorderLayout.SOUTH);
         
         JPanel pMsg = new JPanel();
@@ -31,6 +33,20 @@ public class IHM_GameOver extends JFrame{
 
         pMsg.add(msg);
         this.add(pMsg, BorderLayout.CENTER);
+        
+        bReplay.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                /**
+                 * @TODO : Appel methode rejouer
+                 */
+            }
+        });
+        
+        bClose.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+            }
+        });
         
     }
 

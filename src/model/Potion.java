@@ -3,28 +3,31 @@ package model;
 import controller.Game;
 
 public class Potion extends Treasure{
-    private int force;
+    private int strength;
 
     public Potion(int minForce,int maxForce) {
         super();
     }
 
-    public Potion(int healthBack) {
+    public Potion(int strength) {
         super();
-        this.force = healthBack;
+        this.setStrength(strength);
     }
 
-    public void setHealthBack(int healthBack) {
-        this.force = healthBack;
+    public void setStrength(int strength) {
+        this.strength = strength;
     }
 
-    public int getHealthBack() {
-        return force;
+    public int getStrength() {
+        return this.strength;
     }
 
     @Override
     public int Action(Player p) {
-        // TODO Implement this method
+        p.setStrength(this.getStrength());
+        /**
+         * @TODO : Supprimer l'instance
+         */
         return 0;
     }
 }
