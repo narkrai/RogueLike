@@ -24,7 +24,7 @@ public class Chest extends Treasure{
 
 
     @Override
-    public int Action(Player p) {
+    public Message Action(Player p) {
         p.setGold(p.getGold() + this.getGold());
         return 0;
     }

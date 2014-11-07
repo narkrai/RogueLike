@@ -44,11 +44,17 @@ public class Monster extends Character {
 
 
 
-    @Override
-    public int Action(Player p) {
-        int proba = p.getStrength() / (p.getStrength() + this.getStrength());
+    public Message Action(Player p) {
+        Message res = null;
+        double proba = p.getStrength() / (p.getStrength() + this.getStrength());
+        if (Math.random() <= proba) {
+            res = 0;
+        }
+        else {
+            res = 2;
+        }
         
         
-        return 0;
+        return res;
     }
 }
