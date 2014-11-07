@@ -48,10 +48,10 @@ public class Monster extends Character {
         Message res = null;
         double proba = p.getStrength() / (p.getStrength() + this.getStrength());
         if (Math.random() <= proba) {
-            res = 0;
+            res = new Message(1, "Vous avez battu "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold()+ "pièces d'or.");
         }
         else {
-            res = 2;
+            res = new Message(2, "Vous avez perdu contre "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold() +"pièces d'or.");
         }
         
         
