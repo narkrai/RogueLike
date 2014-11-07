@@ -121,7 +121,7 @@ public class Game {
                     CellUnit cA = (CellUnit) Carrive ;
                     
                     if(cA.getItem() != null) {
-                      repAction  =  cA.getItem().Action(player);
+                      repAction  =  cA.getItem().Action(player).getSignal();
                       
                       if(repAction == 0) {
                           cA.setItem(player);
@@ -152,10 +152,10 @@ public class Game {
         }
         
         
-        if(repAction == 1) {
+        if(repAction == VICTORY ) {
             playerWin();
         }
-        else if( repAction == 2) {
+        else if( repAction == LOSE) {
             gameOver();
         }
         
