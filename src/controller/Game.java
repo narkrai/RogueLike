@@ -33,45 +33,55 @@ public class Game {
     private static Game uniqueInstance = null;
 
 
-    public static Game getInstance(){
-        if (uniqueInstance == null) {
-            try {
+    public static Game getInstance()
+    {
+        if (uniqueInstance == null) 
+        {
+            try 
+            {
             uniqueInstance = new Game();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            } 
+            catch (Exception e) 
+            {
+                e.printStackTrace();
+            }
         }
         return uniqueInstance;
     }
 
-    private Game() {
-        
+    private Game() 
+    {
         this.strategie = new Idiot() ;
-       
     }
     
-    public void setStrategie(IStrategy strategie) {
+    public void setStrategie(IStrategy strategie) 
+    {
         this.strategie = strategie;
     }
-    public IStrategy getStrategie() {
-        return strategie;
+    
+    public IStrategy getStrategie() 
+    {
+        return this.strategie;
     }
-    public void setPlayer(Player player) {
+    
+    public void setPlayer(Player player) 
+    {
         this.player = player;
     }
 
-    public Player getPlayer() {
-        return player;
+    public Player getPlayer() 
+    {
+        return this.player;
     }
 
-    public void restart() {
-        
+    public void restart() 
+    {
         uniqueInstance = new Game() ;
     }
-    //
-    public void addRoom() {
     
-        
+    public void addRoom() 
+    {
+
     }
     
     private void makeStep(int direction)
@@ -84,73 +94,62 @@ public class Game {
         
         switch (direction)
         {
-            
             //droite (X-1,0)
-        case RIGHT :
-            
-            
-            
+            case RIGHT :
             for (Cell c : r.getContenus()) 
             {
-                if( c instanceof CellUnit) {
-                   
+                if (c instanceof CellUnit) 
+                {
                    CellUnit cU = (CellUnit) c ;
-                   if(cU.getItem() == player) {
-                       
+                   if(cU.getItem() == player) 
+                   {
                        posPlayX = cU.getPositionX();
                        posPlayY = cU.getPositionY();
-                      
                    }
                 }
             }
-            
-            if(posPlayX - 1 >= 0) {
-                
-                
+            if(posPlayX - 1 >= 0) 
+            {
                 CellUnit Cdepart = (CellUnit)  r.getCell(posPlayX, posPlayY);
                 Cell Carrive = r.getCell(posPlayX -1, posPlayY);
-                
-                
-               
-                if( Carrive instanceof Room)                
+                if (Carrive instanceof Room)                
                 {
-                           //TODO afficher la boite de dialogue et proceder à la teleportation         
+                           //TODO afficher la boite de dialogue et proceder à la teleportation   
+                    
                 }
                 else 
                 {
                     CellUnit cA = (CellUnit) Carrive ;
-                    
-                    if(cA.getItem() != null) {
-                      repAction  =  cA.getItem().Action(player).getSignal();
-                      
-                      if(repAction == 0) {
-                          cA.setItem(player);
-                          Cdepart.setItem(null);
-                          
-                      }
+                    if(cA.getItem() != null) 
+                    {
+                        repAction  =  cA.getItem().Action(player).getSignal();
+                        if(repAction == 0) 
+                        {
+                            cA.setItem(player);
+                            Cdepart.setItem(null);
+                        }
                     }
-                    
                 }
                 r.lightNear(posPlayX -1, posPlayY);
-                
             }
-        break;
-            //left (X,0)    
-        case LEFT :
-        break;
-            //UP (0,Y)
-        case UP :
-            
-        break;
-            //DOWN(0,-Y)
-        case DOWN:
+            break;
         
-        break;
+            //left (X,0)    
+            case LEFT :
+            break;
+        
+            //UP (0,Y)
+            case UP :
+            break;
+        
+            //DOWN(0,-Y)
+            case DOWN:
+            break;
+        
             //erreur
-        default:
+            default:
             
         }
-        
         
         if(repAction == VICTORY ) {
             playerWin();
@@ -179,18 +178,15 @@ public class Game {
             
             for (Cell c : r.getContenus()) 
             {
-                if( c instanceof CellUnit) {
-                   
+                if( c instanceof CellUnit) 
+                {
                    CellUnit cU = (CellUnit) c ;
-                   if(cU.getItem() == player) {
-                       
+                   if(cU.getItem() == player) 
+                   {
                        res = cU.getConteneur();
                    }
-                   
-                    
                 }
             }
-           
         }
         
         return res ;

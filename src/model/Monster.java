@@ -53,8 +53,6 @@ public class Monster extends Character {
         else {
             res = new Message(2, "Vous avez perdu contre "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold() +"pièces d'or.");
         }
-        
-        
         return res;
     }
 }

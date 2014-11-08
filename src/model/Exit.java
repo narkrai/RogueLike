@@ -10,7 +10,6 @@ public class Exit extends Item {
 
     @Override
     public Message Action(Player p) {
-        // TODO Implement this method
-        return 0;
+        return new Message(1, "Exit");
     }
 }

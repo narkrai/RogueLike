@@ -4,6 +4,15 @@ public class Player extends Character {
     private int gold;
     private int strength;
     private String name;
+    private int monsterKilled=0;
+
+    public void setMonsterKilled(int monsterKilled) {
+        this.monsterKilled = monsterKilled;
+    }
+
+    public int getMonsterKilled() {
+        return monsterKilled;
+    }
 
     /**
      * @aggregation composite
@@ -22,7 +31,6 @@ public class Player extends Character {
     }
 
     public Player(int gold, int strength, String name) {
-        super();
         this.gold = gold;
         this.strength = strength;
         this.name = name;
