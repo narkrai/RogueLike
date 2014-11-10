@@ -6,16 +6,18 @@ public class Monster extends Character {
     private int strength;
     private int gold;
     private String name;
+    private int level;
 
     public Monster() {
         super();
     }
 
-    public Monster(String name, int strength, int gold) {
-        super();
-        this.strength = strength;
-        this.gold = gold;
-        this.name = name;
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getLevel() {
+        return level;
     }
 
     public void setStrength(int strength) {
@@ -42,6 +44,13 @@ public class Monster extends Character {
         return this.name;
     }
 
+    public Monster(String name, int strength, int gold, int level) {
+        super();
+        this.strength = strength;
+        this.gold = gold;
+        this.name = name;
+        this.level = level;
+    }
 
 
     public Message Action(Player p) {

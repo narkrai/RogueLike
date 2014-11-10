@@ -3,14 +3,16 @@ package controller;
 import model.Monster;
 
 public  class MonsterFactory {
-   
-    private static MonsterType[] ListMonster = {
+    
+    private static MonsterFactory instance=null;
+    
+    private MonsterType[] ListMonster = {
         new MonsterType("Dragon",50, 100, 300, 500, 0),
         new MonsterType("Troll",10, 20, 5, 50, -5),
         new MonsterType("ArcaysXXX", 1, 250, 1, 10, -10)
     };
 
-    public  static Monster buildMonster() {
+    public Monster buildMonster() {
         int count = ListMonster.length;
         int res =  (int)(Math.random()*count);
         MonsterType monstretype = ListMonster[res];
@@ -24,7 +26,54 @@ public  class MonsterFactory {
         private int minGold;
         private int maxGold;
         private int levelMin;
-        
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setMinStrength(int minStrength) {
+            this.minStrength = minStrength;
+        }
+
+        public int getMinStrength() {
+            return minStrength;
+        }
+
+        public void setMaxStrength(int maxStrength) {
+            this.maxStrength = maxStrength;
+        }
+
+        public int getMaxStrength() {
+            return maxStrength;
+        }
+
+        public void setMinGold(int minGold) {
+            this.minGold = minGold;
+        }
+
+        public int getMinGold() {
+            return minGold;
+        }
+
+        public void setMaxGold(int maxGold) {
+            this.maxGold = maxGold;
+        }
+
+        public int getMaxGold() {
+            return maxGold;
+        }
+
+        public void setLevelMin(int levelMin) {
+            this.levelMin = levelMin;
+        }
+
+        public int getLevelMin() {
+            return levelMin;
+        }
         
         public MonsterType(String monsterName,int minStrength,int maxStrength,int minTreasure,int maxTreasure, int level) {
             this.name = monsterName;
@@ -36,9 +85,10 @@ public  class MonsterFactory {
         }
         
         public Monster create() {
-            int force = (int)( Math.random()*( this.maxStrength - this.minStrength + 1 ) ) + this.minStrength;
-            int treasure=(int)( Math.random()*( this.maxGold - this.minGold + 1 ) ) + this.minGold;
-            return  new Monster(this.name,force,treasure);
+            int force = (int)( Math.random()*(getMaxStrength() - getMinStrength() + 1 ) ) + getMinStrength();
+            int treasure=(int)( Math.random()*( getMaxGold() - getMinGold() + 1 ) ) + getMinGold();
+            int lvl =( int)((Math.random()*(0-getLevelMin()+1))+getLevelMin());
+            return  new Monster(getName(),force,treasure,lvl);
         }
     }
 }

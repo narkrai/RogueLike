@@ -19,7 +19,6 @@ public class Main {
         if (instance == null) {
                 instance = new Main();
         }
-        
         return instance;
     }
     
