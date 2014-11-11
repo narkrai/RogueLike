@@ -27,7 +27,7 @@ public class IHM_Recap extends JPanel{
         monster = "<html><p>Monsters nearby : " + monstersNearby + "</p></html>";
         
         // Bordure imaginaire
-        Border c =  BorderFactory.createEmptyBorder(5,5,60,5);
+        Border c =  BorderFactory.createEmptyBorder(5,5,45,5);
         
         JPanel goldPanel = new JPanel();
         goldPanel.setSize(new Dimension(200, 200));

@@ -17,17 +17,24 @@ public class IHM_Message extends JPanel{
     
     public IHM_Message(Message msg) {
         
-        message = "<html><p> Message : "+ msg.getMessage()+"</p></html>";
-        //bordure imaginaire
-        Border c =  BorderFactory.createEmptyBorder(5,5,60,5);
+        // Message à afficher
+        message= msg.getMessage()+" Test de la frame bla bla le lbe ble j'espre que ca depasse pas car j'ai mis des html tag lol";
         
-        this.setPreferredSize(new Dimension(200, 200));
+        //bordure imaginaire
+        Border c =  BorderFactory.createEmptyBorder(5,5,5,5);
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
         
-        JLabel jLabelMessage = new JLabel();
-        jLabelMessage.setBorder(c);
-        jLabelMessage.setText(message);
-        this.add(jLabelMessage);
+        JTextArea jTextAreaMessage = new JTextArea("Message :\n", 20,20);
+        jTextAreaMessage.append(message);
+        jTextAreaMessage.setBorder(c);
+        jTextAreaMessage.setEditable(false);  
+        jTextAreaMessage.setCursor(null);  
+        jTextAreaMessage.setOpaque(false);  
+        jTextAreaMessage.setFocusable(false);
+        jTextAreaMessage.setLineWrap(true);
+        jTextAreaMessage.setWrapStyleWord(true);
+
+        this.add(jTextAreaMessage);
         
         // Bordure
         Border b =  BorderFactory.createLineBorder(Color.black);

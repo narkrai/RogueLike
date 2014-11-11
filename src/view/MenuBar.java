@@ -14,12 +14,14 @@ public class MenuBar extends JMenuBar{
         final IHM_GameOver go = new IHM_GameOver();
         final IHM_Exit exit = new IHM_Exit();
         final IHM_Stairs stairs = new IHM_Stairs();
+        final IHM_APropos about = new IHM_APropos();
         
         // Déclaration des JMenu et JMenuItem
         JMenu game = new JMenu("Game");
         JMenu help = new JMenu("?");
         JMenuItem newGame = new JMenuItem("New game");
         JMenuItem option = new JMenuItem("Option");
+        JMenuItem apropos = new JMenuItem("A propos");
         
         
         // Ajoute les menu dans la barre
@@ -29,11 +31,18 @@ public class MenuBar extends JMenuBar{
         // Ajoute les sous-menu dans les menu
         game.add(newGame);
         game.add(option);
+        help.add(apropos);
         
         //Actionlistener
         option.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 optionFrame.setVisible(true);
+            }
+        });
+        
+        apropos.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                about.setVisible(true);
             }
         });
         
