@@ -8,19 +8,21 @@ public class Nice implements IStrategy {
     }
 
     @Override
-    public Room CreationRoom(Room r) {
+    public void CreationRoom(Room r) {
         // TODO Implement this method
-        return null;
+     
     }
 
-    @Override
-    public Cell CreationCell(Room r) {
-        // TODO Implement this method
-        return null;
-    }
 
-    @Override
+
+   /* @Override
     public ArrayList<Room> CreateArborescence() {
+        // TODO Implement this method
+        return null;
+    }*/
+
+    @Override
+    public Cell CreationCell(Room r, Cell c) {
         // TODO Implement this method
         return null;
     }

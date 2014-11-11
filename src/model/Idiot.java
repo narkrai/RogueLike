@@ -13,7 +13,23 @@ public class Idiot implements IStrategy {
 
     @Override
     public void CreationRoom(Room r) {
-        // TODO Implement this method
+        
+        Cell c;
+        ArrayList<Cell> listCell = new ArrayList<Cell>();
+        
+        r.setTailleX(op.getTailleXRoom());
+        r.setTailleY(op.getTailleYRoom());
+        
+        for( int x = 0 ; x < op.getTailleXRoom() ;x++) {
+            for(int y = 0 ; y < op.getTailleYRoom(); y++){
+                
+                //c = CreationCell(r,c);
+                
+                
+                
+            }
+                            
+        }
       
     }
 
