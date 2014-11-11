@@ -10,6 +10,9 @@ public class OptionData {
     private int monsterLuck;
     private int ladderLuck;
     private int potionLuck;
+    private int treasureLuck;
+
+
     private int voidLuck;
     
     private int minPowerPotion;
@@ -27,6 +30,14 @@ public class OptionData {
 
     public void setTailleYRoom(int tailleYRoom) {
         this.tailleYRoom = tailleYRoom;
+    }
+    
+        public void setTreasureLuck(int treasureLuck) {
+        this.treasureLuck = treasureLuck;
+    }
+
+    public int getTreasureLuck() {
+        return treasureLuck;
     }
 
     public int getTailleYRoom() {
@@ -75,6 +86,7 @@ public class OptionData {
 
     public void setLadderLuck(int LadderLuck) {
         this.ladderLuck = LadderLuck;
+        this.voidLuck = 100 - this.potionLuck - this.getLadderLuck();
     }
 
     public int getLadderLuck() {
@@ -83,15 +95,14 @@ public class OptionData {
 
     public void setPotionLuck(int PotionLuck) {
         this.potionLuck = PotionLuck;
+        this.voidLuck = 100 - this.potionLuck - this.getLadderLuck();
     }
 
     public int getPotionLuck() {
         return potionLuck;
     }
 
-    public void setVoidLuck(int voidLuck) {
-        this.voidLuck = voidLuck;
-    }
+
 
     public int getVoidLuck() {
         return voidLuck;
