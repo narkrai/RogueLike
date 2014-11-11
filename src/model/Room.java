@@ -238,6 +238,12 @@ public class Room extends Cell{
         
         for(Cell c : this.getContenus()) {
             
+            if( c instanceof Room) {
+                Room r = (Room) c ;
+                
+                res.addAll(r.avoirLesRoomsFils());
+            }
+            
         }
         
         return res ;

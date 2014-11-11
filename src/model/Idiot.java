@@ -15,6 +15,7 @@ public class Idiot implements IStrategy {
     }
     /**
      * Cette methode permet de creer les cellules de la room ainsi que ces Room fils selon l'OptionData
+     * il cree egalement un escalier descendant si la room a un pere
      * @param Room r room à creer 
      * 
      */  
@@ -22,6 +23,7 @@ public class Idiot implements IStrategy {
     public void CreationRoom(Room r) {
         
         Cell c;
+        Cell t;
         
         int RandX ;
         int RandY ;
@@ -29,6 +31,8 @@ public class Idiot implements IStrategy {
         r.setTailleX(op.getTailleXRoom());
         r.setTailleY(op.getTailleYRoom());
         
+        
+        //Creation de la salle selon sa taille
         for( int x = 0 ; x < op.getTailleXRoom() ;x++) {
             for(int y = 0 ; y < op.getTailleYRoom(); y++){
                 
@@ -38,13 +42,38 @@ public class Idiot implements IStrategy {
                 c.setConteneur(r);
                 r.getContenus().add(c);
                 
-                
-                
-                
             }
                             
         }
-
+        
+        
+        //Creation d'un escalier descendant  vers le pere si la Room est un fils
+        if( r.getConteneur() != null) {
+            
+            while(!r.aCheminVersPere()) {
+                RandX = (int) Math.random() * r.getTailleX();
+                RandY = (int) Math.random() * r.getTailleY();
+                
+                 t = r.getCell(RandX, RandY);
+                  
+                  if( !(t instanceof Room) ) {
+                      
+                      CellUnit cC = (CellUnit) t;
+                      
+                      if(cC.getItem() instanceof Stair ) {
+                          
+                          Stair st = new Stair(r);
+                          cC.setItem(st);
+                        
+                      }
+                
+                
+            }
+            
+        
+        }
+            
+        }
         
       
     }
@@ -90,7 +119,7 @@ public class Idiot implements IStrategy {
         return res;
     }
     /**
-     *Permet la création d'une CellUnit selon l'OptionData
+     *Permet la création d'une CellUnit selon l'OptionData et de mettre un objet au hasard
      * @param pere La Room pere
      * @return un objet CellUnit
      */
@@ -129,18 +158,64 @@ public class Idiot implements IStrategy {
         }
         
         
-        
-        
         return res;
         
         
         
     }
-
-    
+    /**
+     * Cette fonction permet de creer un Room père et ses fils et de les mettre dans une liste
+     * Cette methode cree egalement un objet sortie sur une des cases  d'une Room au niveau 0
+     * @return la liste complete des Room
+     */
     public ArrayList<Room> CreateArborescence() {
        
-       ArrayList<Room> res = new ArrayList<Room>();
+       int RandX;
+       int RandY;
+       boolean Asortie =false;
+       int Elu ;
+       
+       Room r  = new Room(this);
+       ArrayList<Room> res = new ArrayList<Room>(r.avoirLesRoomsFils());
+       
+       
+       //Tant que le jeu n'a pas de sortie on boucle
+       while(!Asortie)
+       {
+        for( Room a : res){
+           
+           Elu =(int) Math.random();
+           
+           if(a.numeroEtage() == 0 && !Asortie &&  Elu <= (1/res.size()) ) {
+               
+               
+               while(!Asortie) 
+               {
+                RandX = (int) Math.random() * a.getTailleX();
+                RandY = (int) Math.random() * a.getTailleY();
+                
+                Cell c = a.getCell(RandX, RandY);
+                  
+                  if( !(c instanceof Room) ) {
+                      
+                      CellUnit cC = (CellUnit) c;
+                      
+                      if(cC.getItem() instanceof Stair ) {
+                          
+                          Exit e = new Exit();
+                          cC.setItem(e);
+                          Asortie = true;
+                      }
+                      
+                  }
+      
+               }
+
+               
+           }      
+               
+           }
+       }
        
        
         return res;
