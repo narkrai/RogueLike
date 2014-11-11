@@ -30,10 +30,7 @@ public class Room extends Cell{
         
         
         strat.CreationRoom(this);
-        
-        for( Cell c : Contenus) {
-            c = strat.CreationCell(this,c);
-        }
+
         
     }
     /**
@@ -47,16 +44,10 @@ public class Room extends Cell{
         this.setConteneur(conteneur);
         
         strat.CreationRoom(this);
-        
-        for( Cell c : Contenus) {
-            c = strat.CreationCell(this,c);
-        }
+
         
     }
-    
-    
-    
-    
+
     public Cell getCell(int x,int y) {
         
         Cell res = null;

@@ -5,7 +5,7 @@ import controller.Game;
 public class OptionData {
 
    
-    private int depthmax=2;
+    private int depthmax;
     private int doormax;
     
     
@@ -17,30 +17,18 @@ public class OptionData {
 
     private int voidLuck;
     
-    private int strategy=1;
-
-
-
     private int minPowerPotion;
     private int maxPowerPotion;
     
     private int minGoldTresaure;
     private int maxGoldTresaure;
     
-    private int tailleYRoom=2;
-    private int tailleXRoom=2;
+    private int tailleYRoom;
+    private int tailleXRoom;
    
    
    
     public static OptionData DataInstance = new OptionData();
-
-    public void setStrategy(int strategy) {
-        this.strategy = strategy;
-    }
-
-    public int getStrategy() {
-        return strategy;
-    }
 
     public void setTailleYRoom(int tailleYRoom) {
         this.tailleYRoom = tailleYRoom;

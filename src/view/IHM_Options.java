@@ -1,7 +1,5 @@
 package view;
 
-import controller.Game;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -66,7 +64,6 @@ public class IHM_Options  extends JFrame{
         strategyComboBox = new JComboBox<String>();
         strategyComboBox.addItem("Idiot");
         strategyComboBox.addItem("Nice");
-        strategyComboBox.setSelectedIndex(op.getStrategy());
         stratPan.add(sLabel);
         stratPan.add(strategyComboBox);
         panOption.add(stratPan);
@@ -76,8 +73,7 @@ public class IHM_Options  extends JFrame{
         dPan.setLayout(new GridLayout(3,0));
         dSliderLabel = new JLabel("Max depth");
         dSlider = new JSlider(0,10);
-        dSlider.setValue(op.getDepthmax());
-        dTextField = new JTextField(Integer.toString(op.getDepthmax()));
+        dTextField = new JTextField("5");
         dSlider.addChangeListener(new ChangeListener() {
                                 @Override
                                 public void stateChanged(ChangeEvent e) {
@@ -106,8 +102,7 @@ public class IHM_Options  extends JFrame{
         xPan.setLayout(new GridLayout(3,0));
         xSliderLabel = new JLabel("Max number of rows");
         xSlider = new JSlider(0,20);
-        xSlider.setValue(op.getTailleXRoom());
-        xTextField = new JTextField(Integer.toString(op.getTailleXRoom()));
+        xTextField = new JTextField("10");
         xSlider.addChangeListener(new ChangeListener() {
                                 @Override
                                 public void stateChanged(ChangeEvent e) {
@@ -136,8 +131,7 @@ public class IHM_Options  extends JFrame{
         yPan.setLayout(new GridLayout(3,0));
         ySliderLabel = new JLabel("Max number of lines");
         ySlider = new JSlider(0,20);
-        ySlider.setValue(op.getTailleYRoom());
-        yTextField = new JTextField(Integer.toString(op.getTailleYRoom()));
+        yTextField = new JTextField("10");
         ySlider.addChangeListener(new ChangeListener() {
                                 @Override
                                 public void stateChanged(ChangeEvent e) {
@@ -169,7 +163,7 @@ public class IHM_Options  extends JFrame{
         // Panel bouton, dans le south du panel principal
         JPanel pButton = new JPanel(new GridBagLayout());
         JButton bSave = new JButton("Save");
-        JButton bClose = new JButton("Cancel");
+        JButton bClose = new JButton("Close");
         GridBagConstraints c1 = new GridBagConstraints();
         c1.insets = new Insets(10,10,10,10);
         c1.gridx = 0;
@@ -180,13 +174,16 @@ public class IHM_Options  extends JFrame{
         pButton.add(bClose,c1);
         bSave.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                cngeOption();
-                setVisible(false);
+                /**
+                 * @TODO : REFRESH
+                 */
             }
         });      
         bClose.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                cancelOption();
+                /**
+                 * @TODO : REMETTRE LES VALUE
+                 */
                 setVisible(false);
             }
         });
@@ -195,26 +192,6 @@ public class IHM_Options  extends JFrame{
     
     }
 
-    public void cngeOption() { // Action lorsque OK
-        op.setDepthmax(dSlider.getValue());
-        op.setTailleXRoom(xSlider.getValue());
-        op.setTailleYRoom(ySlider.getValue());
-        op.setStrategy(strategyComboBox.getSelectedIndex());
-        Game.getInstance().restart();
+    public void CngeOption() {
     }
-    
-    public void cancelOption() { // Action lorsque CANCEL
-        refreshValue();
-    }
-    
-    public void refreshValue() {
-        strategyComboBox.setSelectedIndex(op.getStrategy());
-        dSlider.setValue(op.getDepthmax());
-        dTextField.setText(Integer.toString(op.getDepthmax()));
-        xSlider.setValue(op.getTailleXRoom());
-        xTextField.setText(Integer.toString(op.getTailleXRoom()));
-        ySlider.setValue(op.getTailleYRoom());
-        yTextField.setText(Integer.toString(op.getTailleYRoom()));
-    }
-    
 }
