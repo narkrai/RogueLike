@@ -38,8 +38,8 @@ public class IHM_GameUI extends JFrame{
         board = new IHM_Board(x,y);
         centerPan = new JPanel();
         centerPan.setBorder(b);
-        //centerPan.setLayout(new BorderLayout());
-        centerPan.setPreferredSize(new Dimension(500,500));
+        centerPan.setLayout(new BorderLayout());
+        //centerPan.setPreferredSize(new Dimension(200,200));
         centerPan.add(board);
         
         
