@@ -84,7 +84,7 @@ public class Game {
 
     }
     
-    private void makeStep(int direction)
+    public void makeStep(int direction)
     {
         int repAction = 0;
             
