@@ -7,9 +7,9 @@ public class OptionData {
    
     private int depthmax;
     private int doormax;
-    private int MonsterLuck;
-    private int LadderLuck;
-    private int PotionLuck;
+    private int monsterLuck;
+    private int ladderLuck;
+    private int potionLuck;
     private int voidLuck;
     
     private int minPowerPotion;
@@ -48,27 +48,27 @@ public class OptionData {
     }
 
     public void setMonsterLuck(int MonsterLuck) {
-        this.MonsterLuck = MonsterLuck;
+        this.monsterLuck = MonsterLuck;
     }
 
     public int getMonsterLuck() {
-        return MonsterLuck;
+        return monsterLuck;
     }
 
     public void setLadderLuck(int LadderLuck) {
-        this.LadderLuck = LadderLuck;
+        this.ladderLuck = LadderLuck;
     }
 
     public int getLadderLuck() {
-        return LadderLuck;
+        return ladderLuck;
     }
 
     public void setPotionLuck(int PotionLuck) {
-        this.PotionLuck = PotionLuck;
+        this.potionLuck = PotionLuck;
     }
 
     public int getPotionLuck() {
-        return PotionLuck;
+        return potionLuck;
     }
 
     public void setVoidLuck(int voidLuck) {

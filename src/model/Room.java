@@ -23,7 +23,7 @@ public class Room extends Cell{
         strat.CreationRoom(this);
         
         for( Cell c : Contenus) {
-            c = strat.CreationCell(this);
+            c = strat.CreationCell(this,c);
         }
         
     }
@@ -127,11 +127,11 @@ public class Room extends Cell{
         int res  ;
         
         if(super.getConteneur() == null){
-            res = 0;
+            res = 0 - OptionData.getDataInstance().getDepthmax();
             
         }
         else {
-            res = super.getConteneur().numeroEtage() + 1;
+            res = super.getConteneur().numeroEtage() + 1 - OptionData.getDataInstance().getDepthmax();
         }
         
         
@@ -161,5 +161,37 @@ public class Room extends Cell{
         
         return res;
         
+    }
+    
+    public int numberofRoom() {
+        
+        int res = 0;
+        for( Cell c : this.Contenus) {
+            if(c instanceof Room) {
+                res++;
+            }
+        }
+        
+        return res ;
+    }
+    
+    public boolean aCheminVersPere() {
+        
+        boolean oK =false;
+        if(super.getConteneur() == null) {
+            oK = true;
+        }
+        else {
+            for(Cell c : this.Contenus) {
+                if( c instanceof CellUnit) {
+                    CellUnit ce = (CellUnit) c;
+                    if(!oK && ce.getItem() instanceof Stair) {
+                        oK = true ;
+                    }
+                }
+            }
+        }
+        
+        return oK ;
     }
 }
