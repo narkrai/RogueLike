@@ -10,7 +10,7 @@ public class IHM_GameOver extends JFrame{
         this.setTitle("Game over");
         this.setSize(400,350);
         this.setLocationRelativeTo(null);
-        
+        this.setResizable(false);
         
         
         JPanel pButton = new JPanel(new GridBagLayout());

@@ -25,17 +25,20 @@ public class IHM_GameUI extends JFrame{
         this.setSize(750,500);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
         
         Border b = BorderFactory.createEmptyBorder(1,1,1,1);
+        Border b2 = BorderFactory.createEmptyBorder(1,0,1,1);
         
         sumPanel = new IHM_Recap(0,0,0);
         msgPanel = new IHM_Message(new Message(0, "test"));
         
         // Panel au centre, le board
-        int x=20,y=20;
+        int x=20,y=10;
         board = new IHM_Board(x,y);
         centerPan = new JPanel();
-        centerPan.setLayout(new FlowLayout());
+        centerPan.setBorder(b);
+        //centerPan.setLayout(new BorderLayout());
         centerPan.setPreferredSize(new Dimension(500,500));
         centerPan.add(board);
         
@@ -49,8 +52,7 @@ public class IHM_GameUI extends JFrame{
         eastPan.setLayout(gl);
         eastPan.add(sumPanel);
         eastPan.add(msgPanel);
-        
-        eastPan.setBorder(b);
+        eastPan.setBorder(b2);
         this.add(eastPan, BorderLayout.EAST);
 
         // Panel à bas, ce qui est control
@@ -59,6 +61,7 @@ public class IHM_GameUI extends JFrame{
 
         // Ajoute la menuBar à la frame
         this.setJMenuBar(new MenuBar());
+        
         this.setVisible(true);
     }
 

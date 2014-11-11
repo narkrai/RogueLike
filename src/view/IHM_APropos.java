@@ -11,8 +11,9 @@ public class IHM_APropos extends JFrame{
     
     public IHM_APropos() {
         this.setTitle("A propos");
-        this.setSize(400,350);
+        this.setSize(300,300);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         
         JPanel pButton = new JPanel(new GridBagLayout());
         JButton bClose = new JButton("Close");

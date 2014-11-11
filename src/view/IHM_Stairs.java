@@ -14,6 +14,7 @@ public class IHM_Stairs extends JFrame{
         this.setTitle("Entering new room");
         this.setSize(400,350);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         
         JPanel pButton = new JPanel(new GridBagLayout());
         JButton bOk = new JButton("Ok");

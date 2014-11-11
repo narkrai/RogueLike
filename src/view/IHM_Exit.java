@@ -10,6 +10,7 @@ public class IHM_Exit extends JFrame{
         this.setTitle("Congratulation!");
         this.setSize(400,350);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         
         JPanel pButton = new JPanel(new GridBagLayout());
         JButton bReplay = new JButton("Try again");
