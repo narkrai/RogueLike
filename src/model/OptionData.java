@@ -26,8 +26,10 @@ public class OptionData {
     private int tailleYRoom;
     private int tailleXRoom;
    
-   
-   
+   private int strategy;
+
+
+
     public static OptionData DataInstance = new OptionData();
 
     public void setTailleYRoom(int tailleYRoom) {
@@ -141,4 +143,13 @@ public class OptionData {
     public int getMaxGoldTresaure() {
         return maxGoldTresaure;
     }
+    
+    public void setStrategy(int strategy) {
+        this.strategy = strategy;
+    }
+
+    public int getStrategy() {
+        return strategy;
+    }
+
 }
