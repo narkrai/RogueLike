@@ -28,9 +28,9 @@ public class IHM_Controls extends JTextField{
                     @Override
                     public void keyPressed(KeyEvent e) {
                         switch (e.getKeyCode()) {
-                        
                             // Se déplacer avec les flèches directionnelles
                             case 37: // Flèche de gauche
+                                
                                 break;
                             case 38: // Flèche du haut
                                 break;
