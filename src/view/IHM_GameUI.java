@@ -13,6 +13,7 @@ import model.Message;
 
 public class IHM_GameUI extends JFrame{
     private JPanel eastPan;
+    private JPanel centerPan;
     private IHM_Board board;
     private IHM_Options fenetre;
     private IHM_Recap sumPanel;
@@ -24,8 +25,22 @@ public class IHM_GameUI extends JFrame{
         this.setSize(750,500);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        Border b = BorderFactory.createEmptyBorder(1,1,1,1);
+        
         sumPanel = new IHM_Recap(0,0,0);
         msgPanel = new IHM_Message(new Message(0, "test"));
+        
+        // Panel au centre, le board
+        int x=20,y=20;
+        board = new IHM_Board(x,y);
+        centerPan = new JPanel();
+        centerPan.setLayout(new FlowLayout());
+        centerPan.setPreferredSize(new Dimension(500,500));
+        centerPan.add(board);
+        
+        
+        this.add(centerPan, BorderLayout.CENTER);
         
         // Panel à droite, ce qui est Recap + Message
         eastPan = new JPanel();
@@ -34,7 +49,7 @@ public class IHM_GameUI extends JFrame{
         eastPan.setLayout(gl);
         eastPan.add(sumPanel);
         eastPan.add(msgPanel);
-        Border b = BorderFactory.createEmptyBorder(1,1,1,1);
+        
         eastPan.setBorder(b);
         this.add(eastPan, BorderLayout.EAST);
 

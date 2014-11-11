@@ -11,6 +11,8 @@ public class IHM_GameOver extends JFrame{
         this.setSize(400,350);
         this.setLocationRelativeTo(null);
         
+        
+        
         JPanel pButton = new JPanel(new GridBagLayout());
         JButton bReplay = new JButton("Try again");
         JButton bClose = new JButton("Close");
