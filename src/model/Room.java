@@ -72,35 +72,70 @@ public class Room extends Cell{
     
     public void lightNear(int x,int y) {
         
+        ArrayList<Cell> tabCell = CellNear(x,y);
+        
+        for(Cell c : tabCell) {
+         
+            c.setDiscovered(true);
+        
+        }
+    }
+    
+    public int nbMonsterNear(int x,int y) {
+      
+      int res =0 ;
+      
+      ArrayList<Cell> tabCell = CellNear(x,y);
+      
+      for(Cell c : tabCell) {
+          
+          if(c instanceof CellUnit) {
+              CellUnit cC = (CellUnit) c;
+              if(cC.getItem() instanceof Monster ) {
+                  res++;
+              }
+          }
+      }
+      
+      return res;
+        
+    }
+    
+    public ArrayList<Cell> CellNear(int x,int y){
+        
+        ArrayList<Cell> res = new ArrayList<Cell>();
         Cell center = this.getCell(x, y);
         
         if(center != null ) {
-            center.setDiscovered(true);
+            res.add(center);
             
             if(this.getCell(x-1, y) != null) {
-                this.getCell(x-1, y).setDiscovered(true);
+                res.add(this.getCell(x-1, y));
             }
             if(this.getCell(x-1, y -1) != null) {
-                this.getCell(x-1, y-1).setDiscovered(true);
+                res.add(this.getCell(x-1, y-1));
             }
             if(this.getCell(x, y-1) != null) {
-                this.getCell(x, y-1).setDiscovered(true);
+                res.add(getCell(x, y-1));
             }
             if(this.getCell(x+1, y-1) != null) {
-                this.getCell(x+1, y-1).setDiscovered(true);
+                res.add(this.getCell(x+1, y-1));
             }
             if(this.getCell(x+1, y) != null) {
-                this.getCell(x+1, y).setDiscovered(true);
+                res.add(this.getCell(x+1, y));
             }
             if(this.getCell(x+1, y+1) != null) {
-                this.getCell(x+1, y+1).setDiscovered(true);
+                res.add(this.getCell(x+1, y+1));
             }
             if(this.getCell(x+1, y-1) != null) {
-                this.getCell(x+1, y-1).setDiscovered(true);
+                res.add(this.getCell(x+1, y-1));
             }
+        
+       
         
         }
         
+        return res;
         
     }
 

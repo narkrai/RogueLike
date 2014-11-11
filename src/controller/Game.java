@@ -52,6 +52,8 @@ public class Game {
     private Game() 
     {
         this.strategie = new Idiot() ;
+        this.addRoom();
+        
     }
     
     public void setStrategie(IStrategy strategie) 
@@ -81,7 +83,7 @@ public class Game {
     
     public void addRoom() 
     {
-
+        this.rooms = this.strategie.CreateArborescence();
     }
     
     public void makeStep(int direction)

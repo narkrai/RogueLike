@@ -8,5 +8,5 @@ public interface IStrategy {
 
     public abstract Cell CreationCell(Room r);
     
-    //public abstract ArrayList<Room> CreateArborescence();
+    public abstract ArrayList<Room> CreateArborescence();
 }

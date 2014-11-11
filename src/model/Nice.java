@@ -15,11 +15,11 @@ public class Nice implements IStrategy {
 
 
 
-   /* @Override
+    @Override
     public ArrayList<Room> CreateArborescence() {
         // TODO Implement this method
         return null;
-    }*/
+    }
 
     @Override
     public Cell CreationCell(Room r) {
