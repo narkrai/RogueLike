@@ -7,6 +7,8 @@ public class OptionData {
    
     private int depthmax;
     private int doormax;
+    
+    
     private int monsterLuck;
     private int ladderLuck;
     private int potionLuck;

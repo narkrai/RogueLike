@@ -18,7 +18,33 @@ public class Room extends Cell{
     private int tailleY;
 
 
+
+    /**
+     * Constructeur de Room ( a utilisé uniquement pour la création de la Room pere)
+     * @param IStrategy stratégie de création de room et d'arboreance  
+     * 
+     * 
+     */
     public Room(IStrategy strat) {
+        
+        
+        
+        strat.CreationRoom(this);
+        
+        for( Cell c : Contenus) {
+            c = strat.CreationCell(this,c);
+        }
+        
+    }
+    /**
+     * Constructeur de Room ( a utilisé uniquement pour la création des Rooms fils)
+     * @param IStrategy stratégie de création de room et d'arboreance  
+     * @param Room room contenant cette Room
+     * 
+     */
+    public Room(IStrategy strat,Room conteneur ) {
+        
+        this.setConteneur(conteneur);
         
         strat.CreationRoom(this);
         
@@ -106,6 +132,8 @@ public class Room extends Cell{
     public int GetSizeContenus() {
         return Contenus.size();
     }
+    
+    
 
 
     public void setContenus(ArrayList<Cell> Contenus) {
@@ -194,4 +222,25 @@ public class Room extends Cell{
         
         return oK ;
     }
+    
+    public boolean aUneSortie() {
+        
+        boolean oK =false;
+
+    
+            for(Cell c : this.Contenus) {
+                if( c instanceof CellUnit) {
+                    CellUnit ce = (CellUnit) c;
+                    if(!oK && ce.getItem() instanceof Exit) {
+                        oK = true ;
+                    }
+                }
+            }
+            
+            return oK ;
+        }
+        
+        
+    
+    
 }

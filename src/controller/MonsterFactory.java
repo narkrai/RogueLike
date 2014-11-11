@@ -6,13 +6,14 @@ public  class MonsterFactory {
     
     private static MonsterFactory instance=null;
     
-    private MonsterType[] ListMonster = {
+    private  static MonsterType[] ListMonster = {
         new MonsterType("Dragon",50, 100, 300, 500, 0),
         new MonsterType("Troll",10, 20, 5, 50, -5),
         new MonsterType("ArcaysXXX", 1, 250, 1, 10, -10)
     };
+    
 
-    public Monster buildMonster() {
+    public static Monster buildMonster() {
         int count = ListMonster.length;
         int res =  (int)(Math.random()*count);
         MonsterType monstretype = ListMonster[res];
