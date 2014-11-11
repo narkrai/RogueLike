@@ -23,6 +23,7 @@ public class Player extends Character {
         if (uniquePlayer == null) {
             try {
             uniquePlayer = new Player();
+            uniquePlayer.setCHARACTER('@');
         } catch (Exception e) {
             e.printStackTrace();
         }

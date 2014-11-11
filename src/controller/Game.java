@@ -94,22 +94,27 @@ public class Game {
         int posPlayY = 0;
         Room r = this.getCurrentRoom();
         
+        
+        //Obtenir la position du joueur dans la Room
+        for (Cell c : r.getContenus()) 
+        {
+            if (c instanceof CellUnit) 
+            {
+               CellUnit cU = (CellUnit) c ;
+               if(cU.getItem() == player) 
+               {
+                   posPlayX = cU.getPositionX();
+                   posPlayY = cU.getPositionY();
+               }
+            }
+        }
+        
+        
         switch (direction)
         {
             //droite (X-1,0)
             case RIGHT :
-            for (Cell c : r.getContenus()) 
-            {
-                if (c instanceof CellUnit) 
-                {
-                   CellUnit cU = (CellUnit) c ;
-                   if(cU.getItem() == player) 
-                   {
-                       posPlayX = cU.getPositionX();
-                       posPlayY = cU.getPositionY();
-                   }
-                }
-            }
+            
             if(posPlayX - 1 >= 0) 
             {
                 CellUnit Cdepart = (CellUnit)  r.getCell(posPlayX, posPlayY);

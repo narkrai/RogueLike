@@ -6,11 +6,22 @@ public abstract class Cell {
     private int positionX;
     private int positionY;
     private boolean discovered;
+    private  char CHARACTER = ' ';
+
 
 
     public Cell() {
 
     }
+    
+    public void setCHARACTER(char CHARACTER) {
+        CHARACTER = CHARACTER;
+    }
+
+    public  char getCHARACTER() {
+        return CHARACTER;
+    }
+    
     
     public abstract int GetTotalGold();
     public abstract int GetTotalMonster();

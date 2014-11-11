@@ -13,13 +13,12 @@ public class Chest extends Treasure{
         return gold;
     }
 
-    public Chest(int minGold,int maxGold) {
-        super();
-    }
+
 
     public Chest(int gold) {
         super();
         this.gold = gold;
+        this.setCHARACTER('$');
     }
 
 

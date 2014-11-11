@@ -9,6 +9,7 @@ public class Potion extends Treasure{
     public Potion(int strength) {
         super();
         this.setStrength(strength);
+        this.setCHARACTER('p');
     }
 
     public void setStrength(int strength) {

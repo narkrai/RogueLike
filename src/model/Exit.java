@@ -5,6 +5,7 @@ import controller.Game;
 public class Exit extends Item {
     public Exit() {
         super();
+        this.setCHARACTER('O');
     }
 
 

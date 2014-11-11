@@ -3,6 +3,36 @@ package model;
 public class CellUnit extends Cell {
 
     private Item item;
+    
+    
+    public CellUnit(){
+    
+        
+    }
+    
+    public char setCHARACTER(){
+        
+        char res;
+        
+        if(this.isDiscovered()) {
+            
+            if(this.getItem() != null) {
+                res = this.getItem().getCHARACTER();
+            }
+            else {
+                res = '.';
+            }
+            
+        }
+        else {
+            res = super.getCHARACTER();
+        }
+        
+        return res;
+    }
+    
+    
+    
 
     public void deleteItem() 
     {

@@ -17,6 +17,7 @@ public class Stair extends Item {
     public Stair(Room p) {
     
         this.pointeur = p;
+        this.setCHARACTER('<');
     }   
         public Room getPointeur() {
         return pointeur;

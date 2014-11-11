@@ -30,6 +30,7 @@ public class Room extends Cell{
         
         
         strat.CreationRoom(this);
+        this.setCHARACTER('>');
 
         
     }
@@ -44,6 +45,7 @@ public class Room extends Cell{
         this.setConteneur(conteneur);
         
         strat.CreationRoom(this);
+        this.setCHARACTER('>');
 
         
     }
@@ -137,6 +139,23 @@ public class Room extends Cell{
         
         return res;
         
+    }
+    
+    public char setCHARACTER(){
+        
+        char res;
+        
+        if(this.isDiscovered()) {
+            
+           res = '>';
+            
+            
+        }
+        else {
+            res = super.getCHARACTER();
+        }
+        
+        return res;
     }
 
 
