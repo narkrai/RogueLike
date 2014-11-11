@@ -217,5 +217,5 @@ public class IHM_Options  extends JFrame{
         yTextField.setText(Integer.toString(op.getTailleYRoom()));
     }
     
-}
+
 }
