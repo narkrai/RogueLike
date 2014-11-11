@@ -8,7 +8,7 @@ public class Main {
     
     private static Main instance = null;
     
-    private static void main(String[] args ) {
+    public static void main(String[] args ) {
         Game g=Game.getInstance();
         IHM_GameUI gui = new IHM_GameUI();
         gui.setVisible(true);
