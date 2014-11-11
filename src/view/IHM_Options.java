@@ -95,6 +95,17 @@ public class IHM_Options  extends JFrame{
                         int value = Integer.parseInt(typed);
                         dSlider.setValue(value);
                     }
+                    
+                    public void keyTyped(KeyEvent ke) {
+                        char c = ke.getKeyChar();
+                        if (!((c >= '0') && (c <= '9') ||
+                                 (c == KeyEvent.VK_BACK_SPACE) ||
+                                 (c == KeyEvent.VK_DELETE))) {
+                                getToolkit().beep();
+                                ke.consume();
+                              }
+
+                    }
                 });
         dPan.add(dSliderLabel);
         dPan.add(dSlider);
@@ -125,6 +136,17 @@ public class IHM_Options  extends JFrame{
                         int value = Integer.parseInt(typed);
                         xSlider.setValue(value);
                     }
+                    
+                    public void keyTyped(KeyEvent ke) {
+                        char c = ke.getKeyChar();
+                        if (!((c >= '0') && (c <= '9') ||
+                                 (c == KeyEvent.VK_BACK_SPACE) ||
+                                 (c == KeyEvent.VK_DELETE))) {
+                                getToolkit().beep();
+                                ke.consume();
+                              }
+
+                    }
                 });
         xPan.add(xSliderLabel);
         xPan.add(xSlider);
@@ -147,9 +169,7 @@ public class IHM_Options  extends JFrame{
         yTextField.addKeyListener(new KeyAdapter(){
                     @Override
                     public void keyReleased(KeyEvent ke) {
-                        /**
-                         * @TODO : ne pas autoriser le -
-                         */
+                        
                         String typed = yTextField.getText();
                         ySlider.setValue(0);
                         if(!typed.matches("\\d+") || typed.length() > 3) {
@@ -157,6 +177,17 @@ public class IHM_Options  extends JFrame{
                         }
                         int value = Integer.parseInt(typed);
                         ySlider.setValue(value);
+                    }
+                    
+                    public void keyTyped(KeyEvent ke) {
+                        char c = ke.getKeyChar();
+                        if (!((c >= '0') && (c <= '9') ||
+                                 (c == KeyEvent.VK_BACK_SPACE) ||
+                                 (c == KeyEvent.VK_DELETE))) {
+                                getToolkit().beep();
+                                ke.consume();
+                              }
+
                     }
                 });
         yPan.add(ySliderLabel);
