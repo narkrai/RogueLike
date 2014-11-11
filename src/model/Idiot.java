@@ -137,9 +137,12 @@ public class Idiot implements IStrategy {
         
     }
 
-    /*@Override
+    
     public ArrayList<Room> CreateArborescence() {
-        // TODO Implement this method
-        return null;
-    }*/
+       
+       ArrayList<Room> res = new ArrayList<Room>();
+       
+       
+        return res;
+    }
 }
