@@ -235,8 +235,6 @@ public class IHM_Options  extends JFrame{
     public void cancelOption() { // Action lorsque CANCEL
         refreshValue();
     }
-    public void CngeOption() {
-    }
     
     public void refreshValue() {
         strategyComboBox.setSelectedIndex(op.getStrategy());
