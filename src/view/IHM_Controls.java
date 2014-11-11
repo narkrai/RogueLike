@@ -23,6 +23,7 @@ public class IHM_Controls extends JTextField{
     public class MyKeyListener implements KeyListener {
                     @Override
                     public void keyTyped(KeyEvent e) {
+                        e.consume();
                     }
 
                     @Override
@@ -73,13 +74,17 @@ public class IHM_Controls extends JTextField{
                             default : 
                                 break;
 
-        
+                            
                         }
                         
+                        e.consume();
                     }
+                    
+
 
                     @Override
                     public void keyReleased(KeyEvent e) {
+                        e.consume();
                             
                     }
             }

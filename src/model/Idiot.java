@@ -15,7 +15,7 @@ public class Idiot implements IStrategy {
     }
     /**
      * Cette methode permet de creer les cellules de la room ainsi que ces Room fils selon l'OptionData
-     * il cree egalement un escalier descendant si la room a un pere
+     * il cree egalement un escalier descendant si la room a un pere et le joueur dans la Room fils
      * @param Room r room à creer 
      * 
      */  
@@ -75,6 +75,34 @@ public class Idiot implements IStrategy {
             
         }
         
+        //Placement du Joueur dans la cellule 
+        if( r.getConteneur() != null) {
+            
+            while(!r.aCheminVersPere()) {
+                RandX = (int) Math.random() * r.getTailleX();
+                RandY = (int) Math.random() * r.getTailleY();
+                
+                 t = r.getCell(RandX, RandY);
+                  
+                  if( !(t instanceof Room) ) {
+                      
+                      CellUnit cC = (CellUnit) t;
+                      
+                      if(cC.getItem() instanceof Stair ) {
+                          
+                          Stair st = new Stair(r);
+                          cC.setItem(st);
+                        
+                      }
+                
+                
+            }
+            
+        
+        }
+            
+        }
+        
       
     }
 
@@ -89,16 +117,13 @@ public class Idiot implements IStrategy {
         Cell c = MakeCellUnit(r) ;
         
         int stage = r.numeroEtage();
-        Room conteneur = r.getConteneur();
         int numberDoor = r.numberofRoom();
-        boolean AEscalier  = r.aCheminVersPere();
-        
-        
+
         
         double Random = Math.random() * 100;
-        
+        // si la Room n'est pas  au dernier etage et que le nombre maximal de salle n'est pas depassé
         if( stage != 0 && numberDoor < op.getDoormax() ) {
-            
+            //la Room a une certaine chance d'avoir une Room fils selon OptionData
             if(Random < op.getLadderLuck()) {
                 c = MakeRoom(r);
             }
