@@ -17,11 +17,29 @@ public class OptionData {
     
     private int minGoldTresaure;
     private int maxGoldTresaure;
+    
+    private int tailleYRoom;
+    private int tailleXRoom;
    
    
    
     public static OptionData DataInstance = new OptionData();
 
+    public void setTailleYRoom(int tailleYRoom) {
+        this.tailleYRoom = tailleYRoom;
+    }
+
+    public int getTailleYRoom() {
+        return tailleYRoom;
+    }
+
+    public void setTailleXRoom(int tailleXRoom) {
+        this.tailleXRoom = tailleXRoom;
+    }
+
+    public int getTailleXRoom() {
+        return tailleXRoom;
+    }
 
     private OptionData() {
         super();
