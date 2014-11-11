@@ -230,6 +230,18 @@ public class Room extends Cell{
             
             return oK ;
         }
+    
+    
+    public ArrayList<Room> avoirLesRoomsFils() {
+        
+        ArrayList<Room> res = new ArrayList<Room>();
+        
+        for(Cell c : this.getContenus()) {
+            
+        }
+        
+        return res ;
+    }
         
         
     

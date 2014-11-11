@@ -22,7 +22,7 @@ public class Nice implements IStrategy {
     }*/
 
     @Override
-    public Cell CreationCell(Room r, Cell c) {
+    public Cell CreationCell(Room r) {
         // TODO Implement this method
         return null;
     }
