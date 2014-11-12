@@ -197,50 +197,66 @@ public class Idiot implements IStrategy {
        
        int RandX;
        int RandY;
-       boolean Asortie =false;
+       
        int Elu ;
-       
-       Room r  = new Room(this);
-       ArrayList<Room> res = new ArrayList<Room>(r.avoirLesRoomsFils());
-       
-       
-       //Tant que le jeu n'a pas de sortie on boucle
-       while(!Asortie)
-       {
-        for( Room a : res){
-           
-           Elu =(int) Math.random();
-           
-           if(a.numeroEtage() == 0 && !Asortie &&  Elu <= (1/res.size()) ) {
-               
-               
-               while(!Asortie) 
-               {
-                RandX = (int) Math.random() * a.getTailleX();
-                RandY = (int) Math.random() * a.getTailleY();
-                
-                Cell c = a.getCell(RandX, RandY);
-                  
-                  if( !(c instanceof Room) ) {
-                      
-                      CellUnit cC = (CellUnit) c;
-                      
-                      if(cC.getItem() instanceof Stair ) {
-                          
-                          Exit e = new Exit();
-                          cC.setItem(e);
-                          Asortie = true;
-                      }
-                      
-                  }
       
-               }
+       Room r  = new Room(this);
+        ArrayList<Room> res = new ArrayList<Room>();
+       
+        //Tant que le jeu n'a pas de sortie on boucle
+        while(r.aUneSortie() != 1)
+        {
+             res = new ArrayList<Room>(r.avoirLesRoomsFils());
+            
+       //On verifie d'abord si l'arborescence à bien une room sinon on recrée l'ensemble
+       if(r.AvoirLeNiveauMinDesFils() == 0 ) {
+           
+           //Tant que le jeu n'a pas de sortie on boucle
+       
+            for( Room a : res){
+               //
+               Elu =(int) Math.random();
+               
+               if(a.numeroEtage() == 0 && r.aUneSortie() != 0 &&  Elu <= (1/res.size()) ) {
+                   
+                   
+                   while(r.aUneSortie() != 1) 
+                   {
+                    RandX = (int) Math.random() * a.getTailleX();
+                    RandY = (int) Math.random() * a.getTailleY();
+                    
+                    Cell c = a.getCell(RandX, RandY);
+                      
+                      if( !(c instanceof Room) ) {
+                          
+                          CellUnit cC = (CellUnit) c;
+                          
+                          if(cC.getItem() instanceof Stair ) {
+                              
+                              Exit e = new Exit();
+                              cC.setItem(e);
+                              
+                          }
+                          
+                      }
+           
+                   }
 
-               
-           }      
-               
-           }
+                   
+               }      
+                   
+               }
+           
+           
        }
+       //sinon on recree la room (bah oui la generation d'avant est infonctionnelle donc on jete
+       else{
+           r  = new Room(this);
+           
+       }
+        }
+           
+    
        
        
         return res;

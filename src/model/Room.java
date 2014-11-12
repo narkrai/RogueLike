@@ -320,8 +320,23 @@ public class Room extends Cell{
         
         return res ;
     }
-        
-        
     
     
+    public int AvoirLeNiveauMinDesFils() {
+        
+        int res = this.numeroEtage();
+        ArrayList<Room> listRoom = this.avoirLesRoomsFils();
+        
+        for( Room r : listRoom ) {
+            
+            if(r.AvoirLeNiveauMinDesFils() < res) {
+                res = r.AvoirLeNiveauMinDesFils();
+            }
+        }
+        
+     return res;   
+        
+    }
+        
+
 }

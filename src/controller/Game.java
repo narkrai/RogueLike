@@ -262,6 +262,7 @@ public class Game {
             
         }  
     }
+    
 
     public  char[][] getTab() {
         
