@@ -1,5 +1,7 @@
 package view;
 
+import controller.Game;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -38,9 +40,8 @@ public class IHM_GameOver extends JFrame{
         
         bReplay.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                /**
-                 * @TODO : Appel methode rejouer
-                 */
+                Game.getInstance().restart();
+                setVisible(false);
             }
         });
         
