@@ -7,7 +7,9 @@ import java.awt.event.ActionListener;
 
 public class IHM_Stairs extends JFrame{
     
-    boolean reponse;
+    boolean reponse=false;
+    private String message;
+    private JLabel msg = new JLabel();
 
 
     public IHM_Stairs() {
@@ -30,32 +32,31 @@ public class IHM_Stairs extends JFrame{
         this.add(pButton, BorderLayout.SOUTH);
         
         JPanel pMsg = new JPanel();
-        String test = "<html><h2><b>You can enter the new room</h2></p> <br><p>Test</p></html>";
-        
+        message = "<html><h2><b>You can enter the next room</h2></p>";
         JLabel msg = new JLabel();
-        msg.setText(test);
-        msg.setPreferredSize(new Dimension(180, 120));
-
+        msg.setText(message);
+        //msg.setPreferredSize(new Dimension(180, 120));
         pMsg.add(msg);
         this.add(pMsg, BorderLayout.CENTER);
         
         bOk.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                /**
-                 * @TODO : Appel methode ChangerRoom
-                 */
+                reponse=true;
+                setVisible(true);
             }
         });
         
         bCancel.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
+                reponse=false;
                 setVisible(false);
             }
         });
     }
     
-    public void message() {
-        
+    public void refresh(int nbGold, int nbMonster) {
+        message = message + "<br><p>There are "+Integer.toString(nbMonster)+" monsters, and a total of "+Integer.toString(nbGold)+" golds in the next rooms.</p></html>";
+        msg.setText(message);
     }
     
     public boolean isReponse() {
