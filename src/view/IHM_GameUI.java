@@ -19,6 +19,8 @@ public class IHM_GameUI extends JFrame{
     private IHM_Recap sumPanel;
     private IHM_Controls controls;
     private IHM_Message msgPanel;
+    
+    private Game game = Game.getInstance();
 
     public IHM_GameUI() {
         this.setTitle("Rogue");
@@ -34,8 +36,9 @@ public class IHM_GameUI extends JFrame{
         msgPanel = new IHM_Message(new Message(0, "test"));
         
         // Panel au centre, le board
-        int x=20,y=10;
-        board = new IHM_Board(x,y);
+        board = new IHM_Board(game.getCurrentRoom().getTailleX(),game.getCurrentRoom().getTailleY());
+        board.refresh();
+        
         centerPan = new JPanel();
         centerPan.setBorder(b);
         centerPan.setLayout(new BorderLayout());
@@ -64,8 +67,12 @@ public class IHM_GameUI extends JFrame{
         
         this.setVisible(true);
     }
+    
+    
 
     public void updateComposants() {
+        
+        
     }
 
     public void putComposants() {

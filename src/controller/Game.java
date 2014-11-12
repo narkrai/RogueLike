@@ -54,6 +54,7 @@ public class Game {
         this.strategie = new Idiot() ;
         this.addRoom();
         
+        
     }
     
     public void setStrategie(IStrategy strategie) 

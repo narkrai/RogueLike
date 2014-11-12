@@ -12,7 +12,7 @@ public class Room extends Cell{
      * @associates <{rogue.cell}>
      * @aggregation shared
      */
-    private ArrayList<Cell> Contenus;
+    private ArrayList<Cell> Contenus = new ArrayList<Cell>();
  
     private  int tailleX;
     private int tailleY;
@@ -215,15 +215,17 @@ public class Room extends Cell{
 
     @Override
     public int numeroEtage() {
-        
-        int res  ;
+        OptionData op = OptionData.getDataInstance();
+        int res  = 0 ;
         
         if(super.getConteneur() == null){
-            res = 0 - OptionData.getDataInstance().getDepthmax();
+            
+            
+            res = 0 - op.getDepthmax();
             
         }
         else {
-            res = super.getConteneur().numeroEtage() + 1 - OptionData.getDataInstance().getDepthmax();
+            res = this.getConteneur().numeroEtage() + 1;
         }
         
         
@@ -258,10 +260,12 @@ public class Room extends Cell{
     public int numberofRoom() {
         
         int res = 0;
+        if(this.Contenus != null){
         for( Cell c : this.Contenus) {
             if(c instanceof Room) {
                 res++;
             }
+        }
         }
         
         return res ;
@@ -292,7 +296,8 @@ public class Room extends Cell{
         
     int res = 0;
 
-    
+    if(Contenus != null)
+    {
             for(Cell c : this.Contenus) {
                 
                 res += c.aUneSortie();
@@ -300,9 +305,10 @@ public class Room extends Cell{
                 }
             
             
-            return res ;
+            
         }
-
+       return res ;
+   }
     
     public ArrayList<Room> avoirLesRoomsFils() {
         
@@ -319,6 +325,11 @@ public class Room extends Cell{
         }
         
         return res ;
+    }
+    
+    public void AjoutCell(Cell c) {
+        this.Contenus.add(c);
+        
     }
     
     

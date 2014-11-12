@@ -40,21 +40,23 @@ public class Idiot implements IStrategy {
                 c.setPositionX(x);
                 c.setPositionY(y);
                 c.setConteneur(r);
-                r.getContenus().add(c);
+                r.AjoutCell(c);
                 
             }
                             
         }
         
         
+        
+        
         //Creation d'un escalier descendant  vers le pere si la Room est un fils
         if( r.getConteneur() != null) {
             
-            while(!r.aCheminVersPere()) {
+            while(!r.aCheminVersPere()) { //A tester
                 RandX = (int) Math.random() * r.getTailleX();
                 RandY = (int) Math.random() * r.getTailleY();
                 
-                 t = r.getCell(RandX, RandY);
+                 t = r.getCell(RandX, RandY);//  Atester
                   
                   if( !(t instanceof Room) ) {
                       
@@ -114,7 +116,7 @@ public class Idiot implements IStrategy {
     public Cell CreationCell(Room r) {
         
         
-        Cell c = MakeCellUnit(r) ;
+        Cell c ;
         
         int stage = r.numeroEtage();
         int numberDoor = r.numberofRoom();
@@ -127,6 +129,13 @@ public class Idiot implements IStrategy {
             if(Random < op.getLadderLuck()) {
                 c = MakeRoom(r);
             }
+            else {
+                c = MakeCellUnit(r);
+            }
+            
+        }
+        else{
+            c = MakeCellUnit(r);
         }
  
         return c;
@@ -168,7 +177,7 @@ public class Idiot implements IStrategy {
             
             res.setItem(p);
         }
-        else if(op.getPotionLuck() < randomValue && randomValue <= op.getPotionLuck() + op.getTreasureLuck()  ) {
+        else if(op.getPotionLuck() < randomValue && randomValue <= op.getPotionLuck() + op.getTreasureLuck() + op.getMonsterLuck()  ) {
             
             int randOr;
             randOr = (int) (op.getMinGoldTresaure() + (Math.random() * op.getMaxGoldTresaure() - op.getMinGoldTresaure()));
