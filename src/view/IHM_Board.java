@@ -10,6 +10,23 @@ import javax.swing.border.Border;
 public class IHM_Board extends JTextArea{
     
     private String board;
+    private static IHM_Board uniqueInstance = null;
+    
+    public static IHM_Board getInstance()
+    {
+        if (uniqueInstance == null) 
+        {
+            try 
+            {
+            uniqueInstance = new IHM_Board();
+            } 
+            catch (Exception e) 
+            {
+                e.printStackTrace();
+            }
+        }
+        return uniqueInstance;
+    }
     
     public IHM_Board(int x, int y) {       
         //this.setSize(new Dimension(500,500));
