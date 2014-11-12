@@ -15,9 +15,11 @@ public abstract class Cell {
     }
     
     public void setCHARACTER(char CHARACTER) {
-        CHARACTER = CHARACTER;
+        this.CHARACTER = CHARACTER;
     }
 
+    public  abstract int aUneSortie();
+        
     public  char getCHARACTER() {
         return CHARACTER;
     }

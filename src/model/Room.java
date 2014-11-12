@@ -49,7 +49,14 @@ public class Room extends Cell{
 
         
     }
-
+    
+    
+     /**
+     *Fonction permettant d'obtenir une Cell à l'interieur de la Room 
+     * @param x coordonnées X
+     * @param y coordonnées Y
+     * @return Cell ayant ces cordonnées (NULL si inexistant)
+     */
     public Cell getCell(int x,int y) {
         
         Cell res = null;
@@ -62,16 +69,19 @@ public class Room extends Cell{
                 if( c.getPositionX() == x && c.getPositionY() == y ) 
                 {
                     res = c;
-                    
-                }
             
+                }
             }
         }
-        
         return res;
-        
     }
     
+    
+    /**
+     *Fonction permettant d'éclairer la Cell désignée par les coordonnées ainsi que les Cells environnantes  
+     * @param x coordonnées x
+     * @param y coordonnées y
+     */
     public void lightNear(int x,int y) {
         
         ArrayList<Cell> tabCell = CellNear(x,y);
@@ -82,7 +92,12 @@ public class Room extends Cell{
         
         }
     }
-    
+    /**
+     *Fonction permettant de connaitre les monstres dans  les Cells environnantes de la coordonnée  
+     * @param x coordonnées x
+     * @param y coordonnées y
+     * @return nombre de monstre envirronnants
+     */
     public int nbMonsterNear(int x,int y) {
       
       int res =0 ;
@@ -102,7 +117,11 @@ public class Room extends Cell{
       return res;
         
     }
-    
+    /**Fonction permettant de connaitre les  Cells environnantes de la coordonnée  
+    * @param x coordonnées x
+    * @param y coordonnées y
+    * @return Cells environnantes
+    */
     public ArrayList<Cell> CellNear(int x,int y){
         
         ArrayList<Cell> res = new ArrayList<Cell>();
@@ -268,23 +287,22 @@ public class Room extends Cell{
         return oK ;
     }
     
-    public boolean aUneSortie() {
+     
+   public int aUneSortie() {
         
-        boolean oK =false;
+    int res = 0;
 
     
             for(Cell c : this.Contenus) {
-                if( c instanceof CellUnit) {
-                    CellUnit ce = (CellUnit) c;
-                    if(!oK && ce.getItem() instanceof Exit) {
-                        oK = true ;
-                    }
+                
+                res += c.aUneSortie();
+                    
                 }
-            }
             
-            return oK ;
+            
+            return res ;
         }
-    
+
     
     public ArrayList<Room> avoirLesRoomsFils() {
         

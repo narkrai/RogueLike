@@ -75,12 +75,19 @@ public class Game {
     {
         return this.player;
     }
-
+    
+    /**
+     * fonction permettant de regenener un Game avec une 
+     */
     public void restart() 
     {
         uniqueInstance = new Game() ;
     }
     
+    
+    /**
+     * Creation de l'arborescence du jeu 
+     */
     public void addRoom() 
     {
         this.rooms = this.strategie.CreateArborescence();
@@ -176,8 +183,10 @@ public class Game {
         
     }
     
-    
-    
+    /**
+     *Fonction qui permet de connaitre la Room courant ou se trouve le joueur
+     * @return Room courant du joueur
+     */
     public Room getCurrentRoom() {
         Room res = null;
         
@@ -200,8 +209,11 @@ public class Game {
         
         
     }
-    
-    
+    /**
+     *Fonction qui permet de connaitre le niveau courant ou se trouve le joueur
+     *
+     * @return niveau courant du joueur
+     */
     public int getCurrentLevel() {
         
         int resultat = -1;
@@ -218,7 +230,57 @@ public class Game {
          return resultat;
         
     }
+    /**
+     * Permet de teleporter le joueur dans une nouvelle case vide choisi au hasard dans une nouvelle
+     * Room
+     *
+     * @param r Room ou teleporte le joueur
+     */
+    public void TeleportInRoom(Room r){
+        
+        boolean estDeplace = false;
+        int posX;
+        int posY;
+        
+        
+        
+        while(!estDeplace) {
+            
+            posX =(int) (Math.random() * r.getTailleX());
+            posY = (int) (Math.random() * r.getTailleY());
+            
+            Cell c = r.getCell(posX, posY);
+            
+            if( c instanceof CellUnit ) {
+                CellUnit cC = (CellUnit) c ;
+                
+                if( cC.getItem() == null) {
+                    cC.setItem(this.player);
+                    estDeplace = true ;
+                }
+            }
+            
+        }  
+    }
 
+    public  char[][] getTab() {
+        
+        Room r = this.getCurrentRoom();
+        
+        char res[][] = new char[r.getTailleX()][r.getTailleY()];
+        
+        int numero = 0;
+        for( int x = 0 ; x < r.getTailleX(); x++) {
+            for(int y = 0 ; y < r.getTailleY(); y++) {
+                
+                res[x][y] = r.getContenus().get(numero).getCHARACTER();
+                
+            }
+        }
+        
+        return res;
+        
+    }
     
     
     

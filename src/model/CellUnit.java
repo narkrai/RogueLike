@@ -77,4 +77,20 @@ public class CellUnit extends Cell {
         }
         return 0;
     }
+
+    /**
+     * Permet de savoir si un objet contient une sortie
+     * @return
+     */
+    @Override
+    public int aUneSortie() {
+        
+        int res = 0 ;
+        if(this.getItem() instanceof Exit) {
+            res = 1;
+        }
+        
+        
+        return res;
+    }
 }

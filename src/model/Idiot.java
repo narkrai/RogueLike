@@ -15,7 +15,7 @@ public class Idiot implements IStrategy {
     }
     /**
      * Cette methode permet de creer les cellules de la room ainsi que ces Room fils selon l'OptionData
-     * il cree egalement un escalier descendant si la room a un pere et le joueur dans la Room fils
+     * il cree egalement un escalier descendant si la room a un pere et le joueur dans la Room pere
      * @param Room r room à creer 
      * 
      */  
