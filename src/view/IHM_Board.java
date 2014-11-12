@@ -34,9 +34,12 @@ public class IHM_Board extends JTextArea{
         for (i=0; i<table.length;i++){
             for (j=0; j<table[0].length; j++) {
                 for (k=0; k<table[1].length;k++) {
-                    board+=table[i][j]+" ";
+                    board+=table[j][k];
                 }
+                board+="\n";
             }
         }
+        
+        this.setText(board);
     }
 }
