@@ -18,7 +18,7 @@ public class IHM_Message extends JPanel{
     public IHM_Message(Message msg) {
         
         // Message à afficher
-        message= msg.getMessage()+" Test de la frame bla bla le lbe ble j'espre que ca depasse pas car j'ai mis des html tag lol";
+        message= msg.getMessage();
         
         //bordure imaginaire
         Border c =  BorderFactory.createEmptyBorder(5,5,5,5);
@@ -46,6 +46,6 @@ public class IHM_Message extends JPanel{
     }
     
     public void refresh() {
-        
+       
     }
 }

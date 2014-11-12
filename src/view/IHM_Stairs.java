@@ -32,8 +32,6 @@ public class IHM_Stairs extends JFrame{
         this.add(pButton, BorderLayout.SOUTH);
         
         JPanel pMsg = new JPanel();
-        message = "<html><h2><b>You can enter the next room</h2></p>";
-        JLabel msg = new JLabel();
         msg.setText(message);
         //msg.setPreferredSize(new Dimension(180, 120));
         pMsg.add(msg);
@@ -55,7 +53,7 @@ public class IHM_Stairs extends JFrame{
     }
     
     public void refresh(int nbGold, int nbMonster) {
-        message = message + "<br><p>There are "+Integer.toString(nbMonster)+" monsters, and a total of "+Integer.toString(nbGold)+" golds in the next rooms.</p></html>";
+        message = "<html><h2><b>You can enter the next room</h2></p><br><p>There are "+Integer.toString(nbMonster)+" monsters, and a total of "+Integer.toString(nbGold)+" golds in the next rooms.</p></html>";
         msg.setText(message);
     }
     

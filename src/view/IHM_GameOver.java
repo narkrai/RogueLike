@@ -8,6 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class IHM_GameOver extends JFrame{
+        
+    private JLabel msg = new JLabel();
+    private String text;
+    
     public IHM_GameOver() {
         this.setTitle("Game over");
         this.setSize(400,350);
@@ -29,10 +33,10 @@ public class IHM_GameOver extends JFrame{
         this.add(pButton, BorderLayout.SOUTH);
         
         JPanel pMsg = new JPanel();
-        String test = "<html><h2><b>Game over</h2></p> <br><p>Test </p></html>";
         
-        JLabel msg = new JLabel();
-        msg.setText(test);
+        
+        
+        msg.setText(text);
         msg.setPreferredSize(new Dimension(180, 120));
 
         pMsg.add(msg);
@@ -54,5 +58,7 @@ public class IHM_GameOver extends JFrame{
     }
 
     public void message() {
+        text ="<html><h2><b>Game over</h2></p>" +
+            "<br><p> You have died from</p></html>";
     }
 }

@@ -28,7 +28,7 @@ public class IHM_Exit extends JFrame{
         this.add(pButton, BorderLayout.SOUTH);
         
         JPanel pMsg = new JPanel();
-        String test = "<html><h2><b>Congratulation! You have beaten the game</h2></p> <br><p>Test</p></html>";
+        String test = "<html><h2><b>Congratulation! You have beaten the game</h2></p> <br></html>";
         
         JLabel msg = new JLabel();
         msg.setText(test);
@@ -53,4 +53,6 @@ public class IHM_Exit extends JFrame{
             }
         });
     }
+    
+    
 }
