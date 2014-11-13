@@ -36,7 +36,7 @@ public class Room extends Cell{
     }
     /**
      * Constructeur de Room ( a utilisé uniquement pour la création des Rooms fils)
-     * @param IStrategy stratégie de création de room et d'arboreance  
+     * @param IStrategy stratégie de création de room et d'arboresance  
      * @param Room room contenant cette Room
      * 
      */
@@ -46,8 +46,7 @@ public class Room extends Cell{
         
         strat.CreationRoom(this);
         this.setCHARACTER('>');
-
-        
+    
     }
     
     
@@ -60,15 +59,17 @@ public class Room extends Cell{
     public Cell getCell(int x,int y) {
         
         Cell res = null;
-        
+        boolean estTrouve = false;
         if( x < tailleX && y < tailleY)
         {
-        
-            for(Cell c : Contenus) {
+            for(int i =0 ; i < this.Contenus.size() && !estTrouve ;i++ ){
+                                                                       
+                 Cell c = this.Contenus.get(i);                                                   
                 
                 if( c.getPositionX() == x && c.getPositionY() == y ) 
                 {
                     res = c;
+                    estTrouve = true;
             
                 }
             }

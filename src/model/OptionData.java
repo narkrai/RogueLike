@@ -5,17 +5,17 @@ import controller.Game;
 public class OptionData {
 
    
-    private int depthmax = 5;
-    private int doormax = 5;
+    private int depthmax = 2;
+    private int doormax = 2;
     
     
     private int monsterLuck = 10;
-    private int ladderLuck = 5;
+    private int ladderLuck = 40;
     private int potionLuck = 10;
     private int treasureLuck = 10;
 
 
-    private int voidLuck = 75;
+    private int voidLuck = 20;
     
     private int minPowerPotion = -7;
     private int maxPowerPotion = 10;
@@ -23,7 +23,7 @@ public class OptionData {
     private int minGoldTresaure =5;
     private int maxGoldTresaure = 4500;
     
-    private int tailleYRoom = 3;
+    private int tailleYRoom = 2;
     private int tailleXRoom = 2;
    
    private int strategy;
