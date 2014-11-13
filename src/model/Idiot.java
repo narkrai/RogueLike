@@ -7,6 +7,8 @@ import java.io.Console;
 
 import java.util.ArrayList;
 
+import java.util.Random;
+
 import view.IHM_GameUI;
 
 
@@ -30,8 +32,10 @@ public class Idiot implements IStrategy {
         Cell c;
         Cell t;
         
-        int RandX ;
-        int RandY ;
+        
+        Random rand = new Random();
+        int randX;
+        int randY;
         
         r.setTailleX(op.getTailleXRoom());
         r.setTailleY(op.getTailleYRoom());
@@ -56,25 +60,24 @@ public class Idiot implements IStrategy {
         
         
         //Creation d'un escalier descendant  vers le pere si la Room est un fils
-        if( r.getConteneur() != null) {
             
-            while(!r.aCheminVersPere()) { //A tester
-                RandX = (int) Math.random() * r.getTailleX();
-                RandY = (int) Math.random() * r.getTailleY();
+            while(!r.aCheminVersPere()) { 
+                 randX=  rand.nextInt( r.getTailleX()) ;
+                randY =  rand.nextInt( r.getTailleY());
                 
-                 t = r.getCell(RandX, RandY);//  Atester
+                 t = r.getCell(randX, randY);
                   
                   if( !(t instanceof Room) ) {
                       
                       CellUnit cC = (CellUnit) t;
                       
-                      if(cC.getItem() instanceof Stair ) {
+                      
                           
                           Stair st = new Stair(r);
                           cC.setItem(st);
                           System.out.println("Chemin vers pere crée");
                         
-                      }
+                      
                 
                 
             }
@@ -82,11 +85,11 @@ public class Idiot implements IStrategy {
         
         }
             
-        }
+        
         
 
         
-      
+        System.out.println("Room terminé etage" +r.numeroEtage() +" et a un chemin vers pere");
     }
 
     /**
@@ -98,28 +101,27 @@ public class Idiot implements IStrategy {
         
         
         Cell c ;
-        
-        int stage = r.numeroEtage();
-        int numberDoor = r.numberofRoom();
 
-        
-        double Random = Math.random() * 100;
+        Random rand = new Random();
+        int Random = rand.nextInt(100);
         // si la Room n'est pas  au dernier etage et que le nombre maximal de salle n'est pas depassé
-        if( stage != 0 && numberDoor < op.getDoormax() ) {
+        if( r.numeroEtage() != 0 && r.numberofRoom() < op.getDoormax() ) {
             //la Room a une certaine chance d'avoir une Room fils selon OptionData
             if(Random < op.getLadderLuck()) {
                 
+                System.out.println("Valeur du rand :"+ Random);
                 c = MakeRoom(r);
-                System.out.println("Nouvelle room crée");
+                
             }
             else {
-                c = MakeCellUnit(r);
+                c = MakeCellUnit();
                 System.out.println("Nouvelle cell crée");
             }
             
         }
         else{
-            c = MakeCellUnit(r);
+            System.out.println("Nouvelle cell crée");
+            c = MakeCellUnit();
         }
  
         return c;
@@ -133,7 +135,7 @@ public class Idiot implements IStrategy {
     private Room MakeRoom(Room pere) {
         
         Room res  = new Room(this,pere);
-        
+        System.out.println("Nouvelle Room crée");
         return res;
     }
     /**
@@ -141,17 +143,19 @@ public class Idiot implements IStrategy {
      * @param pere La Room pere
      * @return un objet CellUnit
      */
-    private CellUnit MakeCellUnit(Room pere){
+    private CellUnit MakeCellUnit(){
         
         CellUnit res = new CellUnit();
-        double randomValue = Math.random()*100;
         
-        if( randomValue  <= op.getMonsterLuck()) {
+        Random rand = new Random();
+        int randomValue = rand.nextInt(100);
+        
+        if( randomValue  <= op.getMonsterLuck() + op.getLadderLuck()) {
             
             res.setItem(MonsterFactory.buildMonster());
             
         }
-        else if( op.getMonsterLuck() < randomValue && randomValue <= op.getPotionLuck() + op.getMonsterLuck()  ) {
+        else if( op.getMonsterLuck() < randomValue && randomValue <= op.getPotionLuck() + op.getMonsterLuck() + op.getLadderLuck()  ) {
 
             int randStrength;
             randStrength =
@@ -161,7 +165,7 @@ public class Idiot implements IStrategy {
             
             res.setItem(p);
         }
-        else if(op.getPotionLuck() < randomValue && randomValue <= op.getPotionLuck() + op.getTreasureLuck() + op.getMonsterLuck()  ) {
+        else if(op.getPotionLuck() < randomValue && randomValue <= op.getPotionLuck() + op.getTreasureLuck() + op.getMonsterLuck() +op.getLadderLuck() ) {
             
             int randOr;
             randOr = (int) (op.getMinGoldTresaure() + (Math.random() * op.getMaxGoldTresaure() - op.getMinGoldTresaure()));
@@ -190,38 +194,46 @@ public class Idiot implements IStrategy {
        
        int RandX;
        int RandY;
-       
-       int Elu ;
+        Random rand = new Random();
+       double Elu ;
       
       
       // Room de Tous
        Room r  = new Room(this);
+        System.out.println("La room pere A ete correctement crée");
         ArrayList<Room> res = new ArrayList<Room>();
        
         //Tant que le jeu n'a pas de sortie on boucle
         while(r.aUneSortie() != 1)
         {
-            res.add(r);
-             res.addAll(r.avoirLesRoomsFils());
+            System.out.println("r.aUneSortie() "+r.aUneSortie());
+            
+            System.out.println("aUneSortie "+r.aUneSortie());
+            
+            for( Room rF : r.avoirLesRoomsFils()) {
+                res.add(rF);
+            }
             
             System.out.println("Liste iteration + 1");
             
        //On verifie d'abord si l'arborescence à bien une room sinon on recrée l'ensemble
        if(r.AvoirLeNiveauMinDesFils() == 0 ) {
-           
+           System.out.println("r.AvoirLeNiveauMinDesFils() "+r.AvoirLeNiveauMinDesFils());
            //Tant que le jeu n'a pas de sortie on boucle
-       
+           while(r.aUneSortie() != 1)
+           {
             for( Room a : res){
                //
-               Elu =(int) Math.random();
+               System.out.println("a.numeroEtage() "+a.numeroEtage());
+               Elu = rand.nextDouble();
                
-               if(a.numeroEtage() == 0 && r.aUneSortie() != 0 &&  Elu <= (1/res.size()) ) {
+               if(a.numeroEtage() == 0 && r.aUneSortie() != 1) {
                    
                    
                    while(r.aUneSortie() != 1) 
                    {
-                    RandX = (int) Math.random() * a.getTailleX();
-                    RandY = (int) Math.random() * a.getTailleY();
+                    RandX = rand.nextInt(a.getTailleX()) ;
+                    RandY = rand.nextInt(a.getTailleY()) ;
                     
                     Cell c = a.getCell(RandX, RandY);
                       
@@ -244,11 +256,13 @@ public class Idiot implements IStrategy {
                }      
                    
                }
-           
+           }
            
        }
        //sinon on recree la room (bah oui la generation d'avant est infonctionnelle donc on jete
        else{
+           System.out.println("r.AvoirLeNiveauMinDesFils() "+r.AvoirLeNiveauMinDesFils());
+           System.out.println("RECREATIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
            r  = new Room(this);
            
        }
@@ -259,8 +273,10 @@ public class Idiot implements IStrategy {
         if( r.getConteneur() == null) {
             
             while(!playerEstPlace) {
-                RandX = (int) Math.random() * r.getTailleX();
-                RandY = (int) Math.random() * r.getTailleY();
+                
+                
+                RandX =  rand.nextInt(r.getTailleX());
+                RandY =  rand.nextInt(r.getTailleY());
                 
                  Cell t = r.getCell(RandX, RandY);
                   
