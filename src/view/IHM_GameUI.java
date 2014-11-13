@@ -10,8 +10,12 @@ import java.awt.event.*;
 import javax.swing.border.Border;
 
 import model.Message;
+import model.MessageIHM;
 
 public class IHM_GameUI extends JFrame{
+    
+    //faire un singleton
+    
     private JPanel eastPan;
     private JPanel centerPan;
     private IHM_Board board;
@@ -68,7 +72,33 @@ public class IHM_GameUI extends JFrame{
         this.setVisible(true);
     }
     
-    
+    public void Analyse (MessageIHM ar) {
+        
+        final int  RIEN = 0;
+        final int GAMEOVER = 1;
+        final int WIN = 2 ;
+        final int TELEPORT = 3 ;
+        
+        switch(ar.getSignal()) {
+            
+        case 0 :
+            //reatualiser le board
+            //reatio
+            
+            break;
+        case 1 :
+            //GAMEOVER.setvisible
+            
+            break;
+        case 2 :
+        
+        
+            
+        }
+                   
+                        
+        
+    }
 
     public void updateComposants() {
         

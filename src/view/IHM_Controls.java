@@ -31,6 +31,10 @@ public class IHM_Controls extends JTextField{
                         switch (e.getKeyCode()) {
                             // Se déplacer avec les flèches directionnelles
                             case 37: // Flèche de gauche
+                            
+                                //singleton(GameUI.getinstance.Analyse(Game.getInstance().makeStep(1))
+                            
+                                //makestep renvoit un MessageIHM
                                 Game.getInstance().makeStep(1);
                                 break;
                             case 38: // Flèche du haut
