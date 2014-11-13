@@ -61,11 +61,11 @@ public class Idiot implements IStrategy {
         
         //Creation d'un escalier descendant  vers le pere si la Room est un fils
             
-            while(!r.aCheminVersPere()) { //A tester
+            while(!r.aCheminVersPere()) { 
                  randX=  rand.nextInt( r.getTailleX()) ;
                 randY =  rand.nextInt( r.getTailleY());
                 
-                 t = r.getCell(randX, randY);//  Atester
+                 t = r.getCell(randX, randY);
                   
                   if( !(t instanceof Room) ) {
                       
@@ -102,8 +102,8 @@ public class Idiot implements IStrategy {
         
         Cell c ;
 
-        
-        int Random = (int)Math.random() * 100;
+        Random rand = new Random();
+        int Random = rand.nextInt(100);
         // si la Room n'est pas  au dernier etage et que le nombre maximal de salle n'est pas depassé
         if( r.numeroEtage() != 0 && r.numberofRoom() < op.getDoormax() ) {
             //la Room a une certaine chance d'avoir une Room fils selon OptionData
@@ -146,7 +146,9 @@ public class Idiot implements IStrategy {
     private CellUnit MakeCellUnit(){
         
         CellUnit res = new CellUnit();
-        double randomValue = Math.random()*100;
+        
+        Random rand = new Random();
+        int randomValue = rand.nextInt(100);
         
         if( randomValue  <= op.getMonsterLuck() + op.getLadderLuck()) {
             
@@ -192,8 +194,8 @@ public class Idiot implements IStrategy {
        
        int RandX;
        int RandY;
-       
-       int Elu ;
+        Random rand = new Random();
+       double Elu ;
       
       
       // Room de Tous
@@ -204,7 +206,10 @@ public class Idiot implements IStrategy {
         //Tant que le jeu n'a pas de sortie on boucle
         while(r.aUneSortie() != 1)
         {
-            res.add(r);
+            System.out.println("r.aUneSortie() "+r.aUneSortie());
+            
+            System.out.println("aUneSortie "+r.aUneSortie());
+            
             for( Room rF : r.avoirLesRoomsFils()) {
                 res.add(rF);
             }
@@ -213,20 +218,22 @@ public class Idiot implements IStrategy {
             
        //On verifie d'abord si l'arborescence à bien une room sinon on recrée l'ensemble
        if(r.AvoirLeNiveauMinDesFils() == 0 ) {
-           
+           System.out.println("r.AvoirLeNiveauMinDesFils() "+r.AvoirLeNiveauMinDesFils());
            //Tant que le jeu n'a pas de sortie on boucle
-       
+           while(r.aUneSortie() != 1)
+           {
             for( Room a : res){
                //
-               Elu =(int) Math.random();
+               System.out.println("a.numeroEtage() "+a.numeroEtage());
+               Elu = rand.nextDouble();
                
-               if(a.numeroEtage() == 0 && r.aUneSortie() != 0 &&  Elu <= (1/res.size()) ) {
+               if(a.numeroEtage() == 0 && r.aUneSortie() != 1) {
                    
                    
                    while(r.aUneSortie() != 1) 
                    {
-                    RandX = (int) Math.random() * a.getTailleX();
-                    RandY = (int) Math.random() * a.getTailleY();
+                    RandX = rand.nextInt(a.getTailleX()) ;
+                    RandY = rand.nextInt(a.getTailleY()) ;
                     
                     Cell c = a.getCell(RandX, RandY);
                       
@@ -249,11 +256,13 @@ public class Idiot implements IStrategy {
                }      
                    
                }
-           
+           }
            
        }
        //sinon on recree la room (bah oui la generation d'avant est infonctionnelle donc on jete
        else{
+           System.out.println("r.AvoirLeNiveauMinDesFils() "+r.AvoirLeNiveauMinDesFils());
+           System.out.println("RECREATIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
            r  = new Room(this);
            
        }
@@ -264,8 +273,10 @@ public class Idiot implements IStrategy {
         if( r.getConteneur() == null) {
             
             while(!playerEstPlace) {
-                RandX = (int) Math.random() * r.getTailleX();
-                RandY = (int) Math.random() * r.getTailleY();
+                
+                
+                RandX =  rand.nextInt(r.getTailleX());
+                RandY =  rand.nextInt(r.getTailleY());
                 
                  Cell t = r.getCell(RandX, RandY);
                   

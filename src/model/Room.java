@@ -341,7 +341,7 @@ public class Room extends Cell{
         
         for( Room r : listRoom ) {
             
-            if(r.AvoirLeNiveauMinDesFils() < res) {
+            if(r.AvoirLeNiveauMinDesFils() > res) {
                 res = r.AvoirLeNiveauMinDesFils();
             }
         }
