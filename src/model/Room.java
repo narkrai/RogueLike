@@ -318,7 +318,7 @@ public class Room extends Cell{
             
             if( c instanceof Room) {
                 Room r = (Room) c ;
-                
+                res.add(r);
                 res.addAll(r.avoirLesRoomsFils());
             }
             
