@@ -7,6 +7,7 @@ import model.Cell;
 import model.CellUnit;
 import model.IStrategy;
 import model.Idiot;
+import model.MessageIHM;
 import model.OptionData;
 import model.Player;
 import model.Room;
@@ -94,7 +95,13 @@ public class Game {
         this.rooms = this.strategie.CreateArborescence();
     }
     
-    public void makeStep(int direction)
+    
+    /**
+     * Permet au joueur de faire un pas
+     * @param direction int de direction
+     * @return MessageIHM 
+     */
+    public MessageIHM makeStep(int direction)
     {
         int repAction = 0;
             
@@ -164,15 +171,13 @@ public class Game {
             //erreur
             default:
             
+            
+           
+            
         }
         
-        if(repAction == VICTORY ) {
-            playerWin();
-        }
-        else if( repAction == LOSE) {
-            gameOver();
-        }
         
+        return null;
     }
     
     
@@ -265,6 +270,11 @@ public class Game {
     }
     
 
+
+     /**
+     *Permet d'obtenir la Room actuelle avec les objets à  l'interieur
+     * @return un Char[][] tableau des caracteres ( correspondant au objet dans la room)
+     */
     public  char[][] getTab() {
         
         Room r = this.getCurrentRoom();
