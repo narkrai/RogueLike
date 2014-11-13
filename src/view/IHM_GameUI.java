@@ -82,5 +82,6 @@ public class IHM_GameUI extends JFrame{
     public static void main(String[] args) {
         
         IHM_GameUI gui = new IHM_GameUI();
+        gui.setVisible(true);
     }
 }
