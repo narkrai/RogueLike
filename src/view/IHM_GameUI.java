@@ -13,18 +13,39 @@ import model.Message;
 import model.MessageIHM;
 
 public class IHM_GameUI extends JFrame{
-    
-    //faire un singleton
+
     
     private JPanel eastPan;
     private JPanel centerPan;
+    
     private IHM_Board board;
     private IHM_Options fenetre;
     private IHM_Recap sumPanel;
     private IHM_Controls controls;
     private IHM_Message msgPanel;
+    private IHM_GameOver gameOverPanel;
+    private IHM_Exit exitPanel;
+    private IHM_Stairs stairsPanel;
+    
+    private static IHM_GameUI uniqueInstance = null;
     
     private Game game = Game.getInstance();
+
+    public static IHM_GameUI getInstance()
+    {
+        if (uniqueInstance == null) 
+        {
+            try 
+            {
+            uniqueInstance = new IHM_GameUI();
+            } 
+            catch (Exception e) 
+            {
+                e.printStackTrace();
+            }
+        }
+        return uniqueInstance;
+    }
 
     public IHM_GameUI() {
         this.setTitle("Rogue");
@@ -36,13 +57,16 @@ public class IHM_GameUI extends JFrame{
         Border b = BorderFactory.createEmptyBorder(1,1,1,1);
         Border b2 = BorderFactory.createEmptyBorder(1,0,1,1);
         
+        gameOverPanel = new IHM_GameOver();
+        exitPanel = new IHM_Exit();
+        stairsPanel = new IHM_Stairs();
         sumPanel = new IHM_Recap(0,0,0);
         msgPanel = new IHM_Message(new Message(0, "test"));
+        
         
         // Panel au centre, le board
         board = new IHM_Board(game.getCurrentRoom().getTailleX(),game.getCurrentRoom().getTailleY());
         board.refresh();
-        
         centerPan = new JPanel();
         centerPan.setBorder(b);
         centerPan.setLayout(new BorderLayout());
@@ -72,9 +96,9 @@ public class IHM_GameUI extends JFrame{
         this.setVisible(true);
     }
     
-    public void Analyse (MessageIHM ar) {
+    public void analyse (MessageIHM ar) {
         
-        final int  RIEN = 0;
+        final int RIEN = 0;
         final int GAMEOVER = 1;
         final int WIN = 2 ;
         final int TELEPORT = 3 ;
@@ -82,15 +106,22 @@ public class IHM_GameUI extends JFrame{
         switch(ar.getSignal()) {
             
         case 0 :
-            //reatualiser le board
-            //reatio
+            board.refresh();
+            //messageconsole
             
             break;
         case 1 :
-            //GAMEOVER.setvisible
-            
+            gameOverPanel.setVisible(true);
+            //messageIHM
             break;
         case 2 :
+            exitPanel.setVisible(true);
+            //messageIHM
+            break;
+        case 3 : 
+            stairsPanel.setVisible(true);
+            //messageIHM
+            break;
         
         
             
