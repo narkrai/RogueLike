@@ -10,12 +10,12 @@ public class OptionData {
     
     
     private int monsterLuck = 10;
-    private int ladderLuck = 40;
+    private int ladderLuck = 10;
     private int potionLuck = 10;
     private int treasureLuck = 10;
 
 
-    private int voidLuck = 20;
+    private int voidLuck = 60;
     
     private int minPowerPotion = -7;
     private int maxPowerPotion = 10;
@@ -23,14 +23,14 @@ public class OptionData {
     private int minGoldTresaure =5;
     private int maxGoldTresaure = 4500;
     
-    private int tailleYRoom = 2;
-    private int tailleXRoom = 2;
+    private int tailleYRoom = 5;
+    private int tailleXRoom = 5;
    
    private int strategy;
 
 
 
-    public static OptionData DataInstance = new OptionData();
+    static private OptionData DataInstance = new OptionData();
 
     public void setTailleYRoom(int tailleYRoom) {
         this.tailleYRoom = tailleYRoom;

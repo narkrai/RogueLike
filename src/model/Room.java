@@ -131,26 +131,15 @@ public class Room extends Cell{
         if(center != null ) {
             res.add(center);
             
-            if(this.getCell(x-1, y) != null) {
-                res.add(this.getCell(x-1, y));
-            }
-            if(this.getCell(x-1, y -1) != null) {
-                res.add(this.getCell(x-1, y-1));
-            }
-            if(this.getCell(x, y-1) != null) {
-                res.add(getCell(x, y-1));
-            }
-            if(this.getCell(x+1, y-1) != null) {
-                res.add(this.getCell(x+1, y-1));
-            }
-            if(this.getCell(x+1, y) != null) {
-                res.add(this.getCell(x+1, y));
-            }
-            if(this.getCell(x+1, y+1) != null) {
-                res.add(this.getCell(x+1, y+1));
-            }
-            if(this.getCell(x+1, y-1) != null) {
-                res.add(this.getCell(x+1, y-1));
+            for(int posX = -1 ; posX < 2 ; posX++) {
+                for(int posY = -1 ; posY < 2 ; posY++) {
+                    if(posY != 0 && posX != 0)
+                    {
+                        if(this.getCell(x+posX, y+posY) != null) {
+                            res.add(this.getCell(x+posX, y+posY));
+                        }
+                    }
+                }
             }
         
        
@@ -161,7 +150,7 @@ public class Room extends Cell{
         
     }
     
-    public char setCHARACTER(){
+    public char getCHARACTER(){
         
         char res;
         

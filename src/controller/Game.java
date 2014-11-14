@@ -93,6 +93,10 @@ public class Game {
     public void addRoom() 
     {
         this.rooms = this.strategie.CreateArborescence();
+        //pensez a eclairer la la case du joueur
+        Room r = this.getCurrentRoom();
+        Cell c = this.getCurrentCell();
+        r.lightNear(c.getPositionX(),c.getPositionY());
     }
     
     
@@ -109,8 +113,10 @@ public class Game {
         int posPlayY = 0;
         Room r = this.getCurrentRoom();
         
+        MessageIHM res = new MessageIHM();
         
-        //Obtenir la position du joueur dans la Room
+        
+        //Obtenir la position du joueur dans la Room 
         for (Cell c : r.getContenus()) 
         {
             if (c instanceof CellUnit) 
@@ -237,6 +243,32 @@ public class Game {
         
     }
     /**
+     *Fonction qui permet de connaitre la Cell courant ou se trouve le joueur
+     * @return  Cell courant du joueur
+     */
+    public Cell getCurrentCell() {
+        Cell res = null;
+        
+        Room r = this.getCurrentRoom();
+            
+            for (Cell c : r.getContenus()) 
+            {
+                if( c instanceof CellUnit) 
+                {
+                   CellUnit cU = (CellUnit) c ;
+                   if(cU.getItem() == player) 
+                   {
+                       res = cU;
+                   }
+                }
+            }
+        
+        return res ;
+        
+        
+    }
+    
+    /**
      * Permet de teleporter le joueur dans une nouvelle case vide choisi au hasard dans une nouvelle
      * Room
      *
@@ -281,11 +313,12 @@ public class Game {
         
         char res[][] = new char[r.getTailleX()][r.getTailleY()];
         
-        int numero = 0;
         for( int x = 0 ; x < r.getTailleX(); x++) {
             for(int y = 0 ; y < r.getTailleY(); y++) {
                 
-                res[x][y] = r.getContenus().get(numero).getCHARACTER();
+                res[x][y] = r.getContenus().get(x * r.getTailleX() + y).getCHARACTER();
+                System.out.println("get bool"+ r.getContenus().get(x * r.getTailleX() + y).isDiscovered() );
+                System.out.println("get char"+ r.getContenus().get(x * r.getTailleX() + y).getCHARACTER() );
                 
             }
         }

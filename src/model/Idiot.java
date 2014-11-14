@@ -50,7 +50,7 @@ public class Idiot implements IStrategy {
                 c.setPositionY(y);
                 c.setConteneur(r);
                 r.AjoutCell(c);
-                System.out.println(x+" + "+y);
+                System.out.println(x+" , "+y);
                 
             }
                             
@@ -259,7 +259,7 @@ public class Idiot implements IStrategy {
            }
            
        }
-       //sinon on recree la room (bah oui la generation d'avant est infonctionnelle donc on jete
+       //sinon on recree la room (bah oui la generation d'avant est infonctionnelle donc on jete (//todo trouver une meilleur solution meme si c'est pas ecrit dans les charges
        else{
            System.out.println("r.AvoirLeNiveauMinDesFils() "+r.AvoirLeNiveauMinDesFils());
            System.out.println("RECREATIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
@@ -286,7 +286,7 @@ public class Idiot implements IStrategy {
                       
                       if(!(cC.getItem() instanceof Stair )) {
                           
-                            cC.setItem(new Player());
+                            cC.setItem(Player.getInstance());
                             playerEstPlace = true;
                         
                       }
@@ -299,6 +299,9 @@ public class Idiot implements IStrategy {
             
         }
            
+        for( Cell celle : r.getContenus()) {
+            System.out.println(celle.toString());
+        }
     
        
        
@@ -311,7 +314,7 @@ public class Idiot implements IStrategy {
         Idiot i = new Idiot();
        
         i.CreateArborescence();
-        
+       
     }
     
 }

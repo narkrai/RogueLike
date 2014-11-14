@@ -5,11 +5,11 @@ import controller.Game;
 public class Potion extends Treasure{
     
     private int strength;
+    final char CHARACTER = 'p';
 
     public Potion(int strength) {
         super();
         this.setStrength(strength);
-        this.setCHARACTER('p');
     }
 
     public void setStrength(int strength) {
@@ -23,6 +23,14 @@ public class Potion extends Treasure{
     @Override
     public Message Action(Player p) {
         p.setStrength(p.getStrength()+this.getStrength());
+    
+        
         return new Message(0, "test");
+    }
+
+    @Override
+    public char getCHARACTER() {
+        
+        return this.CHARACTER;
     }
 }

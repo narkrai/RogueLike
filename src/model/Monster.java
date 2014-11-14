@@ -7,6 +7,8 @@ public class Monster extends Character {
     private int gold;
     private String name;
     private int level;
+    
+    final char CHARACTER = '!';
 
     public Monster() {
         super();
@@ -63,5 +65,11 @@ public class Monster extends Character {
             res = new Message(2, "Vous avez perdu contre "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold() +"pièces d'or.");
         }
         return res;
+    }
+
+    @Override
+    public char getCHARACTER() {
+        
+        return this.CHARACTER;
     }
 }

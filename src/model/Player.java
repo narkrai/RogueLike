@@ -5,6 +5,8 @@ public class Player extends Character {
     private int strength;
     private String name;
     private int monsterKilled=0;
+    
+    final char CHARACTER = '@';
 
     public void setMonsterKilled(int monsterKilled) {
         this.monsterKilled = monsterKilled;
@@ -23,7 +25,7 @@ public class Player extends Character {
         if (uniquePlayer == null) {
             try {
             uniquePlayer = new Player();
-            uniquePlayer.setCHARACTER('@');
+           
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,7 +39,7 @@ public class Player extends Character {
         this.name = name;
     }
 
-    public Player() {
+    private Player() {
         super();
     }
 
@@ -68,5 +70,11 @@ public class Player extends Character {
     @Override
     public Message Action(Player p) {
         return null;
+    }
+
+    @Override
+    public char getCHARACTER() {
+       
+        return this.CHARACTER;
     }
 }

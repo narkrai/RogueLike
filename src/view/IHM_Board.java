@@ -15,8 +15,8 @@ public class IHM_Board extends JTextArea{
     public IHM_Board(int x, int y) {       
         //this.setSize(new Dimension(500,500));
         Border b = BorderFactory.createLineBorder(Color.black);
-        this.setColumns(x);
-        this.setRows(y);
+        this.setColumns(x*2);
+        this.setRows(y*2);
         this.setBorder(b);
         this.setEditable(false);  
         this.setCursor(null);  
@@ -31,14 +31,15 @@ public class IHM_Board extends JTextArea{
         // Compteurs
         int i,j,k;
         
-        for (i=0; i<table.length;i++){
-            for (j=0; j<table[0].length; j++) {
-                for (k=0; k<table[1].length;k++) {
-                    board+=table[j][k];
+        
+            for (j=0; j<table.length; j++) {
+                for (k=0; k<table[0].length;k++) {
+                    board+=table[j][k]+ " ";
+                    System.out.println(" da"+ table[j][k]);
                 }
                 board+="\n";
             }
-        }
+        
         
         this.setText(board);
     }

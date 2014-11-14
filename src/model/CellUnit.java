@@ -10,7 +10,15 @@ public class CellUnit extends Cell {
         
     }
     
-    public char setCHARACTER(){
+    public String toString(){
+
+    if(this.item != null)
+        return "L'objet contenu est"+ this.item.getClass();
+    else
+        return "Pas d'objet";
+    }
+    
+    public char getCHARACTER(){
         
         char res;
         
@@ -18,6 +26,7 @@ public class CellUnit extends Cell {
             
             if(this.getItem() != null) {
                 res = this.getItem().getCHARACTER();
+            
             }
             else {
                 res = '.';
