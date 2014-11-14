@@ -17,10 +17,12 @@ import javax.swing.event.ChangeListener;
 
 import model.OptionData;
 
+/**
+ * Frame Option qui va afficher et mettre à jour OptionData en fonction des choix de l'utilisateur.
+ */
 public class IHM_Options  extends JFrame{
 
     OptionData op = OptionData.getDataInstance();
-    
     
     private JPanel pan = null;
     private JPanel panOption = null;
@@ -40,6 +42,10 @@ public class IHM_Options  extends JFrame{
     private JSlider ySlider = null;
     private JTextField yTextField = null;
     
+    /**
+     * Constructeur de la frame
+     */
+    
     public IHM_Options(){
         this.setTitle("Option");
         this.setSize(300,240);
@@ -50,7 +56,6 @@ public class IHM_Options  extends JFrame{
         pan = new JPanel();
         pan.setLayout(new BorderLayout());
         
-        
         // Panel Option
         panOption = new JPanel();
         panOption.setLayout(new GridLayout(2,2, 10, 10));
@@ -59,7 +64,6 @@ public class IHM_Options  extends JFrame{
 
         
         // Panel pour la stratégie, POS 1 dans panOption
-        
         JPanel stratPan = new JPanel();
         stratPan.setLayout(new GridLayout(2,0));
         sLabel = new JLabel("Strategy : ");
@@ -195,6 +199,7 @@ public class IHM_Options  extends JFrame{
         yPan.add(yTextField);
         panOption.add(yPan);
         
+        // Ajout du panOption sur le panel de la frame, au CENTRE
         this.add(panOption, BorderLayout.CENTER);
         
         // Panel bouton, dans le south du panel principal
@@ -224,7 +229,11 @@ public class IHM_Options  extends JFrame{
         this.add(pButton, BorderLayout.SOUTH); 
     }
     
-    public void cngeOption() { // Action lorsque OK
+    /**
+     * Methode appelée lorsque l'utilisateur appuie sur le bouton OK
+     * Va mettre à jour l'OptionData et ferme la fenêtre
+     */
+    public void cngeOption() { 
         op.setDepthmax(dSlider.getValue());
         op.setTailleXRoom(xSlider.getValue());
         op.setTailleYRoom(ySlider.getValue());
@@ -232,10 +241,17 @@ public class IHM_Options  extends JFrame{
         Game.getInstance().restart();
     }
     
-    public void cancelOption() { // Action lorsque CANCEL
+    /**
+     * Methode appelée lorsque l'utilisateur appuie sur le bouton CANCEL
+     * Refresh les valeurs avec celles de l'OptionData, pour remettre les anciennes valeurs. Ferme ensuite la fenêtre
+     */
+    public void cancelOption() { 
         refreshValue();
     }
     
+    /**
+     * Methode qui va refresh les values avec ceux dans OptionData
+     */
     public void refreshValue() {
         strategyComboBox.setSelectedIndex(op.getStrategy());
         dSlider.setValue(op.getDepthmax());

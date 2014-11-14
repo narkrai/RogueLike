@@ -12,6 +12,10 @@ import javax.swing.border.Border;
 import model.Message;
 import model.MessageIHM;
 
+/**
+ * Frame principale de l'application. Va construire et assembler toutes les petites frames/panels ensembles
+ */
+
 public class IHM_GameUI extends JFrame{
 
     
@@ -96,8 +100,11 @@ public class IHM_GameUI extends JFrame{
         this.setVisible(true);
     }
     
+    /**
+     * Methode qui va analyser le signal du message reçu
+     * @param MessageIHM
+     */
     public void analyse (MessageIHM ar) {
-        
         final int RIEN = 0;
         final int GAMEOVER = 1;
         final int WIN = 2 ;
@@ -121,14 +128,8 @@ public class IHM_GameUI extends JFrame{
         case 3 : 
             stairsPanel.setVisible(true);
             //messageIHM
-            break;
-        
-        
-            
-        }
-                   
-                        
-        
+            break;  
+        }  
     }
 
     public void updateComposants() {
