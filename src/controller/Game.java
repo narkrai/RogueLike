@@ -1,16 +1,19 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import model.Cell;
 import model.CellUnit;
+import model.Exit;
 import model.IStrategy;
 import model.Idiot;
+import model.Item;
+import model.Message;
 import model.MessageIHM;
 import model.OptionData;
 import model.Player;
 import model.Room;
+import model.Stair;
 
 public class Game {
     
@@ -18,14 +21,21 @@ public class Game {
     private IStrategy strategie;
     private Player player;
     
+    //constante de valeurs entre Game et action
     private final int NORMAL = 0 ;
     private final int VICTORY = 1;
     private final int LOSE = 2;
     
+    //constante correspondant aux movements
     private final int RIGHT = 0;
     private final int LEFT = 1;
     private final int UP = 2;
     private final int DOWN = 3;
+    //constante cde valeurs pour le MessageIHM
+    final int RIEN = 0;
+    final int GAMEOVER = 1;
+    final int WIN = 2 ;
+    final int TELEPORT = 3 ;
 
     
     /**
@@ -108,28 +118,17 @@ public class Game {
      */
     public MessageIHM makeStep(int direction)
     {
-        int repAction = 0;
-            
-        int posPlayX = 0;
-        int posPlayY = 0;
-        Room r = this.getCurrentRoom();
-        
+
         MessageIHM res = new MessageIHM();
         
-        
-        //Obtenir la position du joueur dans la Room 
-        for (Cell c : r.getContenus()) 
-        {
-            if (c instanceof CellUnit) 
-            {
-               CellUnit cU = (CellUnit) c ;
-               if(cU.getItem() == player) 
-               {
-                   posPlayX = cU.getPositionX();
-                   posPlayY = cU.getPositionY();
-               }
-            }
-        }
+        int repAction = 0;
+                    
+
+                //Obtenir la cell du joueur et sa Room
+                Room r = this.getCurrentRoom(); 
+                Cell c = this.getCurrentCell();
+                Cell cArrive;
+      
         
         
         switch (direction)
@@ -137,46 +136,110 @@ public class Game {
             //droite (X-1,0)
             case RIGHT :
             
-            if(posPlayX - 1 >= 0) 
+            if(c.getPositionX() - 1 >= 0) 
             {
-                CellUnit Cdepart = (CellUnit)  r.getCell(posPlayX, posPlayY);
-                Cell Carrive = r.getCell(posPlayX -1, posPlayY);
-                if (Carrive instanceof Room)                
+                cArrive = r.getCell(c.getPositionX() -1, c.getPositionY());
+                if (cArrive instanceof Room)                   
                 {
-                           //TODO afficher la boite de dialogue et proceder à la teleportation   
+                           res = this.DemandeDeTeleport((Room)cArrive);
                     
                 }
                 else 
                 {
-                    CellUnit cA = (CellUnit) Carrive ;
-                    if(cA.getItem() != null) 
-                    {
-                        repAction  =  cA.getItem().Action(player).getSignal();
-                        if(repAction == 0) 
-                        {
-                            cA.setItem(player);
-                            Cdepart.setItem(null);
-                        }
-                    }
+                res = this.DemandeDeDeplacement((CellUnit)cArrive);
                 }
-                r.lightNear(posPlayX -1, posPlayY);
+                   
+            }
+                           
+            else {
+                      
+                    res.setSignal(this.RIEN);
+                    res.setMessage("Hop dans le mur");
+                    res.setRoom(null);
             }
             break;
         
             //left (X,0)    
             case LEFT :
+            
+            
+            if(c.getPositionX() + 1 < r.getTailleX()) 
+            {
+               
+                cArrive = r.getCell(c.getPositionX() + 1, c.getPositionY());
+                if (cArrive instanceof Room)                
+                {
+                        res = this.DemandeDeTeleport((Room)cArrive);
+                }
+                else 
+                {
+                    res = this.DemandeDeDeplacement((CellUnit)cArrive);
+                }
+            }
+            else {
+                res.setSignal(this.RIEN);
+                res.setMessage("Hop dans le mur");
+                res.setRoom(null);
+            }
+            
+            
             break;
         
             //UP (0,Y)
             case UP :
+            
+            if(c.getPositionY() + 1 < r.getTailleY()) 
+            {
+               
+                cArrive = r.getCell(c.getPositionX() , c.getPositionY()+1);
+                if (cArrive instanceof Room)                
+                {
+                        res = this.DemandeDeTeleport((Room)cArrive);
+                }
+                else 
+                {
+                    res = this.DemandeDeDeplacement((CellUnit)cArrive);
+                }
+            }
+            else {
+                res.setSignal(this.RIEN);
+                res.setMessage("Hop dans le mur");
+                res.setRoom(null);
+            }
             break;
         
             //DOWN(0,-Y)
             case DOWN:
+            
+            if(c.getPositionY() - 1 >= 0 )
+            {
+               
+                cArrive = r.getCell(c.getPositionX() , c.getPositionY()-1);
+                if (cArrive instanceof Room)                
+                {
+                        res = this.DemandeDeTeleport((Room)cArrive);
+                }
+                else 
+                {
+                    res = this.DemandeDeDeplacement((CellUnit)cArrive);
+                }
+            }
+            else {
+                res.setSignal(this.RIEN);
+                res.setMessage("Hop dans le mur");
+                res.setRoom(null);
+            }
+            
+            
             break;
         
             //erreur
             default:
+            
+            res.setSignal(this.RIEN);
+            res.setMessage("Erreur valeur envoy? inconnu");
+            res.setRoom(null);
+                       
             
             
            
@@ -184,8 +247,101 @@ public class Game {
         }
         
         
-        return null;
+        return res;
     }
+    
+    /**
+        * Cette methode permet de former le MessageIHM pour une demande de Teleportation dans un Room
+        * @param rArrivee Room cible
+        * @return
+        */
+       private MessageIHM DemandeDeTeleport(Room rArrivee){
+           
+           MessageIHM res = new MessageIHM(this.TELEPORT,"Changement de salle",rArrivee);
+           return res;
+       }
+       /**
+        * Cette methode permet de former le MessageIHM pour une demande de deplacement dans un cellule point?
+        * @param cArrivee
+        * @return
+        */
+       private MessageIHM DemandeDeDeplacement(CellUnit cArrivee){
+           
+           MessageIHM res = new MessageIHM();
+           Item it = cArrivee.getItem();
+           
+           CellUnit cPlayer =(CellUnit) this.getCurrentCell();
+           
+           
+           if(it == null)
+           {
+               res.setSignal(this.RIEN);
+               res.setMessage("Rien pour l'instant");
+               res.setRoom(null);
+               
+               cPlayer.setItem(null);
+               cArrivee.setItem(this.player);
+
+               this.getCurrentRoom().lightNear(cArrivee.getPositionX(), cArrivee.getPositionY());
+               
+           }
+           else if(it instanceof Exit) {
+               
+               res.setSignal(this.WIN);
+               res.setRoom(null);
+               res.setMessage("Vous avez gagn? !");
+               
+           }
+           else if(it instanceof Stair){
+               
+               res.setSignal(this.RIEN);
+               res.setMessage("Descente dans la salle du dessous !");
+               res.setRoom(null);
+               
+               cPlayer.setItem(null);
+               
+               this.TeleportInRoom(cPlayer.getConteneur().getConteneur());
+               
+               this.getCurrentRoom().lightNear(this.getCurrentCell().getPositionX(), this.getCurrentCell().getPositionY());
+
+           }
+           else
+           {
+               Message reponse = it.Action(this.player);
+               
+               if( reponse.getSignal() == this.NORMAL)
+               {
+                   res.setMessage(reponse.getMessage());
+                   res.setRoom(null);
+                   res.setSignal(RIEN);
+                   
+               }
+               else if (reponse.getSignal() == this.VICTORY) {
+                   
+                   res.setMessage(reponse.getMessage());
+                   res.setRoom(null);
+                   res.setSignal(this.RIEN);
+                   
+               }
+               //signal = LOSE
+               else {
+                   res.setMessage(reponse.getMessage());
+                   res.setRoom(null);
+                   res.setSignal(this.GAMEOVER);
+               }
+               
+               
+           }
+          
+           
+           
+           
+           
+           return res;
+       }
+    
+    
+    
     
     
     public void gameOver() {
