@@ -7,37 +7,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.Message;
-
 public class IHM_GameOver extends JFrame{
         
-    private JLabel msgTitreLabel;
-    private JLabel msgLabel;
-    private String msgTitre;
-    private String msg;
+    private JLabel msg = new JLabel();
+    private String text;
     
     public IHM_GameOver() {
-        this.setTitle("Game Over!");
+        this.setTitle("Game over");
         this.setSize(400,350);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         
-        JPanel pMsg = new JPanel();
-        //pMsg.setLayout(new BoxLayout(pMsg, BoxLayout.Y_AXIS));
-        //Message h2
-        msgTitreLabel = new JLabel();
-        msgTitre = "<html><h2><center><b>Game Over!<br> You lost!</b></center></h2></p></html>";
-        msgTitreLabel.setText(msgTitre);
-        pMsg.add(msgTitreLabel);
-        //Message
-        msgLabel = new JLabel();
-        msg = "<html></html>";
-        msgLabel.setText(msg);
-        pMsg.add(msgLabel);
         
-        this.add(pMsg, BorderLayout.CENTER);
-        
-        // Panel des buttons
         JPanel pButton = new JPanel(new GridBagLayout());
         JButton bReplay = new JButton("Try again");
         JButton bClose = new JButton("Close");
@@ -51,6 +32,16 @@ public class IHM_GameOver extends JFrame{
         pButton.add(bClose,c);
         this.add(pButton, BorderLayout.SOUTH);
         
+        JPanel pMsg = new JPanel();
+        
+        
+        
+        msg.setText(text);
+        msg.setPreferredSize(new Dimension(180, 120));
+
+        pMsg.add(msg);
+        this.add(pMsg, BorderLayout.CENTER);
+        
         bReplay.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 Game.getInstance().restart();
@@ -61,18 +52,13 @@ public class IHM_GameOver extends JFrame{
         bClose.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                /**
-                 * @TODO : Désactiver les controls
-                 */
             }
         });
+        
     }
-    
-    public void refresh(Message m) {
-        /**
-         * TODO compléter le message
-         */
-        msg ="<html><p>You have died from</p></html>";
-        msgLabel.setText(msg);
+
+    public void message() {
+        text ="<html><h2><b>Game over</h2></p>" +
+            "<br><p> You have died from</p></html>";
     }
 }

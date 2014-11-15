@@ -21,11 +21,11 @@ public class Potion extends Treasure{
     }
 
     @Override
-    public Action Action(Player p) {
+    public Message Action(Player p) {
         p.setStrength(p.getStrength()+this.getStrength());
     
         
-        return new Action(0, "test");
+        return new Message(0, "test");
     }
 
     @Override

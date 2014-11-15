@@ -31,45 +31,49 @@ public class IHM_Controls extends JTextField{
                         switch (e.getKeyCode()) {
                             // Se déplacer avec les flèches directionnelles
                             case 37: // Flèche de gauche
-                                IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(1));
+                            
+                                //singleton(GameUI.getinstance.Analyse(Game.getInstance().makeStep(1))
+                            
+                                //makestep renvoit un MessageIHM
+                                Game.getInstance().makeStep(1);
                                 break;
                             case 38: // Flèche du haut
-                            IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(2));
+                                Game.getInstance().makeStep(2);
                                 break;
                             case 39: // Flèche de droite
-                            IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(0));
+                                Game.getInstance().makeStep(0);
                                 break;
                             case 40: //Flèche du bas
-                            IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(3));
+                                Game.getInstance().makeStep(3);
                                 break;
                         
                             // Se déplacer avec les touches du clavier
                             case 68: // d
-                            IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(0));
+                                Game.getInstance().makeStep(0);
                                 break;
                             case 81: // q
-                            IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(1));
+                                Game.getInstance().makeStep(1);
                                 break;
                             case 83: // s
-                            IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(3));
+                                Game.getInstance().makeStep(3);
                                 break;
                             case 90: // z
-                            IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(2));
+                                Game.getInstance().makeStep(2);
                                 break;
                             
                             
                             // Se déplacer avec le pavé numérique
                             case 98: // 2
-                            IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(3));
+                                Game.getInstance().makeStep(3);
                                 break;
                             case 100: // 4
-                            IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(1));
+                                Game.getInstance().makeStep(1);
                                 break; 
                             case 102: // 6
-                            IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(0));
+                                Game.getInstance().makeStep(0);
                                 break;
                             case 104: // 8
-                            IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(2));
+                                Game.getInstance().makeStep(2);
                                 break;
                             default : 
                                 break;
@@ -79,6 +83,8 @@ public class IHM_Controls extends JTextField{
                         
                         e.consume();
                     }
+                    
+
 
                     @Override
                     public void keyReleased(KeyEvent e) {
