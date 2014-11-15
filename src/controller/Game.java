@@ -265,9 +265,9 @@ public class Game {
         * @param cArrivee
         * @return
         */
-       private MessageIHM DemandeDeDeplacement(CellUnit cArrivee){
+       private Message DemandeDeDeplacement(CellUnit cArrivee){
            
-           MessageIHM res = new MessageIHM();
+           Message res = new Message();
            Item it = cArrivee.getItem();
            
            CellUnit cPlayer =(CellUnit) this.getCurrentCell();

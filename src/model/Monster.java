@@ -55,14 +55,14 @@ public class Monster extends Character {
     }
 
 
-    public Message Action(Player p) {
-        Message res = null;
+    public Action action(Player p) {
+        Action res = null;
         double proba = p.getStrength() / (p.getStrength() + this.getStrength());
         if (Math.random() <= proba) {
-            res = new Message(1, "Vous avez battu "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold()+ "pièces d'or.");
+            res = new Action(1, "Vous avez battu "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold()+ "pièces d'or.");
         }
         else {
-            res = new Message(2, "Vous avez perdu contre "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold() +"pièces d'or.");
+            res = new Action(2, "Vous avez perdu contre "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold() +"pièces d'or.");
         }
         return res;
     }
