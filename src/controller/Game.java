@@ -152,6 +152,8 @@ public class Game {
                 res.setMessage("Hop dans le mur");
                 res.setRoom(null);
             }
+            
+            System.out.println("Droite");
             break;
         
             //left (X,0)    
@@ -176,7 +178,7 @@ public class Game {
                 res.setMessage("Hop dans le mur");
                 res.setRoom(null);
             }
-            
+            System.out.println("Gauche");
             break;
         
             //UP (0,Y)
@@ -200,6 +202,8 @@ public class Game {
                 res.setMessage("Hop dans le mur");
                 res.setRoom(null);
             }
+            
+            System.out.println("Haut");
             break;
         
             //DOWN(0,-Y)
@@ -217,6 +221,8 @@ public class Game {
                 {
                     res = this.DemandeDeDeplacement((CellUnit)cArrive);
                 }
+                
+                
             }
             else {
                 res.setSignal(this.RIEN);
@@ -224,6 +230,7 @@ public class Game {
                 res.setRoom(null);
             }
             
+            System.out.println("bas");
             break;
             //erreur
             default:
