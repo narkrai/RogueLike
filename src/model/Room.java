@@ -8,6 +8,8 @@ import java.util.List;
 public class Room extends Cell{
 
 
+
+    final char CHARACTER = '>';
     /**
      * @associates <{rogue.cell}>
      * @aggregation shared
@@ -30,7 +32,6 @@ public class Room extends Cell{
         
         
         strat.CreationRoom(this);
-        this.setCHARACTER('>');
 
         
     }
@@ -45,7 +46,6 @@ public class Room extends Cell{
         this.setConteneur(conteneur);
         
         strat.CreationRoom(this);
-        this.setCHARACTER('>');
     
     }
     
@@ -131,14 +131,18 @@ public class Room extends Cell{
         
         if(center != null ) {
             res.add(center);
-            System.out.println("Le 'joueur' affiché est un "+ center.toString()+ "de la Room" + center.getConteneur().numeroEtage());   
-            for(int posX = -1 ; posX < 2 ; posX++) {
-                for(int posY = -1 ; posY < 2 ; posY++) {
-                    if(posY != 0 && posX != 0)
+            System.out.println("Le 'joueur' affiché est un "+ center.toString() + "de la Room" + center.getConteneur().numeroEtage());   
+            System.out.println("Coordonnes 'joueur'"+ center.getPositionX() + " ," + center.getPositionY());
+            for(int posX = 0 ; posX <= 2 ; posX++) {
+                for(int posY = 0 ; posY <= 2 ; posY++) {
+                    if(!(posY == 1 && posX == 1))
                     {
                         
-                        if(this.getCell(x+posX, y+posY) != null) {
-                            res.add(this.getCell(x+posX, y+posY));
+                        if(this.getCell(x+posX-1, y+posY-1) != null) {
+                            Cell c = this.getCell(x+posX-1, y+posY-1);
+                            res.add(c);
+                            System.out.println("La cellule obtenu par est :" + c.toString() );
+                            System.out.println("Coordonnes 'c'"+ c.getPositionX() + " ," + c.getPositionY());
                         }
                     }
                 }
@@ -158,8 +162,8 @@ public class Room extends Cell{
         
         if(this.isDiscovered()) {
             
-           res = '>';
-            
+           res = this.CHARACTER;
+           System.out.println(" Je suis un caractere > et pourtant je suis  " + this.isDiscovered()); 
             
         }
         else {

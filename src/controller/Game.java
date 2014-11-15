@@ -325,8 +325,8 @@ public class Game {
             for(int y = 0 ; y < r.getTailleY(); y++) {
                 
                 res[x][y] = r.getCell(x, y).getCHARACTER();
-                System.out.println("get bool"+ r.getCell(x, y).isDiscovered() );
-                System.out.println("get char"+ r.getCell(x, y).getCHARACTER() );
+                //System.out.println("get BOOL :"+ r.getCell(x, y).isDiscovered() );
+                System.out.println("get char :"+ r.getCell(x, y).getCHARACTER() );
                 
             }
         }

@@ -42,8 +42,8 @@ public class Idiot implements IStrategy {
         
         
         //Creation de la salle selon sa taille
-        for( int x = 0 ; x < op.getTailleXRoom() ;x++) {
-            for(int y = 0 ; y < op.getTailleYRoom(); y++){
+        for( int x = 0 ; x < r.getTailleX() ;x++) {
+            for(int y = 0 ; y < r.getTailleY(); y++){
                 
                 c = CreationCell(r);
                 c.setPositionX(x);
