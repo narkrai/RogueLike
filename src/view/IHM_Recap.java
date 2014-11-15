@@ -9,73 +9,67 @@ import model.Message;
 
 public class IHM_Recap extends JPanel{
     
-    private String strength;
-    private String gold;
-    private String level;
-    private String monster;
+    private JLabel strengthLabel;
+    private JLabel goldLabel;
+    private JLabel levelLabel;
+    private JLabel monsterLabel;
     
-    private JLabel jLabelGold;
-    private JLabel jLabelLevel;
-    private JLabel jLabelMonster;
+    private String strength="";
+    private String gold="";
+    private String level="";
+    private String monster="";
+
     
-    public IHM_Recap(int nbGold , int monstersNearby, int lvl) {
+    public IHM_Recap() {
         this.setPreferredSize(new Dimension(200, 300));
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
-        gold = "<html><p>Gold :  "+ nbGold  +" gold</p></html>";
-        level = "<html><p>Current level : " +lvl+ "</p></html>";
-        monster = "<html><p>Monsters nearby : " + monstersNearby + "</p></html>";
+        Border c =  BorderFactory.createEmptyBorder(5,5,30,5);
         
-        // Bordure imaginaire
-        Border c =  BorderFactory.createEmptyBorder(5,5,45,5);
+        strength = "<html><p>Strength :</p></html>";
+        gold = "<html><p>Gold : gold</p></html>";
+        level = "<html><p>Current level : </p></html>";
+        monster = "<html><p>Monsters nearby : </p></html>";
+        
+        JPanel strengthPanel = new JPanel();
+        strengthPanel.setSize(new Dimension(200, 200));
+        strengthPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        strengthLabel = new JLabel();
+        strengthLabel.setText(strength);
+        strengthLabel.setBorder(c);
+        strengthPanel.add(strengthLabel);
         
         JPanel goldPanel = new JPanel();
         goldPanel.setSize(new Dimension(200, 200));
         goldPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        jLabelGold = new JLabel();
-        jLabelGold.setText(gold);
-        jLabelGold.setBorder(c);
-        goldPanel.add(jLabelGold);
+        goldLabel = new JLabel();
+        goldLabel.setText(gold);
+        goldLabel.setBorder(c);
+        goldPanel.add(goldLabel);
         
         
         JPanel levelPanel = new JPanel();
         levelPanel.setSize(new Dimension(200, 200));
         levelPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        jLabelLevel = new JLabel();
-        jLabelLevel.setText(level);
-        jLabelLevel.setBorder(c);
-        levelPanel.add(jLabelLevel);
+        levelLabel = new JLabel();
+        levelLabel.setText(level);
+        levelLabel.setBorder(c);
+        levelPanel.add(levelLabel);
         
         JPanel monsterPanel = new JPanel();
         monsterPanel.setSize(new Dimension(200, 200));
         monsterPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        jLabelMonster = new JLabel();
-        jLabelMonster.setText(monster);
-        jLabelMonster.setBorder(c);
-        monsterPanel.add(jLabelMonster);
+        monsterLabel = new JLabel();
+        monsterLabel.setText(monster);
+        monsterLabel.setBorder(c);
+        monsterPanel.add(monsterLabel);
         
         
-        this.add(jLabelGold);
-        this.add(jLabelLevel);
-        this.add(jLabelMonster);
+        this.add(strengthLabel);
+        this.add(goldLabel);
+        this.add(levelLabel);
+        this.add(monsterLabel);
         
-        
-        /*
-        JLabel jLabelScore = new JLabel();
-        jLabelScore.setText(gold);
-        //jLabelScore.setPreferredSize(new Dimension(180, 120));
-        this.add(jLabelScore);
-        
-        JLabel jLabelLevel = new JLabel();
-        jLabelLevel.setText(level);
-        //jLabelLevel.setPreferredSize(new Dimension(180, 120));
-        this.add(jLabelLevel);
-        
-        JLabel jLabelMonster = new JLabel();
-        jLabelMonster.setText(monster);
-        //jLabelMonster.setPreferredSize(new Dimension(180, 120));
-        this.add(jLabelMonster);*/
-
         // Bordure
         Border b =  BorderFactory.createLineBorder(Color.black);
         
@@ -84,7 +78,20 @@ public class IHM_Recap extends JPanel{
         
     }
     
-    public void refresh() {
+    public void refresh(Message ar) {
+        /**
+         * TODO : Completer
+         */
+        
+        strength = "<html><p>Strength :</p></html>";
+        gold = "<html><p>Gold : gold</p></html>";
+        level = "<html><p>Current level : </p></html>";
+        monster = "<html><p>Monsters nearby : </p></html>";
+
+        strengthLabel.setText(strength);
+        goldLabel.setText(gold);
+        levelLabel.setText(level);
+        monsterLabel.setText(monster);
         
     }
     

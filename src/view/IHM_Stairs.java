@@ -5,10 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import model.Message;
+
 public class IHM_Stairs extends JFrame{
     
     boolean reponse=false;
-    private String message;
+    private String messageAAfficher;
     private JLabel msg = new JLabel();
 
 
@@ -32,7 +34,7 @@ public class IHM_Stairs extends JFrame{
         this.add(pButton, BorderLayout.SOUTH);
         
         JPanel pMsg = new JPanel();
-        msg.setText(message);
+        msg.setText(messageAAfficher);
         //msg.setPreferredSize(new Dimension(180, 120));
         pMsg.add(msg);
         this.add(pMsg, BorderLayout.CENTER);
@@ -52,9 +54,9 @@ public class IHM_Stairs extends JFrame{
         });
     }
     
-    public void refresh(int nbGold, int nbMonster) {
-        message = "<html><h2><b>You can enter the next room</h2></p><br><p>There are "+Integer.toString(nbMonster)+" monsters, and a total of "+Integer.toString(nbGold)+" golds in the next rooms.</p></html>";
-        msg.setText(message);
+    public void refresh(Message m) {
+            messageAAfficher = "<html><h2><b>You can enter the next room</h2></p><br><p>There are "+Integer.toString(m.getRoom().GetTotalMonster())+" monsters, and a total of "+Integer.toString(m.getRoom().GetTotalGold())+" golds in the next rooms.</p></html>";
+            msg.setText(messageAAfficher);
     }
     
     public boolean isReponse() {

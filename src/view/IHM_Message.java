@@ -13,39 +13,40 @@ import model.Message;
 
 public class IHM_Message extends JPanel{
     
-    private String message;
+    private JLabel msgLabel;
+    private String msg="";
+
     
-    public IHM_Message(Message msg) {
-        
-        // Message à afficher
-        message= msg.getMessage();
+    public IHM_Message() {
+        this.setPreferredSize(new Dimension(200, 300));
+        this.setLayout(new FlowLayout(FlowLayout.LEFT));
         
         //bordure imaginaire
         Border c =  BorderFactory.createEmptyBorder(5,5,5,5);
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
         
-        JTextArea jTextAreaMessage = new JTextArea("Message :\n", 20,20);
-        jTextAreaMessage.append(message);
-        jTextAreaMessage.setBorder(c);
-        jTextAreaMessage.setEditable(false);  
-        jTextAreaMessage.setCursor(null);  
-        jTextAreaMessage.setOpaque(false);  
-        jTextAreaMessage.setFocusable(false);
-        jTextAreaMessage.setLineWrap(true);
-        jTextAreaMessage.setWrapStyleWord(true);
-
-        this.add(jTextAreaMessage);
+        msg = "<html><p>Message :</p></html>";
+        
+        msgLabel = new JLabel();
+        msgLabel.setText(msg);
+        //msgLabel.setBorder(c);
+        this.add(msgLabel);
         
         // Bordure
         Border b =  BorderFactory.createLineBorder(Color.black);
         this.setBorder(b);
     }
     
-    public IHM_Message() {
-        super();
-    }
-    
-    public void refresh() {
-       
+    public void refresh(Message ar) {
+        /**
+         * TODO : Completer
+         */
+        
+        msg = "<html><p>Message :</p>" +
+              "<p>"+ar.getMessage()+"</p></html>";
+
+        msgLabel.setText(msg);
+
+        
     }
 }
