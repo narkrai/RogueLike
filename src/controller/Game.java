@@ -2,6 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 
+import model.Action;
 import model.Cell;
 import model.CellUnit;
 import model.Exit;
@@ -255,9 +256,9 @@ public class Game {
         * @param rArrivee Room cible
         * @return
         */
-       private MessageIHM DemandeDeTeleport(Room rArrivee){
+       private Message DemandeDeTeleport(Room rArrivee){
            
-           MessageIHM res = new MessageIHM(this.TELEPORT,"Changement de salle",rArrivee);
+           Message res = new Message(this.TELEPORT,"Changement de salle",rArrivee);
            return res;
        }
        /**
@@ -307,7 +308,7 @@ public class Game {
            }
            else
            {
-               Message reponse = it.action(this.player);
+               Action reponse = it.action(this.player);
                
                if( reponse.getSignal() == this.NORMAL)
                {
