@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import model.Message;
+
 public class IHM_GameOver extends JFrame{
         
     private JLabel msgTitreLabel;

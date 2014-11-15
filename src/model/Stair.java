@@ -9,8 +9,8 @@ public class Stair extends Item {
 
 
     @Override
-    public Message Action(Player p) {
-        Message res = null;
+    public Action action(Player p) {
+        Action res = null;
         return res;
     }
     

@@ -116,10 +116,10 @@ public class Game {
      * @param direction int de direction
      * @return MessageIHM 
      */
-    public MessageIHM makeStep(int direction)
+    public Message makeStep(int direction)
     {
 
-        MessageIHM res = new MessageIHM();
+        Message res = new Message();
         
         int repAction = 0;
                     
@@ -307,7 +307,7 @@ public class Game {
            }
            else
            {
-               Message reponse = it.Action(this.player);
+               Message reponse = it.action(this.player);
                
                if( reponse.getSignal() == this.NORMAL)
                {

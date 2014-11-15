@@ -8,7 +8,7 @@ public abstract class Item {
     public abstract char getCHARACTER() ;
     
 
-    public abstract Message Action(Player p);
+    public abstract Action action(Player p);
     
     
         
