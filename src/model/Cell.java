@@ -5,7 +5,7 @@ public abstract class Cell {
     private Room conteneur = null;
     private int positionX;
     private int positionY;
-    private boolean discovered;
+    private boolean discovered = false;
     private  char CHARACTER = ' ';
 
 

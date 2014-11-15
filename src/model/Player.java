@@ -24,7 +24,7 @@ public class Player extends Character {
     public static Player getInstance(){
         if (uniquePlayer == null) {
             try {
-            uniquePlayer = new Player();
+            uniquePlayer = new Player(0,10,"Jean Kevin de la tour ");
            
         } catch (Exception e) {
             e.printStackTrace();
@@ -33,7 +33,7 @@ public class Player extends Character {
         return uniquePlayer;
     }
 
-    public Player(int gold, int strength, String name) {
+    private Player(int gold, int strength, String name) {
         this.gold = gold;
         this.strength = strength;
         this.name = name;

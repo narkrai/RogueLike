@@ -94,6 +94,7 @@ public class Game {
     {
         this.rooms = this.strategie.CreateArborescence();
         //pensez a eclairer la la case du joueur
+        player = Player.getInstance();
         Room r = this.getCurrentRoom();
         Cell c = this.getCurrentCell();
         r.lightNear(c.getPositionX(),c.getPositionY());
@@ -202,16 +203,23 @@ public class Game {
     public Room getCurrentRoom() {
         Room res = null;
         
-        for( Room r : rooms) {
+        boolean estTrouve = false;
+        
+        for(int z=0; z < this.rooms.size() && !estTrouve ; z++ )
+        {
+            Room r = this.rooms.get(z);
             
-            for (Cell c : r.getContenus()) 
+            for(int i = 0 ; i < r.getContenus().size() && !estTrouve ; i++)
             {
+                Cell c = r.getContenus().get(i);
                 if( c instanceof CellUnit) 
                 {
                    CellUnit cU = (CellUnit) c ;
                    if(cU.getItem() == player) 
                    {
+                       System.out.println("La case trouve est "+cU.toString());
                        res = cU.getConteneur();
+                       estTrouve = true;
                    }
                 }
             }
@@ -316,9 +324,9 @@ public class Game {
         for( int x = 0 ; x < r.getTailleX(); x++) {
             for(int y = 0 ; y < r.getTailleY(); y++) {
                 
-                res[x][y] = r.getContenus().get(x * r.getTailleX() + y).getCHARACTER();
-                System.out.println("get bool"+ r.getContenus().get(x * r.getTailleX() + y).isDiscovered() );
-                System.out.println("get char"+ r.getContenus().get(x * r.getTailleX() + y).getCHARACTER() );
+                res[x][y] = r.getCell(x, y).getCHARACTER();
+                System.out.println("get bool"+ r.getCell(x, y).isDiscovered() );
+                System.out.println("get char"+ r.getCell(x, y).getCHARACTER() );
                 
             }
         }

@@ -213,6 +213,7 @@ public class Idiot implements IStrategy {
             for( Room rF : r.avoirLesRoomsFils()) {
                 res.add(rF);
             }
+            res.add(r);
             
             System.out.println("Liste iteration + 1");
             

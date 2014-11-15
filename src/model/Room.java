@@ -89,6 +89,7 @@ public class Room extends Cell{
         
         for(Cell c : tabCell) {
          
+            System.out.println("La cellule affiché est un "+ c.toString());    
             c.setDiscovered(true);
         
         }
@@ -130,11 +131,12 @@ public class Room extends Cell{
         
         if(center != null ) {
             res.add(center);
-            
+            System.out.println("Le 'joueur' affiché est un "+ center.toString()+ "de la Room" + center.getConteneur().numeroEtage());   
             for(int posX = -1 ; posX < 2 ; posX++) {
                 for(int posY = -1 ; posY < 2 ; posY++) {
                     if(posY != 0 && posX != 0)
                     {
+                        
                         if(this.getCell(x+posX, y+posY) != null) {
                             res.add(this.getCell(x+posX, y+posY));
                         }
