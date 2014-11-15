@@ -68,7 +68,7 @@ public class Player extends Character {
     }
 
     @Override
-    public Message Action(Player p) {
+    public Action Action(Player p) {
         return null;
     }
 

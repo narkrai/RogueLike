@@ -13,8 +13,8 @@ public class Exit extends Item {
 
 
     @Override
-    public Message Action(Player p) {
-        return new Message(1, "Exit");
+    public Action Action(Player p) {
+        return new Action(1, "Exit");
     }
 
     @Override

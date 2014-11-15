@@ -9,43 +9,50 @@ import javax.swing.*;
 
 import javax.swing.border.Border;
 
+import model.Action;
 import model.Message;
+
+/**
+ * Partie de l'interface qui va dire ce qu'il s'est passé dans le jeu
+ */
 
 public class IHM_Message extends JPanel{
     
-    private String message;
+    private JLabel msgLabel;
+    private String msg="";
+
     
-    public IHM_Message(Message msg) {
-        
-        // Message à afficher
-        message= msg.getMessage();
-        
-        //bordure imaginaire
-        Border c =  BorderFactory.createEmptyBorder(5,5,5,5);
+    
+    public IHM_Message() {
+        this.setPreferredSize(new Dimension(200, 300));
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
         
-        JTextArea jTextAreaMessage = new JTextArea("Message :\n", 20,20);
-        jTextAreaMessage.append(message);
-        jTextAreaMessage.setBorder(c);
-        jTextAreaMessage.setEditable(false);  
-        jTextAreaMessage.setCursor(null);  
-        jTextAreaMessage.setOpaque(false);  
-        jTextAreaMessage.setFocusable(false);
-        jTextAreaMessage.setLineWrap(true);
-        jTextAreaMessage.setWrapStyleWord(true);
-
-        this.add(jTextAreaMessage);
+        // Bordure imaginaire
+        Border c =  BorderFactory.createEmptyBorder(5,5,5,5);
         
+        msg = "<html><p>Message :</p></html>";
+        
+        msgLabel = new JLabel();
+        msgLabel.setText(msg);
+        //msgLabel.setBorder(c);
+        this.add(msgLabel);
+
         // Bordure
         Border b =  BorderFactory.createLineBorder(Color.black);
+
         this.setBorder(b);
     }
     
-    public IHM_Message() {
-        super();
-    }
-    
-    public void refresh() {
-       
+    public void refresh(Message ar) {
+        /**
+         * TODO : Completer
+         */
+        
+        msg = "<html><p>Message :</p>" +
+              "<p>"+ar.getMessage()+"</p></html>";
+
+        msgLabel.setText(msg);
+
+        
     }
 }

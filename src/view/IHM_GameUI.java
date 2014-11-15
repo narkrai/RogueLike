@@ -9,8 +9,8 @@ import java.awt.event.*;
 
 import javax.swing.border.Border;
 
+import model.Action;
 import model.Message;
-import model.MessageIHM;
 
 /**
  * Frame principale de l'application. Va construire et assembler toutes les petites frames/panels ensembles
@@ -64,8 +64,8 @@ public class IHM_GameUI extends JFrame{
         gameOverPanel = new IHM_GameOver();
         exitPanel = new IHM_Exit();
         stairsPanel = new IHM_Stairs();
-        sumPanel = new IHM_Recap(0,0,0);
-        msgPanel = new IHM_Message(new Message(0, "test"));
+        sumPanel = new IHM_Recap();
+        msgPanel = new IHM_Message();
         
         
         // Panel au centre, le board
@@ -102,32 +102,31 @@ public class IHM_GameUI extends JFrame{
     
     /**
      * Methode qui va analyser le signal du message reçu
-     * @param MessageIHM
+     * @param Message
      */
-    public void analyse (MessageIHM ar) {
+    public void analyse (Message ar) {
         final int RIEN = 0;
         final int GAMEOVER = 1;
         final int WIN = 2 ;
         final int TELEPORT = 3 ;
         
         switch(ar.getSignal()) {
-            
-        case 0 :
+        case RIEN :
             board.refresh();
-            //messageconsole
-            
+            sumPanel.refresh(ar);
+            msgPanel.refresh(ar);
             break;
-        case 1 :
+        case GAMEOVER :
+            gameOverPanel.refresh(ar);
             gameOverPanel.setVisible(true);
-            //messageIHM
             break;
-        case 2 :
+        case WIN :
+            exitPanel.refresh(ar);
             exitPanel.setVisible(true);
-            //messageIHM
             break;
-        case 3 : 
+        case TELEPORT : 
+            stairsPanel.refresh(ar);
             stairsPanel.setVisible(true);
-            //messageIHM
             break;  
         }  
     }

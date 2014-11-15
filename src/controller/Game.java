@@ -7,7 +7,7 @@ import model.Cell;
 import model.CellUnit;
 import model.IStrategy;
 import model.Idiot;
-import model.MessageIHM;
+import model.Message;
 import model.OptionData;
 import model.Player;
 import model.Room;
@@ -105,7 +105,7 @@ public class Game {
      * @param direction int de direction
      * @return MessageIHM 
      */
-    public MessageIHM makeStep(int direction)
+    public Message makeStep(int direction)
     {
         int repAction = 0;
             
@@ -113,7 +113,7 @@ public class Game {
         int posPlayY = 0;
         Room r = this.getCurrentRoom();
         
-        MessageIHM res = new MessageIHM();
+        Message res = new Message();
         
         
         //Obtenir la position du joueur dans la Room 
