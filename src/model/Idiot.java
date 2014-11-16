@@ -77,9 +77,7 @@ public class Idiot implements IStrategy {
                           cC.setItem(st);
                           System.out.println("Chemin vers pere crée");
                         
-                      
-                
-                
+
             }
             
         
@@ -242,12 +240,11 @@ public class Idiot implements IStrategy {
                           
                           CellUnit cC = (CellUnit) c;
                           
-                          if(cC.getItem() instanceof Stair ) {
                               
                               Exit e = new Exit();
                               cC.setItem(e);
                               
-                          }
+                          
                           
                       }
            
@@ -263,7 +260,6 @@ public class Idiot implements IStrategy {
        //sinon on recree la room (bah oui la generation d'avant est infonctionnelle donc on jete (//todo trouver une meilleur solution meme si c'est pas ecrit dans les charges
        else{
            System.out.println("r.AvoirLeNiveauMinDesFils() "+r.AvoirLeNiveauMinDesFils());
-           System.out.println("RECREATIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
            r  = new Room(this);
            
        }

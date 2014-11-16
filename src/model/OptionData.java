@@ -5,7 +5,7 @@ import controller.Game;
 public class OptionData {
 
    
-    private int depthmax = 2;
+    private int depthmax = 2 ;
     private int doormax = 2;
     
     

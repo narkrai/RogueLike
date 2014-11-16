@@ -456,7 +456,8 @@ public class Game {
         int posX;
         int posY;
         
-        
+        CellUnit cCurrent = (CellUnit) this.getCurrentCell();
+    
         
         while(!estDeplace) {
             
@@ -470,6 +471,9 @@ public class Game {
                 
                 if( cC.getItem() == null) {
                     cC.setItem(this.player);
+                    
+                    cCurrent.setItem(null);
+            
                     estDeplace = true ;
                 }
             }
