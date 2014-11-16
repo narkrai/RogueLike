@@ -322,6 +322,9 @@ public class Game {
                    cPlayer.setItem(null);
                    cArrivee.setItem(this.player);
                    
+                   this.getCurrentRoom().lightNear(cArrivee.getPositionX(), cArrivee.getPositionY());
+                   
+                   
                }
                else if (reponse.getSignal() == this.VICTORY) {
                    
@@ -333,6 +336,8 @@ public class Game {
                    cPlayer.setItem(null);
                    cArrivee.setItem(this.player);
                    
+                   this.getCurrentRoom().lightNear(cArrivee.getPositionX(), cArrivee.getPositionY());
+                   
                }
                //signal = LOSE
                else {
@@ -343,6 +348,8 @@ public class Game {
                    
                    cPlayer.setItem(null);
                    cArrivee.setItem(this.player);
+                   
+                   this.getCurrentRoom().lightNear(cArrivee.getPositionX(), cArrivee.getPositionY());
                }
                
                
