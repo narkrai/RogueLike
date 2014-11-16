@@ -291,7 +291,7 @@ public class Game {
                
                res.setSignal(this.WIN);
                res.setRoom(null);
-               res.setMessage("Vous avez gagn? !");
+               res.setMessage("Vous avez gagne !");
                
            }
            else if(it instanceof Stair){
@@ -471,6 +471,7 @@ public class Game {
                 
                 if( cC.getItem() == null) {
                     cC.setItem(this.player);
+                    r.lightNear(cC.getPositionX(), cC.getPositionY());
                     
                     cCurrent.setItem(null);
             
