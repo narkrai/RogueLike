@@ -2,6 +2,8 @@ package model;
 
 import controller.Game;
 
+import java.util.Random;
+
 public class Monster extends Character {
     private int strength;
     private int gold;
@@ -57,8 +59,12 @@ public class Monster extends Character {
 
     public Action action(Player p) {
         Action res = null;
+        
+        Random rand = new Random();
+        double chance = rand.nextDouble();
+        
         double proba = p.getStrength() / (p.getStrength() + this.getStrength());
-        if (Math.random() <= proba) {
+        if (chance <= proba) {
             res = new Action(1, "Vous avez battu "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold()+ "pièces d'or.");
         }
         else {
