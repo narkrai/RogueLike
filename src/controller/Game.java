@@ -247,7 +247,6 @@ public class Game {
             
         }
         
-        res.setMonsterNearby(r.nbMonsterNear(c.getPositionX(),c.getPositionY()));
         
         return res;
     }
@@ -280,6 +279,7 @@ public class Game {
                res.setSignal(this.RIEN);
                res.setMessage("Rien pour l'instant");
                res.setRoom(null);
+               res.setMonsterNearby(getCurrentRoom().nbMonsterNear(cArrivee.getPositionX(),cArrivee.getPositionY()));
                
                cPlayer.setItem(null);
                cArrivee.setItem(this.player);
@@ -292,6 +292,7 @@ public class Game {
                res.setSignal(this.WIN);
                res.setRoom(null);
                res.setMessage("Vous avez gagne !");
+               res.setMonsterNearby(getCurrentRoom().nbMonsterNear(cArrivee.getPositionX(),cArrivee.getPositionY()));
                
            }
            else if(it instanceof Stair){
@@ -300,12 +301,12 @@ public class Game {
                res.setMessage("Descente dans la salle du dessous !");
                res.setRoom(null);
                
-               cPlayer.setItem(null);
                
+               cPlayer.setItem(null); 
                this.TeleportInRoom(cPlayer.getConteneur().getConteneur());
                
                this.getCurrentRoom().lightNear(this.getCurrentCell().getPositionX(), this.getCurrentCell().getPositionY());
-
+               res.setMonsterNearby(getCurrentRoom().nbMonsterNear(cArrivee.getPositionX(),cArrivee.getPositionY()));
            }
            else
            {
@@ -316,6 +317,7 @@ public class Game {
                    res.setMessage(reponse.getMessage());
                    res.setRoom(null);
                    res.setSignal(RIEN);
+                   res.setMonsterNearby(getCurrentRoom().nbMonsterNear(cArrivee.getPositionX(),cArrivee.getPositionY()));
                    
                    cPlayer.setItem(null);
                    cArrivee.setItem(this.player);
@@ -326,6 +328,7 @@ public class Game {
                    res.setMessage(reponse.getMessage());
                    res.setRoom(null);
                    res.setSignal(this.RIEN);
+                   res.setMonsterNearby(getCurrentRoom().nbMonsterNear(cArrivee.getPositionX(),cArrivee.getPositionY()));
                    
                    cPlayer.setItem(null);
                    cArrivee.setItem(this.player);
@@ -336,6 +339,7 @@ public class Game {
                    res.setMessage(reponse.getMessage());
                    res.setRoom(null);
                    res.setSignal(this.GAMEOVER);
+                   res.setMonsterNearby(getCurrentRoom().nbMonsterNear(cArrivee.getPositionX(),cArrivee.getPositionY()));
                    
                    cPlayer.setItem(null);
                    cArrivee.setItem(this.player);
