@@ -135,7 +135,7 @@ public class Game {
         switch (direction)
         {
             //droite (X-1,0)
-            case RIGHT :
+            case UP:
             
             if(c.getPositionX() - 1 >= 0) 
             {
@@ -161,7 +161,7 @@ public class Game {
             break;
         
             //left (X,0)    
-            case LEFT :
+            case DOWN :
             
             
             if(c.getPositionX() + 1 < r.getTailleX()) 
@@ -187,7 +187,7 @@ public class Game {
             break;
         
             //UP (0,Y)
-            case UP :
+            case RIGHT :
             
             if(c.getPositionY() + 1 < r.getTailleY()) 
             {
@@ -210,7 +210,7 @@ public class Game {
             break;
         
             //DOWN(0,-Y)
-            case DOWN:
+            case LEFT:
             
             if(c.getPositionY() - 1 >= 0 )
             {
@@ -316,6 +316,9 @@ public class Game {
                    res.setRoom(null);
                    res.setSignal(RIEN);
                    
+                   cPlayer.setItem(null);
+                   cArrivee.setItem(this.player);
+                   
                }
                else if (reponse.getSignal() == this.VICTORY) {
                    
@@ -323,12 +326,18 @@ public class Game {
                    res.setRoom(null);
                    res.setSignal(this.RIEN);
                    
+                   cPlayer.setItem(null);
+                   cArrivee.setItem(this.player);
+                   
                }
                //signal = LOSE
                else {
                    res.setMessage(reponse.getMessage());
                    res.setRoom(null);
                    res.setSignal(this.GAMEOVER);
+                   
+                   cPlayer.setItem(null);
+                   cArrivee.setItem(this.player);
                }
                
                
