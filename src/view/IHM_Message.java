@@ -29,7 +29,6 @@ public class IHM_Message extends JPanel{
         
         msgLabel = new JLabel();
         msgLabel.setText(msg);
-        //msgLabel.setBorder(c);
         this.add(msgLabel);
         
         // Bordure
@@ -38,10 +37,7 @@ public class IHM_Message extends JPanel{
     }
     
     public void refresh(Message ar) {
-        /**
-         * TODO : Completer
-         */
-        
+
         msg = "<html><p>Message :</p>" +
               "<p>"+ar.getMessage()+"</p></html>";
 
