@@ -13,14 +13,16 @@ public class IHM_Board extends JTextArea{
     
    
     public IHM_Board(int x, int y) {       
-        //this.setSize(new Dimension(500,500));
+        Font resultFont = new Font("monospaced", Font.PLAIN, 12);
         Border b = BorderFactory.createLineBorder(Color.black);
+        
         this.setColumns(x*2);
         this.setRows(y*2);
         this.setBorder(b);
         this.setEditable(false);  
         this.setCursor(null);  
         this.setFocusable(false);
+        this.setFont(resultFont);
     }
     
     // Fonction qui va refresh la board à chaque action
