@@ -6,6 +6,9 @@ public class Message {
     private String message;
     private Room room;
     private Player player;
+    private int monsterNearby;
+
+
 
     public Message() {
         super();
@@ -51,5 +54,13 @@ public class Message {
 
     public Player getPlayer() {
         return player;
+    }
+    
+    public void setMonsterNearby(int monsterNearby) {
+        this.monsterNearby = monsterNearby;
+    }
+
+    public int getMonsterNearby() {
+        return monsterNearby;
     }
 }

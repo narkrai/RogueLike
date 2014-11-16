@@ -247,6 +247,7 @@ public class Game {
             
         }
         
+        res.setMonsterNearby(r.nbMonsterNear(c.getPositionX(),c.getPositionY()));
         
         return res;
     }
@@ -343,6 +344,7 @@ public class Game {
                
            }
           
+         
            
            
            
