@@ -1,5 +1,7 @@
 package view;
 
+import controller.Game;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,16 +11,19 @@ import model.Message;
 
 public class IHM_Stairs extends JFrame{
     
-    boolean reponse=false;
     private String messageAAfficher;
     private JLabel msg = new JLabel();
+    private Message m;
 
 
-    public IHM_Stairs() {
+    public IHM_Stairs(Message message) {
+        m = message;
         this.setTitle("Entering new room");
         this.setSize(400,350);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        
+        refresh(m);
         
         JPanel pButton = new JPanel(new GridBagLayout());
         JButton bOk = new JButton("Ok");
@@ -41,14 +46,15 @@ public class IHM_Stairs extends JFrame{
         
         bOk.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                reponse=true;
-                setVisible(true);
+                
+                Game.getInstance().TeleportInRoom(m.getRoom());
+                setVisible(false);
+                
             }
         });
         
         bCancel.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                reponse=false;
                 setVisible(false);
             }
         });
@@ -58,10 +64,6 @@ public class IHM_Stairs extends JFrame{
             messageAAfficher = "<html><h2><b>You can enter the next room</h2></p><br><p>There are "+Integer.toString(m.getRoom().GetTotalMonster())+" monsters, and a total of "+Integer.toString(m.getRoom().GetTotalGold())+" golds in the next rooms.</p></html>";
             msg.setText(messageAAfficher);
     }
-    
-    public boolean isReponse() {
-        return reponse;
-    }
-    
+
     
 }

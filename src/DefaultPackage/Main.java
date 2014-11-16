@@ -11,8 +11,6 @@ public class Main {
     public static void main(String[] args ) {
         Game.getInstance();
         IHM_GameUI gui = new IHM_GameUI();
-        gui.setVisible(true);
-        
     }
     
 

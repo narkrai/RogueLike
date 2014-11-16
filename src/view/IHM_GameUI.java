@@ -63,7 +63,6 @@ public class IHM_GameUI extends JFrame{
         
         gameOverPanel = new IHM_GameOver();
         exitPanel = new IHM_Exit();
-        stairsPanel = new IHM_Stairs();
         sumPanel = new IHM_Recap();
         msgPanel = new IHM_Message();
         
@@ -128,10 +127,11 @@ public class IHM_GameUI extends JFrame{
             exitPanel.setVisible(true);
             //messageIHM
             break;
-            case TELEPORT : 
-            stairsPanel.refresh(ar);
+            case TELEPORT :
+            stairsPanel = new IHM_Stairs(ar);
+            //stairsPanel.refresh(ar);
             stairsPanel.setVisible(true);
-            //messageIHM
+            board.refresh();
             break;  
         }  
     }
@@ -143,11 +143,5 @@ public class IHM_GameUI extends JFrame{
 
     public void putComposants() {
     }
-    
-    
-    public static void main(String[] args) {
-        
-        IHM_GameUI gui = new IHM_GameUI();
-        gui.setVisible(true);
-    }
+
 }
