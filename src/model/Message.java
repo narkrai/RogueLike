@@ -7,6 +7,12 @@ public class Message {
     private Room room;
     private Player player;
 
+    public Message() {
+        super();
+
+    }
+
+
 
     public Message(int signal, String message, Room room) {
         super();
