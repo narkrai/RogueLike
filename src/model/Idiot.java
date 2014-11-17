@@ -306,12 +306,12 @@ public class Idiot implements IStrategy {
     }
     
     
-    public static void main(String[] args ) {
+    /*public static void main(String[] args ) {
 
         Idiot i = new Idiot();
        
         i.CreateArborescence();
        
-    }
+    }*/
     
 }

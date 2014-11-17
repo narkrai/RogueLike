@@ -10,7 +10,6 @@ import java.awt.event.*;
 import javax.swing.border.Border;
 
 import model.Message;
-import model.MessageIHM;
 
 /**
  * Frame principale de l'application. Va construire et assembler toutes les petites frames/panels ensembles
