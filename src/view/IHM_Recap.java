@@ -65,8 +65,7 @@ public class IHM_Recap extends JPanel{
         monsterLabel.setText(monster);
         monsterLabel.setBorder(c);
         monsterPanel.add(monsterLabel);
-        
-        
+
         this.add(strengthLabel);
         this.add(goldLabel);
         this.add(levelLabel);

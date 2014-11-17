@@ -20,8 +20,9 @@ public class IHM_GameUI extends JFrame{
 
     private JPanel eastPan;
     private JPanel centerPan;
+    
     private IHM_Board board;
-    private IHM_Options fenetre;
+    //private IHM_Options fenetre;
     private IHM_Recap sumPanel;
     private IHM_Controls controls;
     private IHM_Message msgPanel;
@@ -71,7 +72,6 @@ public class IHM_GameUI extends JFrame{
         centerPan.setLayout(new BorderLayout());
         //centerPan.setPreferredSize(new Dimension(200,200));
         centerPan.add(board);
-        
         
         this.add(centerPan, BorderLayout.CENTER);
         
