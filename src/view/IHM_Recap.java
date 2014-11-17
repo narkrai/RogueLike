@@ -71,6 +71,8 @@ public class IHM_Recap extends JPanel{
         this.add(levelLabel);
         this.add(monsterLabel);
         
+        refresh(new Message());
+        
         // Bordure
         Border b =  BorderFactory.createLineBorder(Color.black);
         this.setBorder(b);

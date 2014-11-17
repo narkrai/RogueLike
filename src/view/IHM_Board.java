@@ -7,9 +7,11 @@ import java.awt.*;
 
 import javax.swing.border.Border;
 
+
+
 public class IHM_Board extends JTextArea{
     
-    private String board;
+    private String map;
     
     public IHM_Board(int x, int y) {       
         Font resultFont = new Font("monospaced", Font.PLAIN, 15);
@@ -27,19 +29,19 @@ public class IHM_Board extends JTextArea{
     // Fonction qui va refresh la board à chaque action
     public void refresh() {
         //Table
-        board="";
+        map="";
         char[][] table = Game.getInstance().getTab();
         // Compteurs
         int i,j,k;
 
             for (j=0; j<table.length; j++) {
                 for (k=0; k<table[0].length;k++) {
-                    board+=table[j][k]+ " ";
+                    map+=table[j][k]+ " ";
                     System.out.println(" da"+ table[j][k]);
                 }
-                board+="\n";
+                map+="\n";
             }
 
-        this.setText(board);
+        this.setText(map);
     }
 }

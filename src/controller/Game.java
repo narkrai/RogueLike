@@ -10,7 +10,6 @@ import model.IStrategy;
 import model.Idiot;
 import model.Item;
 import model.Message;
-import model.OptionData;
 import model.Player;
 import model.Room;
 import model.Stair;
@@ -487,7 +486,7 @@ public class Game {
                 }
             }
             
-        }  
+        }
     }
     
 

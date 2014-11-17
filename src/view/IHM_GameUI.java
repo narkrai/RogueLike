@@ -29,7 +29,6 @@ public class IHM_GameUI extends JFrame{
     private IHM_Exit exitPanel;
     private IHM_Stairs stairsPanel;
     private static IHM_GameUI uniqueInstance = null;
-    private Game game = Game.getInstance();
 
     public static IHM_GameUI getInstance()
     {
@@ -63,7 +62,7 @@ public class IHM_GameUI extends JFrame{
         msgPanel = new IHM_Message();
         
         // Panel au centre, le board
-        board = new IHM_Board(game.getCurrentRoom().getTailleX(),game.getCurrentRoom().getTailleY());
+        board = new IHM_Board(Game.getInstance().getCurrentRoom().getTailleX(),Game.getInstance().getCurrentRoom().getTailleY());
         board.refresh();
         centerPan = new JPanel();
         centerPan.setBorder(b);
@@ -118,11 +117,10 @@ public class IHM_GameUI extends JFrame{
             case WIN :
             exitPanel.refresh(ar);
             exitPanel.setVisible(true);
-            //messageIHM
+
             break;
             case TELEPORT :
             stairsPanel = new IHM_Stairs(ar);
-            //stairsPanel.refresh(ar);
             stairsPanel.setVisible(true);
             board.refresh();
             break;  
