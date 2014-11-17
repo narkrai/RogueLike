@@ -62,7 +62,6 @@ public class IHM_GameUI extends JFrame{
         sumPanel = new IHM_Recap();
         msgPanel = new IHM_Message();
         
-        
         // Panel au centre, le board
         board = new IHM_Board(game.getCurrentRoom().getTailleX(),game.getCurrentRoom().getTailleY());
         board.refresh();

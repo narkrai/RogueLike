@@ -12,7 +12,7 @@ public class IHM_Board extends JTextArea{
     private String board;
     
     public IHM_Board(int x, int y) {       
-        Font resultFont = new Font("monospaced", Font.PLAIN, 20);
+        Font resultFont = new Font("monospaced", Font.PLAIN, 15);
         Border b = BorderFactory.createLineBorder(Color.black);
         
         this.setColumns(x*2);

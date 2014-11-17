@@ -73,8 +73,6 @@ public class IHM_Recap extends JPanel{
         
         // Bordure
         Border b =  BorderFactory.createLineBorder(Color.black);
-        
-        
         this.setBorder(b);
         
     }
