@@ -90,7 +90,6 @@ public class IHM_GameUI extends JFrame{
 
         // Ajoute la menuBar à la frame
         this.setJMenuBar(new MenuBar());
-        
         this.setVisible(true);
     }
     

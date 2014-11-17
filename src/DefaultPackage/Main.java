@@ -10,7 +10,7 @@ public class Main {
     
     public static void main(String[] args ) {
         
-        IHM_GameUI gui = new IHM_GameUI();
+        IHM_GameUI.getInstance();
         //Game.getInstance();
     }
     
