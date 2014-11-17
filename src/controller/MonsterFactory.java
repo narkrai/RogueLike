@@ -7,9 +7,9 @@ public  class MonsterFactory {
     private static MonsterFactory instance=null;
     
     private  static MonsterType[] ListMonster = {
-        new MonsterType("Dragon",1, 1, 300, 500, 0),
-        new MonsterType("Troll",1, 1, 5, 50, -5),
-        new MonsterType("ArcaysXXX", 1, 1, 1, 10, -10)
+        new MonsterType("Dragon",1, 2, 300, 500, 0),
+        new MonsterType("Troll",1, 2, 5, 50, -5),
+        new MonsterType("ArcaysXXX", 2, 1, 1, 10, -10)
     };
     
 
@@ -86,9 +86,9 @@ public  class MonsterFactory {
         }
         
         public Monster create() {
-            int force = (int)( Math.random()*(getMaxStrength() - getMinStrength() + 1 ) ) + getMinStrength();
-            int treasure=(int)( Math.random()*( getMaxGold() - getMinGold() + 1 ) ) + getMinGold();
-            int lvl =( int)((Math.random()*(0-getLevelMin()+1))+getLevelMin());
+            int force = (int)( Math.random() *(getMaxStrength() - getMinStrength()) ) + getMinStrength();
+            int treasure=(int)( Math.random()*( getMaxGold() - getMinGold()) ) + getMinGold();
+            int lvl =( int)((Math.random()*(getLevelMin()))+getLevelMin());
             return  new Monster(getName(),force,treasure,lvl);
         }
     }
