@@ -1,5 +1,7 @@
 package view;
 
+import controller.Game;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,6 +34,12 @@ public class MenuBar extends JMenuBar{
         option.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 optionFrame.setVisible(true);
+            }
+        });
+        
+        newGame.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                Game.getInstance().restart();
             }
         });
         
