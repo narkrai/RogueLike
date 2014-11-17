@@ -84,7 +84,7 @@ public class CellUnit extends Cell {
         {
             i = 1 ;   
         }
-        return 0;
+        return i;
     }
 
     /**
