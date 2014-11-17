@@ -81,14 +81,10 @@ public class IHM_Recap extends JPanel{
     }
     
     public void refresh(Message ar) {
-        /**
-         * TODO : Completer
-         */
-        
-        strength = "<html><p>Strength :"+Game.getInstance().getPlayer().getStrength()+"</p></html>";
-        gold = "<html><p>Gold : gold</p>"+Game.getInstance().getPlayer().getGold()+"</html>";
-        level = "<html><p>Current level :"+Game.getInstance().getCurrentLevel() +"</p></html>";
-        monster = "<html><p>Monsters nearby :"+ar.getMonsterNearby()+ "</p></html>";
+        strength = "<html><p>Strength : "+Game.getInstance().getPlayer().getStrength()+"</p></html>";
+        gold = "<html><p>Gold : "+Game.getInstance().getPlayer().getGold()+" gold</p></html>";
+        level = "<html><p>Current level : "+Game.getInstance().getCurrentLevel() +"</p></html>";
+        monster = "<html><p>Monsters nearby : "+ar.getMonsterNearby()+ "</p></html>";
 
         strengthLabel.setText(strength);
         goldLabel.setText(gold);

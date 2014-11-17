@@ -11,9 +11,8 @@ public class IHM_Board extends JTextArea{
     
     private String board;
     
-   
     public IHM_Board(int x, int y) {       
-        Font resultFont = new Font("monospaced", Font.PLAIN, 12);
+        Font resultFont = new Font("monospaced", Font.PLAIN, 20);
         Border b = BorderFactory.createLineBorder(Color.black);
         
         this.setColumns(x*2);
@@ -32,8 +31,7 @@ public class IHM_Board extends JTextArea{
         char[][] table = Game.getInstance().getTab();
         // Compteurs
         int i,j,k;
-        
-        
+
             for (j=0; j<table.length; j++) {
                 for (k=0; k<table[0].length;k++) {
                     board+=table[j][k]+ " ";
@@ -41,8 +39,7 @@ public class IHM_Board extends JTextArea{
                 }
                 board+="\n";
             }
-        
-        
+
         this.setText(board);
     }
 }

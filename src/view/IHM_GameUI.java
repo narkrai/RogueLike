@@ -18,10 +18,8 @@ import model.MessageIHM;
 
 public class IHM_GameUI extends JFrame{
 
-    
     private JPanel eastPan;
     private JPanel centerPan;
-    
     private IHM_Board board;
     private IHM_Options fenetre;
     private IHM_Recap sumPanel;
@@ -30,9 +28,7 @@ public class IHM_GameUI extends JFrame{
     private IHM_GameOver gameOverPanel;
     private IHM_Exit exitPanel;
     private IHM_Stairs stairsPanel;
-    
     private static IHM_GameUI uniqueInstance = null;
-    
     private Game game = Game.getInstance();
 
     public static IHM_GameUI getInstance()
