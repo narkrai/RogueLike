@@ -74,8 +74,6 @@ public class IHM_Controls extends JTextField{
                                 break;
                             default : 
                                 break;
-
-                            
                         }
                         
                         e.consume();
