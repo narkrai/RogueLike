@@ -67,9 +67,9 @@ public class Monster extends Character {
         Action res = null;
         
         Random rand = new Random();
-        double chance = rand.nextDouble();
+        int chance = rand.nextInt(100);
         
-        double proba = p.getStrength() / (p.getStrength() + this.getStrength());
+        int proba =(int) ( p.getStrength() / (p.getStrength() + this.getStrength())*100);
         if (chance <= proba) {
             res = new Action(VICTORY , "Vous avez battu "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold()+ "pièces d'or.");
         }
