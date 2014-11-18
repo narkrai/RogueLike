@@ -75,6 +75,7 @@ public class IHM_Exit extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 Game.getInstance().restart();
                 setVisible(false);
+                IHM_Board.getInstance().refresh();
             }
         });
         
