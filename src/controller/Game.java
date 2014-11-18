@@ -152,7 +152,7 @@ public class Game {
                       
                     res.setSignal(this.RIEN);
                     res.setMessage("Hop dans le mur");
-                    res.setRoom(null);
+                    res.setRoom(this.getCurrentRoom());
             }
             break;
         
@@ -176,7 +176,7 @@ public class Game {
             else {
                 res.setSignal(this.RIEN);
                 res.setMessage("Hop dans le mur");
-                res.setRoom(null);
+                res.setRoom(this.getCurrentRoom());
             }
             
             
@@ -201,7 +201,7 @@ public class Game {
             else {
                 res.setSignal(this.RIEN);
                 res.setMessage("Hop dans le mur");
-                res.setRoom(null);
+                res.setRoom(this.getCurrentRoom());
             }
             break;
         
@@ -224,7 +224,7 @@ public class Game {
             else {
                 res.setSignal(this.RIEN);
                 res.setMessage("Hop dans le mur");
-                res.setRoom(null);
+                res.setRoom(this.getCurrentRoom());
             }
             
             
@@ -235,7 +235,7 @@ public class Game {
             
             res.setSignal(this.RIEN);
             res.setMessage("Erreur valeur envoy? inconnu");
-            res.setRoom(null);
+            res.setRoom(this.getCurrentRoom());
                        
             
             
@@ -274,7 +274,7 @@ public class Game {
            {
                res.setSignal(this.RIEN);
                res.setMessage("Rien pour l'instant");
-               res.setRoom(null);
+               res.setRoom(this.getCurrentRoom());
                res.setMonsterNearby(getCurrentRoom().nbMonsterNear(cArrivee.getPositionX(),cArrivee.getPositionY()));
                
                cPlayer.setItem(null);
@@ -286,7 +286,7 @@ public class Game {
            else if(it instanceof Exit) {
                
                res.setSignal(this.WIN);
-               res.setRoom(null);
+               res.setRoom(this.getCurrentRoom());
                res.setMessage("Vous avez gagne !");
                res.setMonsterNearby(getCurrentRoom().nbMonsterNear(cArrivee.getPositionX(),cArrivee.getPositionY()));
                
@@ -295,7 +295,7 @@ public class Game {
                
                res.setSignal(this.RIEN);
                res.setMessage("Descente dans la salle du dessous !");
-               res.setRoom(null);
+               res.setRoom(cPlayer.getConteneur().getConteneur());
                
                this.TeleportInRoom(cPlayer.getConteneur().getConteneur());
                
@@ -309,7 +309,7 @@ public class Game {
                if( reponse.getSignal() == this.NORMAL)
                {
                    res.setMessage(reponse.getMessage());
-                   res.setRoom(null);
+                   res.setRoom(this.getCurrentRoom());
                    res.setSignal(RIEN);
                    res.setMonsterNearby(getCurrentRoom().nbMonsterNear(cArrivee.getPositionX(),cArrivee.getPositionY()));
                    
@@ -323,7 +323,7 @@ public class Game {
                else if (reponse.getSignal() == this.VICTORY) {
                    
                    res.setMessage(reponse.getMessage());
-                   res.setRoom(null);
+                   res.setRoom(this.getCurrentRoom());
                    res.setSignal(this.RIEN);
                    res.setMonsterNearby(getCurrentRoom().nbMonsterNear(cArrivee.getPositionX(),cArrivee.getPositionY()));
                    
@@ -336,7 +336,7 @@ public class Game {
                //signal = LOSE
                else {
                    res.setMessage(reponse.getMessage());
-                   res.setRoom(null);
+                   res.setRoom(this.getCurrentRoom());
                    res.setSignal(this.GAMEOVER);
                    res.setMonsterNearby(getCurrentRoom().nbMonsterNear(cArrivee.getPositionX(),cArrivee.getPositionY()));
                    
