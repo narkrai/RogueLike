@@ -37,7 +37,7 @@ public class IHM_Board extends JTextArea{
             for (j=0; j<table.length; j++) {
                 for (k=0; k<table[0].length;k++) {
                     map+=table[j][k]+ " ";
-                    System.out.println(" da"+ table[j][k]);
+                    //System.out.println(" da"+ table[j][k]);
                 }
                 map+="\n";
             }
