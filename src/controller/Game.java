@@ -297,8 +297,6 @@ public class Game {
                res.setMessage("Descente dans la salle du dessous !");
                res.setRoom(null);
                
-               
-               cPlayer.setItem(null); 
                this.TeleportInRoom(cPlayer.getConteneur().getConteneur());
                
                this.getCurrentRoom().lightNear(this.getCurrentCell().getPositionX(), this.getCurrentCell().getPositionY());
