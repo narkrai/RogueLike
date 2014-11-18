@@ -84,6 +84,7 @@ public class IHM_Stairs extends JFrame{
                 
                 Game.getInstance().TeleportInRoom(m.getRoom());
                 setVisible(false);
+                IHM_Board.getInstance().refresh();
             }
         });
         

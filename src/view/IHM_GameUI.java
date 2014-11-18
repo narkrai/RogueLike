@@ -62,7 +62,8 @@ public class IHM_GameUI extends JFrame{
         msgPanel = new IHM_Message();
         
         // Panel au centre, le board
-        board = new IHM_Board(Game.getInstance().getCurrentRoom().getTailleX(),Game.getInstance().getCurrentRoom().getTailleY());
+        //board = new IHM_Board(Game.getInstance().getCurrentRoom().getTailleX(),Game.getInstance().getCurrentRoom().getTailleY());
+        board = IHM_Board.getInstance();
         board.refresh();
         centerPan = new JPanel();
         centerPan.setBorder(b);
@@ -122,7 +123,6 @@ public class IHM_GameUI extends JFrame{
             case TELEPORT :
             stairsPanel = new IHM_Stairs(ar);
             stairsPanel.setVisible(true);
-            board.refresh();
             break;  
         }  
     }

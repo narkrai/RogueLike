@@ -13,6 +13,25 @@ public class IHM_Board extends JTextArea{
     
     private String map;
     
+    private static IHM_Board uniqueInstance = null;
+
+    public static IHM_Board getInstance()
+    {
+        if (uniqueInstance == null) 
+        {
+            try 
+            {
+            uniqueInstance = new IHM_Board(Game.getInstance().getCurrentRoom().getTailleX(),Game.getInstance().getCurrentRoom().getTailleY());
+            } 
+            catch (Exception e) 
+            {
+                e.printStackTrace();
+            }
+        }
+        return uniqueInstance;
+    }
+
+    
     public IHM_Board(int x, int y) {       
         Font resultFont = new Font("monospaced", Font.PLAIN, 15);
         Border b = BorderFactory.createLineBorder(Color.black);
@@ -43,5 +62,6 @@ public class IHM_Board extends JTextArea{
             }
 
         this.setText(map);
+        System.out.println("R E F R E S H B O Y S");
     }
 }

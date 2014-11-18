@@ -81,6 +81,7 @@ public class IHM_GameOver extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 Game.getInstance().restart();
                 setVisible(false);
+                IHM_Board.getInstance().refresh();
             }
         });
         
