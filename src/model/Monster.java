@@ -10,6 +10,12 @@ public class Monster extends Character {
     private String name;
     private int level;
     
+    //constante de valeurs entre Game et action
+    private final int NORMAL = 0 ;
+    private final int VICTORY = 1;
+    private final int LOSE = 2;
+    
+    
     final char CHARACTER = '!';
 
     public Monster() {
@@ -65,10 +71,10 @@ public class Monster extends Character {
         
         double proba = p.getStrength() / (p.getStrength() + this.getStrength());
         if (chance <= proba) {
-            res = new Action(1, "Vous avez battu "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold()+ "pièces d'or.");
+            res = new Action(VICTORY , "Vous avez battu "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold()+ "pièces d'or.");
         }
         else {
-            res = new Action(2, "Vous avez perdu contre "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold() +"pièces d'or.");
+            res = new Action(LOSE, "Vous avez perdu contre "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold() +"pièces d'or.");
         }
         return res;
     }

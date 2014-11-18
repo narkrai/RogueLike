@@ -5,6 +5,13 @@ package model;
  */
 public class Action {
     
+    //constante de valeurs entre Game et action
+    private final int NORMAL = 0 ;
+    private final int VICTORY = 1;
+    private final int LOSE = 2;
+    
+    
+    
     private int signal;
     private String message;
 
