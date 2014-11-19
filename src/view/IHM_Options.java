@@ -149,7 +149,6 @@ public class IHM_Options  extends JFrame{
                                 getToolkit().beep();
                                 ke.consume();
                               }
-
                     }
                 });
         xPan.add(xSliderLabel);
@@ -218,6 +217,7 @@ public class IHM_Options  extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 cngeOption();
                 setVisible(false);
+                IHM_Board.getInstance().refresh();
             }
         });      
         bClose.addActionListener(new ActionListener(){
