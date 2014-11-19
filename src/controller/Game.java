@@ -91,6 +91,7 @@ public class Game {
     public void restart() 
     {
         uniqueInstance = new Game() ;
+        
     }
     
     
@@ -100,8 +101,12 @@ public class Game {
     public void addRoom() 
     {
         this.rooms = this.strategie.CreateArborescence();
-        //pensez a eclairer la la case du joueur
+       
         player = Player.getInstance();
+        player.setGold(0);
+        player.setMonsterKilled(0);
+        player.setStrength(10);
+        player.setName("LamdbaMan");
         Room r = this.getCurrentRoom();
         Cell c = this.getCurrentCell();
         r.lightNear(c.getPositionX(),c.getPositionY());
