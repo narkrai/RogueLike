@@ -79,7 +79,7 @@ public class IHM_Options  extends JFrame{
         JPanel dPan = new JPanel();
         dPan.setLayout(new GridLayout(3,0));
         dSliderLabel = new JLabel("Max depth");
-        dSlider = new JSlider(0,10);
+        dSlider = new JSlider(0,5);
         dSlider.setValue(op.getDepthmax());
         dTextField = new JTextField(Integer.toString(op.getDepthmax()));
         dSlider.addChangeListener(new ChangeListener() {
@@ -120,7 +120,7 @@ public class IHM_Options  extends JFrame{
         JPanel xPan = new JPanel();
         xPan.setLayout(new GridLayout(3,0));
         xSliderLabel = new JLabel("Max number of rows");
-        xSlider = new JSlider(0,20);
+        xSlider = new JSlider(0,10);
         xSlider.setValue(op.getTailleXRoom());
         xTextField = new JTextField(Integer.toString(op.getTailleXRoom()));
         xSlider.addChangeListener(new ChangeListener() {
@@ -160,7 +160,7 @@ public class IHM_Options  extends JFrame{
         JPanel yPan = new JPanel();
         yPan.setLayout(new GridLayout(3,0));
         ySliderLabel = new JLabel("Max number of lines");
-        ySlider = new JSlider(0,20);
+        ySlider = new JSlider(0,10);
         ySlider.setValue(op.getTailleYRoom());
         yTextField = new JTextField(Integer.toString(op.getTailleYRoom()));
         ySlider.addChangeListener(new ChangeListener() {
