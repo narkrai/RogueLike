@@ -74,6 +74,9 @@ public class Monster extends Character {
         
         int proba =(int) (valeurmin*100);
         if (chance <= proba) {
+            
+            int goldNow = p.getGold()+this.getGold();
+            p.setGold(goldNow) ;
             res = new Action(VICTORY , "Vous avez battu "+this.getName()+" de force "+ this.getStrength()+". Vous recevez "+this.getGold()+ "pièces d'or.");
         }
         else 
