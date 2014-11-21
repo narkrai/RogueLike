@@ -2,7 +2,7 @@ package model;
 
 public class Player extends Character {
     private int gold;
-    private int strength;
+    private int strength = 10;
     private String name;
     private int monsterKilled=0;
     
@@ -39,9 +39,6 @@ public class Player extends Character {
         this.name = name;
     }
 
-    private Player() {
-        super();
-    }
 
     public void setGold(int gold) {
         this.gold = gold;
@@ -56,7 +53,7 @@ public class Player extends Character {
     }
 
     public int getStrength() {
-        return strength;
+        return this.strength;
     }
 
     public void setName(String name) {

@@ -5,7 +5,7 @@ import controller.Game;
 import java.util.Random;
 
 public class Monster extends Character {
-    private int strength;
+    private int strength = 10;
     private int gold;
     private String name;
     private int level;
@@ -69,11 +69,15 @@ public class Monster extends Character {
         Random rand = new Random();
         int chance = rand.nextInt(100);
         
-        int proba =(int) ( p.getStrength() / (p.getStrength() + this.getStrength())*100);
+        double valeurmin = (p.getStrength() + this.getStrength());
+        valeurmin = p.getStrength()/valeurmin;
+        
+        int proba =(int) (valeurmin*100);
         if (chance <= proba) {
-            res = new Action(VICTORY , "Vous avez battu "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold()+ "pièces d'or.");
+            res = new Action(VICTORY , "Vous avez battu "+this.getName()+" de force "+ this.getStrength()+". Vous recevez "+this.getGold()+ "pièces d'or.");
         }
-        else {
+        else 
+        {
             res = new Action(LOSE, "Vous avez perdu contre "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold() +"pièces d'or.");
         }
         return res;
@@ -84,4 +88,18 @@ public class Monster extends Character {
         
         return this.CHARACTER;
     }
+    
+    
+    public static void main(String[] args ){
+        
+        Player p =  Player.getInstance();
+        
+        Monster m = new Monster("boss",1,45,1);
+        
+        System.out.println(m.action(p).getSignal());
+        
+        
+    }
 }
+
+
