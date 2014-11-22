@@ -88,10 +88,7 @@ public class Room extends Cell{
         ArrayList<Cell> tabCell = CellNear(x,y);
         
         for(Cell c : tabCell) {
-         
-            System.out.println("La cellule affiché est un "+ c.toString());    
             c.setDiscovered(true);
-        
         }
     }
     /**
@@ -131,8 +128,6 @@ public class Room extends Cell{
         
         if(center != null ) {
             res.add(center);
-            System.out.println("Le 'joueur' affiché est un "+ center.toString() + "de la Room" + center.getConteneur().numeroEtage());   
-            System.out.println("Coordonnes 'joueur'"+ center.getPositionX() + " ," + center.getPositionY());
             for(int posX = 0 ; posX <= 2 ; posX++) {
                 for(int posY = 0 ; posY <= 2 ; posY++) {
                     if(!(posY == 1 && posX == 1))
@@ -141,8 +136,6 @@ public class Room extends Cell{
                         if(this.getCell(x+posX-1, y+posY-1) != null) {
                             Cell c = this.getCell(x+posX-1, y+posY-1);
                             res.add(c);
-                            System.out.println("La cellule obtenu par est :" + c.toString() );
-                            System.out.println("Coordonnes 'c'"+ c.getPositionX() + " ," + c.getPositionY());
                         }
                     }
                 }
@@ -163,8 +156,6 @@ public class Room extends Cell{
         if(this.isDiscovered()) {
             
            res = this.CHARACTER;
-           System.out.println(" Je suis un caractere > et pourtant je suis  " + this.isDiscovered()); 
-            
         }
         else {
             res = super.getCHARACTER();
