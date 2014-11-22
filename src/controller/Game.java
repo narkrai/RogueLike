@@ -86,7 +86,7 @@ public class Game {
     }
     
     /**
-     * fonction permettant de regenener un Game avec une 
+     * fonction permettant de regenener un Game avec une nouvelle Option Data
      */
     public void restart() 
     {

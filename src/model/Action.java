@@ -2,6 +2,8 @@ package model;
 
 /**
  * Classe Action. Représente l'objet envoyé par les différentes méthodes "Actions"
+ * Cette classe permet la communication entre les Items et le Game
+ * @author Nguyen
  */
 public class Action {
     
@@ -10,11 +12,19 @@ public class Action {
     private final int VICTORY = 1;
     private final int LOSE = 2;
     
-    
-    
+    /**
+     * numero du signal (NORMAL VICTORY ou  LOSE)
+     */
     private int signal;
+    /**
+     * String de l'Action
+     */
     private String message;
-
+    /**
+     * Constructeur d'Action
+     * @param signal numero du signal (NORMAL VICTORY ou  LOSE)
+     * @param message String de l'Action
+     */
     public Action(int signal, String message) {
         this.signal = signal;
         this.message = message;

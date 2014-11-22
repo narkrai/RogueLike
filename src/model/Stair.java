@@ -1,5 +1,9 @@
 package model;
-
+/**
+ * les classes Stairs permentte au Player de descendre d'un étage et ainsi d'aller dans la Room pere de  Cell actuelle 
+ * le contenant
+ * @author Dinar
+ */
 public class Stair extends Item {
     
     

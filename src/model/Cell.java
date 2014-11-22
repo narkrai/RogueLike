@@ -46,10 +46,6 @@ public abstract class Cell {
         return CHARACTER;
     }
     
-    
-    public abstract int GetTotalGold();
-    public abstract int GetTotalMonster();
-    
     public Cell(Room conteneur) {
         this.conteneur = conteneur;
     }
@@ -101,6 +97,19 @@ public abstract class Cell {
      * @return le numero d'etage (compris en théorie entre 0 et un nombre négatif
      */
     public abstract int numeroEtage();
+    
+    
+    /**
+     * Fonction abstraite permettant de savoir le nombre de gold de la Cell
+     * @return le total de Gold que la Cell contient (lors Gold des Monsters)
+     */
+    public abstract int GetTotalGold();
+    
+    /**
+     *Fonction abstraite permettant de savoir le nombre de Monster de la Cell
+     * @return le total de Monster que la Cell contient
+     */
+    public abstract int GetTotalMonster();
 
 
 }
