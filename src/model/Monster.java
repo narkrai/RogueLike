@@ -18,7 +18,7 @@ public class Monster extends Character {
     private final int LOSE = 2;
     
     
-    final char CHARACTER = '!';
+    final char CHARACTER = '.';
 
     public Monster() {
         super();

@@ -335,10 +335,10 @@ public class Game {
                    res.setMessage(reponse.getMessage());
                    res.setRoom(this.getCurrentRoom());
                    res.setSignal(RIEN);
-                   res.setMonsterNearby(getCurrentRoom().nbMonsterNear(cArrivee.getPositionX(),cArrivee.getPositionY()));
-                   
                    cPlayer.setItem(null);
                    cArrivee.setItem(this.player);
+                   
+                   res.setMonsterNearby(getCurrentRoom().nbMonsterNear(cArrivee.getPositionX(),cArrivee.getPositionY()));
                    
                    this.getCurrentRoom().lightNear(cArrivee.getPositionX(), cArrivee.getPositionY());
                    
