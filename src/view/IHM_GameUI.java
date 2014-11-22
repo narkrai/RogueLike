@@ -84,7 +84,7 @@ public class IHM_GameUI extends JFrame{
         this.add(eastPan, BorderLayout.EAST);
 
         // Panel à bas, ce qui est control
-        controls = new IHM_Controls();
+        controls = IHM_Controls.getInstance();
         this.add(controls, BorderLayout.SOUTH);
 
         // Ajoute la menuBar à la frame
@@ -111,11 +111,13 @@ public class IHM_GameUI extends JFrame{
             
             break;
             case GAMEOVER :
+            controls.setPlayable(false);
             gameOverPanel.refresh(ar);
             gameOverPanel.setVisible(true);
             //messageIHM
             break;
             case WIN :
+            controls.setPlayable(false);
             exitPanel.refresh(ar);
             exitPanel.setVisible(true);
 
