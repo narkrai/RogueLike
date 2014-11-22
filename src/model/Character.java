@@ -1,5 +1,10 @@
 package model;
 
+
+/**
+ * Character est un Item contentant des données se referant aux personnages du jeu
+ * @author Dinar
+ */
 public abstract class Character extends Item {
 
     private int strength ;
@@ -7,6 +12,7 @@ public abstract class Character extends Item {
     private String name;
     private int level;
 
+    
     public void setStrength(int strength) {
         this.strength = strength;
     }
