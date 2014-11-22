@@ -1,9 +1,7 @@
 package model;
 
 public class Player extends Character {
-    private int gold;
-    private int strength = 10;
-    private String name;
+
     private int monsterKilled=0;
     
     final char CHARACTER = '@';
@@ -34,34 +32,9 @@ public class Player extends Character {
     }
 
     private Player(int gold, int strength, String name) {
-        this.gold = gold;
-        this.strength = strength;
-        this.name = name;
-    }
-
-
-    public void setGold(int gold) {
-        this.gold = gold;
-    }
-
-    public int getGold() {
-        return gold;
-    }
-
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public int getStrength() {
-        return this.strength;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
+        this.setGold(gold);
+        this.setStrength(strength);
+        this.setName(name);
     }
 
     @Override

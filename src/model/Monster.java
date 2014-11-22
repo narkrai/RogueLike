@@ -3,11 +3,13 @@ package model;
 import controller.Game;
 
 import java.util.Random;
-
+/**
+ * La classe Monster définie tous les monstres que le joueur va rencontrer
+ * Ils héritent de la classe Character
+ * @author Dinar
+ */
 public class Monster extends Character {
-    private int strength = 10;
-    private int gold;
-    private String name;
+
     private int level;
     
     //constante de valeurs entre Game et action
@@ -30,35 +32,13 @@ public class Monster extends Character {
         return level;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public int getStrength() {
-        return this.strength;
-    }
-
-    public void setGold(int gold) {
-        this.gold = gold;
-    }
-
-    public int getGold() {
-        return this.gold;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return this.name;
-    }
+  
 
     public Monster(String name, int strength, int gold, int level) {
         super();
-        this.strength = strength;
-        this.gold = gold;
-        this.name = name;
+        this.setStrength(strength);
+        this.setName(name);
+        this.setGold(gold);
         this.level = level;
     }
 
