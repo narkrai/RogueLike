@@ -13,11 +13,27 @@ import model.Message;
 import model.Player;
 import model.Room;
 import model.Stair;
-
+/**
+ * La Class controller Game permet la communication entre la Vue et les Modeles.
+ * Elle permet de concentrer en son sein les fonctions de modification de l arborescence des Room, de creation de 
+ * Room selon une Strategie défini , les deplacements des joueurs ainsi que la traduction des ordre de Vue en procedures
+ * de traitement.
+ * cette classe est un Singleton
+ * @author Dinar
+ */
 public class Game {
-    
+
+    /**
+     * Arborescence des Rooms du jeu courant
+     */
     private ArrayList<Room> rooms = new ArrayList<Room>();
+    /**
+     * Strategie mise en plae dans le jeu
+     */
     private IStrategy strategie;
+    /**
+     * le player unique du jeu
+     */
     private Player player;
     
     //constante de valeurs entre Game et action
@@ -30,6 +46,8 @@ public class Game {
     private final int LEFT = 1;
     private final int UP = 2;
     private final int DOWN = 3;
+    
+    
     //constante cde valeurs pour le MessageIHM
     final int RIEN = 0;
     final int GAMEOVER = 1;
@@ -38,7 +56,7 @@ public class Game {
 
     
     /**
-     * @aggregation composite
+     * l'instance unique du Singleton Game 
      */
     private static Game uniqueInstance = null;
 
@@ -58,7 +76,9 @@ public class Game {
         }
         return uniqueInstance;
     }
-
+    /**
+     * Constructeur privé de Game
+     */
     private Game() 
     {
         this.strategie = new Idiot() ;
@@ -86,7 +106,7 @@ public class Game {
     }
     
     /**
-     * fonction permettant de regenener un Game avec une nouvelle Option Data
+     * Fonction permettant de regenener un Game avec une nouvelle Option Data
      */
     public void restart() 
     {
@@ -96,7 +116,8 @@ public class Game {
     
     
     /**
-     * Creation de l'arborescence du jeu 
+     * Fonction permettant la creation de l'arborescence du jeu ainsi que le joueur
+     * 
      */
     public void addRoom() 
     {
@@ -114,16 +135,14 @@ public class Game {
     
     
     /**
-     * Permet au joueur de faire un pas
-     * @param direction int de direction
+     * Permet au joueur de faire un pas 
+     * @param direction (int de direction LEFT RIGHT DOWN UP)
      * @return MessageIHM 
      */
     public Message makeStep(int direction)
     {
 
         Message res = new Message();
-        
-        int repAction = 0;
                     
 
                 //Obtenir la cell du joueur et sa Room
@@ -135,7 +154,7 @@ public class Game {
         
         switch (direction)
         {
-            //droite (X-1,0)
+            //UP (X-1,0)
             case UP:
             
             if(c.getPositionX() - 1 >= 0) 
@@ -161,7 +180,7 @@ public class Game {
             }
             break;
         
-            //left (X,0)    
+            //DOWN (X,0)    
             case DOWN :
             
             
@@ -187,7 +206,7 @@ public class Game {
             
             break;
         
-            //UP (0,Y)
+            //RIGHT (0,Y)
             case RIGHT :
             
             if(c.getPositionY() + 1 < r.getTailleY()) 
@@ -210,7 +229,7 @@ public class Game {
             }
             break;
         
-            //DOWN(0,-Y)
+            //LEFT(0,-Y)
             case LEFT:
             
             if(c.getPositionY() - 1 >= 0 )
@@ -235,13 +254,13 @@ public class Game {
             
             break;
         
-            //erreur
+            //erreur le int envoyé est érroné 
             default:
             
             res.setSignal(this.RIEN);
-            res.setMessage("Erreur valeur envoy? inconnu");
+            res.setMessage("Erreur valeur envoyee inconnue");
             res.setRoom(this.getCurrentRoom());
-                       
+
             
             
            
@@ -255,7 +274,7 @@ public class Game {
     /**
         * Cette methode permet de former le MessageIHM pour une demande de Teleportation dans un Room
         * @param rArrivee Room cible
-        * @return
+        * @return le message a transmettre
         */
        private Message DemandeDeTeleport(Room rArrivee){
            
@@ -263,9 +282,9 @@ public class Game {
            return res;
        }
        /**
-        * Cette methode permet de former le MessageIHM pour une demande de deplacement dans un cellule point?
+        * Cette methode permet de former le MessageIHM pour une demande de deplacement dans un cellule pointe
         * @param cArrivee
-        * @return
+        * @return le message a transmettre
         */
        private Message DemandeDeDeplacement(CellUnit cArrivee){
            
@@ -361,19 +380,7 @@ public class Game {
            
            return res;
        }
-    
-    
-    
-    
-    
-    public void gameOver() {
-        
-    }
-    
-    public void playerWin(){
-        
-    }
-    
+
     /**
      *Fonction qui permet de connaitre la Room courant ou se trouve le joueur
      * @return Room courant du joueur
@@ -457,8 +464,7 @@ public class Game {
     /**
      * Permet de teleporter le joueur dans une nouvelle case vide choisi au hasard dans une nouvelle
      * Room
-     *
-     * @param r Room ou teleporte le joueur
+     * @param r Room ou teleporter le joueur
      */
     public void TeleportInRoom(Room r){
         
@@ -495,7 +501,7 @@ public class Game {
 
 
      /**
-     *Permet d'obtenir la Room actuelle avec les objets à  l'interieur
+     *Permet d'obtenir la Room actuelle avec les objets à l'interieur 
      * @return un Char[][] tableau des caracteres ( correspondant au objet dans la room)
      */
     public  char[][] getTab() {
