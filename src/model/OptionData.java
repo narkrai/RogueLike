@@ -1,31 +1,73 @@
 package model;
 
 import controller.Game;
-
+/**
+ * L'Option est une classe qui permet de stocké les données utile à la generation des salles et de l'arborescence
+ * @author Dinar
+ */
 public class OptionData {
 
-   
+   /**
+    * Profondeur maximal du jeu
+    */
     private int depthmax = 2 ;
+   /**
+    * Nombre maximal de Room dans une Room
+    */
     private int doormax = 2;
     
-    
+    /**
+     * Chance pour qu'un Monster apparaisse sur une CellUnit
+     */
     private int monsterLuck = 10;
+    /**
+     * Chance pour qu'une Room apparaisse sur une Cell
+     */
     private int ladderLuck = 10;
+    /**
+     *     
+     * Chance pour qu'une Potion apparaisse sur une CellUnit
+     */
     private int potionLuck = 10;
+    /**
+     * Chance pour qu'un Chest apparaisse sur une CellUnit
+     */
     private int treasureLuck = 10;
 
-
+    /**
+     * Chance pour que rien n'apparaisse sur une CellUnit
+     */
     private int voidLuck = 60;
-    
+    /**
+     * Nombre de force minimun d'une potion
+     */
     private int minPowerPotion = -7;
+    /**
+     * Nombre de force maximun d'une potion
+     */
     private int maxPowerPotion = 10;
-    
+    /**
+     * Nombre de Gold minimun d'un Chest
+     */
     private int minGoldTresaure =5;
+    /**
+     * Nombre de Gold  maximun d'un Chest
+     */
     private int maxGoldTresaure = 4500;
-    
+
+    /**
+     * Largeur d'une room
+     */
     private int tailleYRoom = 5;
+
+    /**
+     * Longueur d'une room
+     */
     private int tailleXRoom = 5;
    
+   /**
+    * strategie choisie
+    */
    private int strategy;
 
 
