@@ -53,7 +53,11 @@ public class Player extends Character {
         return uniquePlayer;
     }
 
-
+    /**
+     * Action inutile  pour le moment car un Player ne peut pas interagir avec lui-meme
+     * @param player le joueur
+     * @return le message Action (null)
+     */
     @Override
     public Action action(Player p) {
         return null;

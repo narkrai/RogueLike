@@ -4,15 +4,19 @@ import controller.Game;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * La Room contient un emsemble de Cell (y compris des autres Rooms)
+ * elle regroupe tous les operations sur ces objets 
+ */
 public class Room extends Cell{
 
 
-
+    /**
+     * Le caracter de la Room
+     */
     final char CHARACTER = '>';
     /**
-     * @associates <{rogue.cell}>
-     * @aggregation shared
+     * les contenus 
      */
     private ArrayList<Cell> Contenus = new ArrayList<Cell>();
  
@@ -24,8 +28,6 @@ public class Room extends Cell{
     /**
      * Constructeur de Room ( a utilisé uniquement pour la création de la Room pere)
      * @param IStrategy stratégie de création de room et d'arboreance  
-     * 
-     * 
      */
     public Room(IStrategy strat) {
         
@@ -179,7 +181,10 @@ public class Room extends Cell{
         return tailleY;
     }
     
-    
+    /**
+     * 
+     * @return le nombre de Cell contenus
+     */
     public int GetSizeContenus() {
         return Contenus.size();
     }
@@ -199,7 +204,10 @@ public class Room extends Cell{
         this.tailleY = tailleY;
     }
 
-
+    /**
+     *L'etage de la Room
+     * @return le numero d'etage
+     */
     @Override
     public int numeroEtage() {
         OptionData op = OptionData.getDataInstance();
@@ -214,11 +222,13 @@ public class Room extends Cell{
         else {
             res = this.getConteneur().numeroEtage() + 1;
         }
-        
-        
         return res;
     }
 
+    /**
+     * Fonction abstraite permettant de savoir le nombre de gold de la Cell
+     * @return le total de Gold que la Cell contient (lors Gold des Monsters)
+     */
     @Override
     public int GetTotalGold() {
         
@@ -230,7 +240,10 @@ public class Room extends Cell{
         
         return res;
     }
-
+    /**
+     *Fonction abstraite permettant de savoir le nombre de Monster de la Cell
+     * @return le total de Monster que la Cell contient
+     */
     @Override
     public int GetTotalMonster() {
         
@@ -243,7 +256,10 @@ public class Room extends Cell{
         return res;
         
     }
-    
+    /**
+     *  Permet de connaitre le nombre de Rooms indirect (non recursive)
+     * @return le nombre de rooms 
+     */
     public int numberofRoom() {
         
         int res = 0;
@@ -257,7 +273,11 @@ public class Room extends Cell{
         
         return res ;
     }
-    
+    /**
+     * Permet de savoir si la Room est relié au pere (conteneur) 
+     * vrai si le conteneur est null.
+     * @return est relie au pere
+     */
     public boolean aCheminVersPere() {
         
         boolean oK =false;
@@ -278,7 +298,10 @@ public class Room extends Cell{
         return oK ;
     }
     
-     
+     /**
+     *Permet de connaitre si la Room a une Cell contenant une Sortie
+     * @return le nombre de sortie
+     */
    public int aUneSortie() {
         
     int res = 0;
@@ -296,7 +319,10 @@ public class Room extends Cell{
         }
        return res ;
    }
-    
+    /**
+     * Permet de connaitre toutes les Rooms fils de cette Room (Recursivité)
+     * @return la liste des Rooms fils
+     */
     public ArrayList<Room> avoirLesRoomsFils() {
         
         ArrayList<Room> res = new ArrayList<Room>();
@@ -313,13 +339,19 @@ public class Room extends Cell{
         
         return res ;
     }
-    
+    /**
+     *Permet d'ajouter une Cell
+     * @param c la Cell
+     */
     public void AjoutCell(Cell c) {
         this.Contenus.add(c);
         
     }
     
-    
+    /**
+     *Permet à une Room pere de connaitre l'etage minimun de ces fils
+     * @return
+     */
     public int AvoirLeNiveauMinDesFils() {
         
         int res = this.numeroEtage();

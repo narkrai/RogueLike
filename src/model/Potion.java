@@ -1,7 +1,11 @@
 package model;
 
 import controller.Game;
-
+/**
+ * Classe qui gere les potions que le Player va gouter dans ces aventures epiques
+ * Fils de Tresaure
+ * @author Dinar
+ */
 public class Potion extends Treasure{
     
     private int strength;

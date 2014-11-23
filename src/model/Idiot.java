@@ -48,7 +48,7 @@ public class Idiot implements IStrategy {
         Cell cellCreated;
         Cell cellChosen;
         
-        
+        roomPere.setContenus(new ArrayList<Cell>());
         Random rand = new Random();
         int randX;
         int randY;
@@ -278,31 +278,8 @@ public class Idiot implements IStrategy {
        // il est possible qu'aucune Room soit à l'etage zero. Dans ce cas on prend une des Rooms les plus hautes et on la regenerer pour forcer l'apparition 
        //de nouvelle Rooms
        else{
-            System.out.println("JE BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOUUUUUUUUUUUUUUUUUUUUUUUCCCCCCCCCCCCCLLLLLLLLLLLLLLLLLLLLEEEEEEEEEEEEEE !!!");
-             Room roomTaken = null;
-            int i = 0 ;
-            while(roomTaken == null) {
-             if(res.get(i).numeroEtage() == r.AvoirLeNiveauMinDesFils()) {
-                 
-                 
-                 roomTaken = res.get(i);
-                 System.out.println("Niveau de cette salle :"+roomTaken.numeroEtage()); 
-             }
-             
-                i++;
-            }
-            if(roomTaken.getConteneur() == null)
-            {
-               
-                r = new Room(this);
-                System.out.println("PPPniveau min pere = "+r.AvoirLeNiveauMinDesFils());
-            }
-            else{
-                
-                roomTaken = new Room(this,roomTaken.getConteneur());  
-                System.out.println("FFFniveau min pere = "+r.AvoirLeNiveauMinDesFils());
-            }
-        
+           
+           r = new Room(this);
         
              
         }
