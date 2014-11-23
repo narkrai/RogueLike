@@ -146,8 +146,8 @@ public class Game {
                     
 
                 //Obtenir la cell du joueur et sa Room
-                Room r = this.getCurrentRoom(); 
-                Cell c = this.getCurrentCell();
+                Room currentRoom = this.getCurrentRoom(); 
+                Cell currentCell = this.getCurrentCell();
                 Cell cArrive;
       
         
@@ -157,9 +157,9 @@ public class Game {
             //UP (X-1,0)
             case UP:
             
-            if(c.getPositionX() - 1 >= 0) 
+            if(currentCell.getPositionX() - 1 >= 0) 
             {
-                cArrive = r.getCell(c.getPositionX() -1, c.getPositionY());
+                cArrive = currentRoom.getCell(currentCell.getPositionX() -1, currentCell.getPositionY());
                 if (cArrive instanceof Room)                   
                 {
                            res = this.DemandeDeTeleport((Room)cArrive);
@@ -184,10 +184,10 @@ public class Game {
             case DOWN :
             
             
-            if(c.getPositionX() + 1 < r.getTailleX()) 
+            if(currentCell.getPositionX() + 1 < currentRoom.getTailleX()) 
             {
                
-                cArrive = r.getCell(c.getPositionX() + 1, c.getPositionY());
+                cArrive = currentRoom.getCell(currentCell.getPositionX() + 1, currentCell.getPositionY());
                 if (cArrive instanceof Room)                
                 {
                         res = this.DemandeDeTeleport((Room)cArrive);
@@ -209,10 +209,10 @@ public class Game {
             //RIGHT (0,Y)
             case RIGHT :
             
-            if(c.getPositionY() + 1 < r.getTailleY()) 
+            if(currentCell.getPositionY() + 1 < currentRoom.getTailleY()) 
             {
                
-                cArrive = r.getCell(c.getPositionX() , c.getPositionY()+1);
+                cArrive = currentRoom.getCell(currentCell.getPositionX() , currentCell.getPositionY()+1);
                 if (cArrive instanceof Room)                
                 {
                         res = this.DemandeDeTeleport((Room)cArrive);
@@ -232,10 +232,10 @@ public class Game {
             //LEFT(0,-Y)
             case LEFT:
             
-            if(c.getPositionY() - 1 >= 0 )
+            if(currentCell.getPositionY() - 1 >= 0 )
             {
                
-                cArrive = r.getCell(c.getPositionX() , c.getPositionY()-1);
+                cArrive = currentRoom.getCell(currentCell.getPositionX() , currentCell.getPositionY()-1);
                 if (cArrive instanceof Room)                
                 {
                         res = this.DemandeDeTeleport((Room)cArrive);
@@ -289,12 +289,12 @@ public class Game {
        private Message DemandeDeDeplacement(CellUnit cArrivee){
            
            Message res = new Message();
-           Item it = cArrivee.getItem();
+           Item itemOfCell = cArrivee.getItem();
            
            CellUnit cPlayer =(CellUnit) this.getCurrentCell();
            
            
-           if(it == null)
+           if(itemOfCell == null)
            {
                res.setSignal(this.RIEN);
                res.setMessage("Rien pour l'instant");
@@ -307,7 +307,7 @@ public class Game {
                this.getCurrentRoom().lightNear(cArrivee.getPositionX(), cArrivee.getPositionY());
                
            }
-           else if(it instanceof Exit) {
+           else if(itemOfCell instanceof Exit) {
                
                res.setSignal(this.WIN);
                res.setRoom(this.getCurrentRoom());
@@ -315,7 +315,7 @@ public class Game {
                res.setMonsterNearby(getCurrentRoom().nbMonsterNear(cArrivee.getPositionX(),cArrivee.getPositionY()));
                
            }
-           else if(it instanceof Stair){
+           else if(itemOfCell instanceof Stair){
                
                res.setSignal(this.RIEN);
                res.setMessage("Descente dans la salle du dessous !");
@@ -328,7 +328,7 @@ public class Game {
            }
            else
            {
-               Action reponse = it.action(this.player);
+               Action reponse = itemOfCell.action(this.player);
                
                if( reponse.getSignal() == this.NORMAL)
                {
@@ -396,10 +396,10 @@ public class Game {
             
             for(int i = 0 ; i < r.getContenus().size() && !estTrouve ; i++)
             {
-                Cell c = r.getContenus().get(i);
-                if( c instanceof CellUnit) 
+                Cell cTest = r.getContenus().get(i);
+                if( cTest instanceof CellUnit) 
                 {
-                   CellUnit cU = (CellUnit) c ;
+                   CellUnit cU = (CellUnit) cTest ;
                    if(cU.getItem() == player) 
                    {
                        System.out.println("La case trouve est "+cU.toString());

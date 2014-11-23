@@ -11,11 +11,27 @@ import java.util.Random;
 
 import view.IHM_GameUI;
 
-
+/**
+ * La Classe idiot est une strategie envisable pour la création de l'arborescence de Room à partir de l'OptionData
+ * 
+ * *Les Room ont tous la  meme taille
+ * *les Items sont placés aléatoirement
+ * *les Room ont tous un unique pere
+ * *Il n'y qu'une seule sortie
+ * *La création du chemin gagnant  ( c'est-à-dire le chemin entre le Player et la Sortie) est fait à posteori
+ * *Generation lourde en temps de calcul 
+ * @author Dinar
+ */
 public class Idiot implements IStrategy {
 
-    OptionData op = OptionData.getDataInstance();
-    
+    /**
+     * L'optionData utilisé
+    * 
+    */
+    OptionData opdataCurrent = OptionData.getDataInstance();
+    /**
+     * Construteur vide de la classe
+     */
     public Idiot() {
         super();
         
@@ -27,29 +43,29 @@ public class Idiot implements IStrategy {
      * 
      */  
     @Override
-    public void CreationRoom(Room r) {
+    public void CreationRoom(Room roomPere) {
         
-        Cell c;
-        Cell t;
+        Cell cellCreated;
+        Cell cellChosen;
         
         
         Random rand = new Random();
         int randX;
         int randY;
         
-        r.setTailleX(op.getTailleXRoom());
-        r.setTailleY(op.getTailleYRoom());
+        roomPere.setTailleX(opdataCurrent.getTailleXRoom());
+        roomPere.setTailleY(opdataCurrent.getTailleYRoom());
         
         
         //Creation de la salle selon sa taille
-        for( int x = 0 ; x < r.getTailleX() ;x++) {
-            for(int y = 0 ; y < r.getTailleY(); y++){
+        for( int x = 0 ; x < roomPere.getTailleX() ;x++) {
+            for(int y = 0 ; y < roomPere.getTailleY(); y++){
                 
-                c = CreationCell(r);
-                c.setPositionX(x);
-                c.setPositionY(y);
-                c.setConteneur(r);
-                r.AjoutCell(c);
+                cellCreated = CreationCell(roomPere);
+                cellCreated.setPositionX(x);
+                cellCreated.setPositionY(y);
+                cellCreated.setConteneur(roomPere);
+                roomPere.AjoutCell(cellCreated);
                 System.out.println(x+" , "+y);
                 
             }
@@ -61,19 +77,19 @@ public class Idiot implements IStrategy {
         
         //Creation d'un escalier descendant  vers le pere si la Room est un fils
             
-            while(!r.aCheminVersPere()) { 
-                 randX=  rand.nextInt( r.getTailleX()) ;
-                randY =  rand.nextInt( r.getTailleY());
+            while(!roomPere.aCheminVersPere()) { 
+                 randX=  rand.nextInt( roomPere.getTailleX()) ;
+                randY =  rand.nextInt( roomPere.getTailleY());
                 
-                 t = r.getCell(randX, randY);
+                 cellChosen = roomPere.getCell(randX, randY);
                   
-                  if( !(t instanceof Room) ) {
+                  if( !(cellChosen instanceof Room) ) {
                       
-                      CellUnit cC = (CellUnit) t;
+                      CellUnit cC = (CellUnit) cellChosen;
                       
                       
                           
-                          Stair st = new Stair(r);
+                          Stair st = new Stair(roomPere);
                           cC.setItem(st);
                           System.out.println("Chemin vers pere crée");
                         
@@ -87,42 +103,42 @@ public class Idiot implements IStrategy {
         
 
         
-        System.out.println("Room terminé etage" +r.numeroEtage() +" et a un chemin vers pere");
+        System.out.println("Room terminé etage" +roomPere.numeroEtage() +" et a un chemin vers pere");
     }
 
     /**
      *Cette fonction renvoit une CellUnit ou une Room selon l'OptionData
-     * @param r room parent
+     * @param roomPere room parent
      * @return la Cell crée
      */
-    public Cell CreationCell(Room r) {
+    public Cell CreationCell(Room roomPere) {
         
         
-        Cell c ;
+        Cell cellCreated ;
 
         Random rand = new Random();
         int Random = rand.nextInt(100);
         // si la Room n'est pas  au dernier etage et que le nombre maximal de salle n'est pas depassé
-        if( r.numeroEtage() != 0 && r.numberofRoom() < op.getDoormax() ) {
+        if( roomPere.numeroEtage() != 0 && roomPere.numberofRoom() < opdataCurrent.getDoormax() ) {
             //la Room a une certaine chance d'avoir une Room fils selon OptionData
-            if(Random < op.getLadderLuck()) {
+            if(Random < opdataCurrent.getLadderLuck()) {
                 
                 System.out.println("Valeur du rand :"+ Random);
-                c = MakeRoom(r);
+                cellCreated = MakeRoom(roomPere);
                 
             }
             else {
-                c = MakeCellUnit();
+                cellCreated = MakeCellUnit();
                 System.out.println("Nouvelle cell crée");
             }
             
         }
         else{
             System.out.println("Nouvelle cell crée");
-            c = MakeCellUnit();
+            cellCreated = MakeCellUnit();
         }
  
-        return c;
+        return cellCreated;
     }
 
     /**
@@ -148,25 +164,25 @@ public class Idiot implements IStrategy {
         Random rand = new Random();
         int randomValue = rand.nextInt(100);
         
-        if( randomValue  <= op.getMonsterLuck() + op.getLadderLuck()) {
+        if( randomValue  <= opdataCurrent.getMonsterLuck() + opdataCurrent.getLadderLuck()) {
             
             res.setItem(MonsterFactory.buildMonster());
             
         }
-        else if( op.getMonsterLuck() < randomValue && randomValue <= op.getPotionLuck() + op.getMonsterLuck() + op.getLadderLuck()  ) {
+        else if( opdataCurrent.getMonsterLuck() < randomValue && randomValue <= opdataCurrent.getPotionLuck() + opdataCurrent.getMonsterLuck() + opdataCurrent.getLadderLuck()  ) {
 
             int randStrength;
             randStrength =
-                (int) (op.getMinPowerPotion() + (Math.random() * (op.getMaxPowerPotion() - op.getMinPowerPotion())));
+                (int) (opdataCurrent.getMinPowerPotion() + (Math.random() * (opdataCurrent.getMaxPowerPotion() - opdataCurrent.getMinPowerPotion())));
 
             Potion p = new Potion(randStrength);
             
             res.setItem(p);
         }
-        else if(op.getPotionLuck() < randomValue && randomValue <= op.getPotionLuck() + op.getTreasureLuck() + op.getMonsterLuck() +op.getLadderLuck() ) {
+        else if(opdataCurrent.getPotionLuck() < randomValue && randomValue <= opdataCurrent.getPotionLuck() + opdataCurrent.getTreasureLuck() + opdataCurrent.getMonsterLuck() +opdataCurrent.getLadderLuck() ) {
             
             int randOr;
-            randOr = (int) (op.getMinGoldTresaure() + (Math.random() * op.getMaxGoldTresaure() - op.getMinGoldTresaure()));
+            randOr = (int) (opdataCurrent.getMinGoldTresaure() + (Math.random() * opdataCurrent.getMaxGoldTresaure() - opdataCurrent.getMinGoldTresaure()));
             
             
             
@@ -257,34 +273,40 @@ public class Idiot implements IStrategy {
            }
            
        }
-       //sinon on recree la room (bah oui la generation d'avant est infonctionnelle donc on jete (//todo trouver une meilleur solution meme si c'est pas ecrit dans les charges
+       // il est possible qu'aucune Room soit à l'etage zero. Dans ce cas on prend une des Rooms les plus hautes et on la regenerer
        else{
-           System.out.println("r.AvoirLeNiveauMinDesFils() "+r.AvoirLeNiveauMinDesFils());
-           r  = new Room(this);
            
-       }
+           Random roomChosen = new Random(); 
+           Room roomTaken = res.get(roomChosen.nextInt(res.size()));
+        
+           if(roomTaken.numeroEtage() == r.AvoirLeNiveauMinDesFils())
+           {
+             roomTaken = new Room(this,r);
+
+           }
+        }
         }
         
-        boolean playerEstPlace = false;
-        //et Puis enfin  Placement du Joueur dans la cellule PERE
-        if( r.getConteneur() == null) {
+        boolean playerIsPlaced = false;
+        //et Puis enfin  Placement du Joueur dans la Room PERE de tous
+        
             
-            while(!playerEstPlace) {
+            while(!playerIsPlaced) {
                 
                 
                 RandX =  rand.nextInt(r.getTailleX());
                 RandY =  rand.nextInt(r.getTailleY());
                 
-                 Cell t = r.getCell(RandX, RandY);
+                 Cell cellChosen = r.getCell(RandX, RandY);
                   
-                  if( !(t instanceof Room) ) {
+                  if( !(cellChosen instanceof Room) ) {
                       
-                      CellUnit cC = (CellUnit) t;
+                      CellUnit cC = (CellUnit) cellChosen;
                       
                       if(!(cC.getItem() instanceof Stair )) {
                           
                             cC.setItem(Player.getInstance());
-                            playerEstPlace = true;
+                            playerIsPlaced = true;
                         
                       }
                 
@@ -293,25 +315,13 @@ public class Idiot implements IStrategy {
             
         
         }
-            
-        }
-           
-        for( Cell celle : r.getContenus()) {
-            System.out.println(celle.toString());
-        }
-    
-       
        
         return res;
-    }
+            
+            
     
     
-    /*public static void main(String[] args ) {
+    
 
-        Idiot i = new Idiot();
-       
-        i.CreateArborescence();
-       
-    }*/
-    
+    }
 }
