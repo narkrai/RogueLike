@@ -81,6 +81,7 @@ public class IHM_GameOver extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 Game.getInstance().restart();
                 setVisible(false);
+                IHM_Controls.getInstance().setPlayable(true);
                 IHM_Board.getInstance().refresh();
             }
         });
@@ -97,7 +98,7 @@ public class IHM_GameOver extends JFrame{
         /**
          * TODO compl?ter le message
          */
-        msg ="You have died from";
+        msg ="You have died from ";
         msgTextArea.setText(msg);
     }
 }

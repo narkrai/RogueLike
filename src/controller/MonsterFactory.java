@@ -7,9 +7,10 @@ public  class MonsterFactory {
     private static MonsterFactory instance=null;
     
     private  static MonsterType[] ListMonster = {
-        new MonsterType("Dragon",1, 2, 300, 500, 0),
-        new MonsterType("Troll",1, 2, 5, 50, -5),
-        new MonsterType("ArcaysXXX", 2, 1, 1, 10, -10)
+        new MonsterType("Dragon",25, 50, 300, 500, 0),
+        new MonsterType("Orc",10, 15, 50,100, -2),
+        new MonsterType("Troll",1, 15, 5, 50, -5),
+        new MonsterType("ArcaysXXX", 1, 150, 1, 1000, -10)
     };
     
 

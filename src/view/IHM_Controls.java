@@ -14,7 +14,37 @@ import java.awt.event.KeyListener;
 import javax.swing.JTextField;
 
 public class IHM_Controls extends JTextField{
+    
+    private boolean playable;
+
+    private static IHM_Controls uniqueInstance = null;
+    
+    public static IHM_Controls getInstance()
+    {
+        if (uniqueInstance == null) 
+        {
+            try 
+            {
+            uniqueInstance = new IHM_Controls();
+            } 
+            catch (Exception e) 
+            {
+                e.printStackTrace();
+            }
+        }
+        return uniqueInstance;
+    }
+    
+    public void setPlayable(boolean playable) {
+        this.playable = playable;
+    }
+
+    public boolean isPlayable() {
+        return playable;
+    }
+    
     public IHM_Controls() {
+        this.setPlayable(true);
         KeyListener kl = new MyKeyListener();
         this.addKeyListener(kl);
         this.setFocusable(true);
@@ -28,7 +58,21 @@ public class IHM_Controls extends JTextField{
 
                     @Override
                     public void keyPressed(KeyEvent e) {
-                        switch (e.getKeyCode()) {
+                        if (playable == true && (e.getKeyCode()==39 || e.getKeyCode()==68 || e.getKeyCode()==102))
+                                IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(0));
+                        // Gauche
+                        else if (playable == true && (e.getKeyCode()==37 || e.getKeyCode()==81 || e.getKeyCode()==100))
+                                IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(1));
+                        // Haut
+                        else if (playable == true && (e.getKeyCode()==38 || e.getKeyCode()==90 || e.getKeyCode()==104))
+                                IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(2));
+                        // Bas
+                        else if (playable == true && (e.getKeyCode()==40 || e.getKeyCode()==83 || e.getKeyCode()==98))
+                                IHM_GameUI.getInstance().analyse(Game.getInstance().makeStep(3));
+                                
+                        
+                        
+                        /*switch (e.getKeyCode()) {
                             // Se déplacer avec les flèches directionnelles
                             case 37: // Flèche de gauche
                             
@@ -74,13 +118,11 @@ public class IHM_Controls extends JTextField{
                                 break;
                             default : 
                                 break;
-                        }
+                        }*/
                         
                         e.consume();
                     }
                     
-
-
                     @Override
                     public void keyReleased(KeyEvent e) {
                         e.consume();

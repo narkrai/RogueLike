@@ -239,6 +239,7 @@ public class IHM_Options  extends JFrame{
         op.setTailleYRoom(ySlider.getValue());
         op.setStrategy(strategyComboBox.getSelectedIndex());
         Game.getInstance().restart();
+        IHM_Controls.getInstance().setPlayable(true);
     }
     
     /**
