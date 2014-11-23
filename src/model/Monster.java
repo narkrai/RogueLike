@@ -9,31 +9,39 @@ import java.util.Random;
  * @author Dinar
  */
 public class Monster extends Character {
-
-    private int level;
+    
     
     //constante de valeurs entre Game et action
     private final int NORMAL = 0 ;
     private final int VICTORY = 1;
-    private final int LOSE = 2;
+    private final int LOSE = 2;    
     
+    /**
+     * niveau theorique ou le monstre peut apparaitre
+     */
+    private int level;
     
+    /**
+     * caractere du Monster
+     */
     final char CHARACTER = '.';
 
+    /**
+     * Constructeur vide de Monster
+     */
     public Monster() {
         super();
     }
 
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public int getLevel() {
-        return level;
-    }
 
   
-
+    /**
+     * Constructeur de Monster
+     * @param name nom du Monster
+     * @param strength force du Monster
+     * @param gold Gold du Monster
+     * @param level niveau min du Monster
+     */
     public Monster(String name, int strength, int gold, int level) {
         super();
         this.setStrength(strength);
@@ -41,22 +49,40 @@ public class Monster extends Character {
         this.setGold(gold);
         this.level = level;
     }
+    
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
+    public int getLevel() {
+        return level;
+    }
+    
+    @Override
+    public char getCHARACTER() {
+        
+        return this.CHARACTER;
+    }
 
-    public Action action(Player p) {
+    /**
+     * Permet de faire le Combat entre le monster et le Player
+     * @param player le joueur
+     * @return le message de combat
+     */
+    public Action action(Player player) {
         Action res = null;
         
         Random rand = new Random();
         int chance = rand.nextInt(100);
         
-        double valeurmin = (p.getStrength() + this.getStrength());
-        valeurmin = p.getStrength()/valeurmin;
+        double valeurmin = (player.getStrength() + this.getStrength());
+        valeurmin = player.getStrength()/valeurmin;
         
         int proba =(int) (valeurmin*100);
         if (chance <= proba) {
             
-            int goldNow = p.getGold()+this.getGold();
-            p.setGold(goldNow) ;
+            int goldNow = player.getGold()+this.getGold();
+            player.setGold(goldNow) ;
             res = new Action(VICTORY , "Vous avez battu "+this.getName()+" de force "+ this.getStrength()+". Vous recevez "+this.getGold()+ "pièces d'or.");
         }
         else 
@@ -66,23 +92,7 @@ public class Monster extends Character {
         return res;
     }
 
-    @Override
-    public char getCHARACTER() {
-        
-        return this.CHARACTER;
-    }
-    
-    
-    public static void main(String[] args ){
-        
-        Player p =  Player.getInstance();
-        
-        Monster m = new Monster("boss",1,45,1);
-        
-        System.out.println(m.action(p).getSignal());
-        
-        
-    }
+
 }
 
 

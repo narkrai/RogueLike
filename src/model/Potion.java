@@ -19,7 +19,11 @@ public class Potion extends Treasure{
     public int getStrength() {
         return this.strength;
     }
-
+    /**
+     * Permet de faire gagner ou perdre de la force du Player
+     * @param player le joueur
+     * @return le message Action
+     */
     @Override
     public Action action(Player p) {
         p.setStrength(p.getStrength()+this.getStrength());

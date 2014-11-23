@@ -24,7 +24,11 @@ public class Chest extends Treasure{
         
     }
 
-
+    /**
+     * Permet de faire gagner un somme de Gold
+     * @param player le joueur
+     * @return le message de gain
+     */
     @Override
     public Action action(Player p) {
         p.setGold(p.getGold() + this.getGold());

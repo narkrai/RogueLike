@@ -19,7 +19,11 @@ public class Exit extends Item {
         
     }
 
-
+    /**
+     * Permet de gagner le jeu !!
+     * @param player le joueur
+     * @return le message de victoire
+     */
     @Override
     public Action action(Player p) {
         return new Action(1, "Exit");
