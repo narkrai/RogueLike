@@ -13,19 +13,23 @@ import javax.swing.border.Border;
 
 import model.Message;
 
+/**
+ * Partie de l'interface qui va indiquer à l'utilisateur ce qu'il s'est passé dans le jeu.
+ * @author : Nicolas Nguyen
+ */
 public class IHM_Message extends JPanel{
+    private     JTextArea       msgTextArea;    // JTextArea qui contient le message
+    private     String          msg;            // String du message
     
-    private JTextArea msgTextArea;
-    private String msg="";
-
-    
+    /**
+     * Constructeur de l'IHM_Message
+     */
     public IHM_Message() {
         this.setPreferredSize(new Dimension(100, 100));
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
         
-        //bordure imaginaire
-        Border c =  BorderFactory.createEmptyBorder(5,5,5,5);
-        Font font = new Font("Arial", Font.BOLD, 12);
+        Border c =  BorderFactory.createEmptyBorder(5,5,5,5);   // Bordure imaginaire
+        Font font = new Font("Arial", Font.BOLD, 12);           // Police utilisé par la JTextArea, pour match les autres parties de l'interface
 
         msg = "Message :";
         
@@ -48,12 +52,12 @@ public class IHM_Message extends JPanel{
         this.setBorder(b);
     }
     
+    /**
+     * Méthode qui va refresh le message
+     * @param Message
+     */
     public void refresh(Message ar) {
-
         msg = "Message :\n"+ar.getMessage();
-
         msgTextArea.setText(msg);
-
-        
     }
 }

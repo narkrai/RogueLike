@@ -12,28 +12,35 @@ import javax.swing.border.Border;
 import model.Message;
 import model.Player;
 
+/**
+ * JFrame qui va se lancer quand le joueur trouve la sortie. Le congratule, lui indique son score et indique le high score
+ * @author : Nicolas Nguyen
+ */
+
 public class IHM_Exit extends JFrame{
     
-    private JLabel msgTitreLabel;
-    private JTextArea msgTextArea;
-    private String msgTitre;
-    private String msg;
+    private     String      msgTitre;           // String du titre
+    private     JLabel      msgTitreLabel;      // JLabel pour le titre
+    private     String      msg;                // String du message
+    private     JTextArea   msgTextArea;        // JTextArea qui va contenir le message
     
+    /**
+     * Constructeur de la JFrame IHM_Exit
+     */
     public IHM_Exit() {
-        Border b = BorderFactory.createEmptyBorder(1,1,1,1);
-        Font font = new Font("Arial", Font.BOLD, 12);
-        
         this.setTitle("Game Over!");
         this.setSize(300,300);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-
         
-        JPanel pMsg = new JPanel();
+        Border b = BorderFactory.createEmptyBorder(1,1,1,1);    // Bordure invisible
+        Font font = new Font("Arial", Font.BOLD, 12);           // Police qui sera utilisé dans le JTextArea pour match la police des autres parties de l'interface
+
+        JPanel pMsg = new JPanel();                             // JPanel pour toute la frame
         pMsg.setBorder(b);
         pMsg.setLayout(new FlowLayout(FlowLayout.CENTER));
         
-        //Message h2
+        // Titre
         msgTitreLabel = new JLabel();
         msgTitreLabel.setHorizontalAlignment(JLabel.CENTER);
         msgTitre = "<html><h2><b><center>Congratulation!</center> <br>" +
@@ -41,7 +48,7 @@ public class IHM_Exit extends JFrame{
         msgTitreLabel.setText(msgTitre);
         pMsg.add(msgTitreLabel);
         
-        //Message        
+        //Message
         msgTextArea = new JTextArea();
         msgTextArea.setColumns(17);
         msgTextArea.setRows(12);
@@ -55,9 +62,8 @@ public class IHM_Exit extends JFrame{
         pMsg.add(msgTextArea);
         
         this.add(pMsg, BorderLayout.CENTER);
-        this.add(pMsg, BorderLayout.CENTER);
         
-        // Panel des buttons
+        // JPanel des buttons
         JPanel pButton = new JPanel(new GridBagLayout());
         JButton bReplay = new JButton("Try again");
         JButton bClose = new JButton("Close");
@@ -71,25 +77,28 @@ public class IHM_Exit extends JFrame{
         pButton.add(bClose,c);
         this.add(pButton, BorderLayout.SOUTH);
         
+        // ActionListener du bouton Replay
         bReplay.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                Game.getInstance().restart();
-                setVisible(false);
-                IHM_Controls.getInstance().setPlayable(true);
-                IHM_Board.getInstance().refresh();
+                setVisible(false);                              // Ferme la frame
+                Game.getInstance().restart();                   // Restart la game
+                IHM_Controls.getInstance().setPlayable(true);   // Remet la playability à true
+                IHM_Board.getInstance().refresh();              // Refresh la board pour la nouvelle game
             }
         });
         
+        // ActionListener du bouton Close
         bClose.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                /**
-                 * @TODO : Désactiver les controls
-                 */
+                setVisible(false);                              // Ferme la frame
             }
         });
     }
     
+    /**
+     * Methode qui va refresh le message
+     * @param Message
+     */
     public void refresh(Message m) {
         int score = Player.getInstance().getGold()*2 + Player.getInstance().getStrength()*3;
         msg = "Your score : "+score+".";

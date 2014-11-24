@@ -7,37 +7,43 @@ import java.awt.*;
 
 import javax.swing.border.Border;
 
-
+/**
+ * JTextArea qui va contenir la carte
+ * @author Nicolas Nguyen
+ */
 
 public class IHM_Board extends JTextArea{
     
-    private String map;
+    private         String          map;                            // String de la map
+    private static  IHM_Board       uniqueInstance  =   null;       // Variable d'instance, pour le singleton
     
-    private static IHM_Board uniqueInstance = null;
-
-    public static IHM_Board getInstance()
-    {
-        if (uniqueInstance == null) 
-        {
-            try 
-            {
+    /**
+     * Méthode utilisé pour intégration du design pattern singleton
+     * @return Instance IHM_Board
+     */
+    public static   IHM_Board       getInstance() {
+        if (uniqueInstance == null) {
+            try {
             uniqueInstance = new IHM_Board(Game.getInstance().getCurrentRoom().getTailleX(),Game.getInstance().getCurrentRoom().getTailleY());
             } 
-            catch (Exception e) 
-            {
+            catch (Exception e) {
                 e.printStackTrace();
             }
         }
         return uniqueInstance;
     }
-
     
+    /**
+     * Méthode constructeur de la map. 
+     * @param x : taille x de la map
+     * @param y : taille y de la map
+     */
     public IHM_Board(int x, int y) {       
         Font resultFont = new Font("monospaced", Font.PLAIN, 15);
         Border b = BorderFactory.createLineBorder(Color.black);
         
-        this.setColumns(x*2);
-        this.setRows(y*2);
+        this.setColumns(x*4);
+        this.setRows(y*4);
         this.setBorder(b);
         this.setEditable(false);  
         this.setCursor(null);  
@@ -45,23 +51,22 @@ public class IHM_Board extends JTextArea{
         this.setFont(resultFont);
     }
     
-    // Fonction qui va refresh la board à chaque action
+    /**
+     * Methode qui va refresh la board.
+     */
     public void refresh() {
-        //Table
-        map="";
-        char[][] table = Game.getInstance().getTab();
+        map="";                                                 // Remise à 0 de la map
+        char[][] table = Game.getInstance().getTab();           // Récupère le tableau de la map
         // Compteurs
-        int i,j,k;
+        int j;                                                  // Variable compteur
+        int k;                                                  // Variable compteur
 
-            for (j=0; j<table.length; j++) {
+            for (j=0; j<table.length; j++) {                    // Lit le tableau et le transforme en String
                 for (k=0; k<table[0].length;k++) {
-                    map+=table[j][k]+ " ";
-                    //System.out.println(" da"+ table[j][k]);
+                    map+=table[j][k]+ "  ";
                 }
                 map+="\n";
             }
-
         this.setText(map);
-        System.out.println("R E F R E S H B O Y S");
     }
 }
