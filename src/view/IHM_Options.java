@@ -69,7 +69,7 @@ public class IHM_Options  extends JFrame{
         sLabel = new JLabel("Strategy : ");
         strategyComboBox = new JComboBox<String>();
         strategyComboBox.addItem("Idiot");
-        strategyComboBox.addItem("Nice");
+        strategyComboBox.addItem("Nice (not implemented)");
         strategyComboBox.setSelectedIndex(op.getStrategy());
         stratPan.add(sLabel);
         stratPan.add(strategyComboBox);

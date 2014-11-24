@@ -48,3 +48,4 @@ Temporary Items
 *.cdi
 classes/.data/Rogue.cdi
 classes/.data/Rogue.cdi
+*.class
