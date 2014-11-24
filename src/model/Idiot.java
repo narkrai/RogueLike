@@ -297,11 +297,11 @@ public class Idiot implements IStrategy {
                 
                  Cell cellChosen = r.getCell(RandX, RandY);
                   
-                  if( !(cellChosen instanceof Room) ) {
+                  if( !(cellChosen instanceof Room)  ) {
                       
                       CellUnit cC = (CellUnit) cellChosen;
                       
-                      if(!(cC.getItem() instanceof Stair )) {
+                      if(!(cC.getItem() instanceof Stair ) && !(cC.getItem() instanceof Exit)) {
                           
                             cC.setItem(Player.getInstance());
                             playerIsPlaced = true;
