@@ -82,6 +82,7 @@ public class IHM_Options  extends JFrame{
         dSlider = new JSlider(0,5);
         dSlider.setValue(op.getDepthmax());
         dTextField = new JTextField(Integer.toString(op.getDepthmax()));
+        dTextField.setEditable(false);
         dSlider.addChangeListener(new ChangeListener() {
                                 @Override
                                 public void stateChanged(ChangeEvent e) {
@@ -120,9 +121,10 @@ public class IHM_Options  extends JFrame{
         JPanel xPan = new JPanel();
         xPan.setLayout(new GridLayout(3,0));
         xSliderLabel = new JLabel("Max number of rows");
-        xSlider = new JSlider(0,10);
+        xSlider = new JSlider(2,10);
         xSlider.setValue(op.getTailleXRoom());
         xTextField = new JTextField(Integer.toString(op.getTailleXRoom()));
+        xTextField.setEditable(false);
         xSlider.addChangeListener(new ChangeListener() {
                                 @Override
                                 public void stateChanged(ChangeEvent e) {
@@ -160,9 +162,12 @@ public class IHM_Options  extends JFrame{
         JPanel yPan = new JPanel();
         yPan.setLayout(new GridLayout(3,0));
         ySliderLabel = new JLabel("Max number of lines");
-        ySlider = new JSlider(0,10);
+        ySlider = new JSlider(2,10);
         ySlider.setValue(op.getTailleYRoom());
         yTextField = new JTextField(Integer.toString(op.getTailleYRoom()));
+        yTextField.setEditable(false);
+        yTextField.setOpaque(false);
+        yTextField.setBackground( null );
         ySlider.addChangeListener(new ChangeListener() {
                                 @Override
                                 public void stateChanged(ChangeEvent e) {
