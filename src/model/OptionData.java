@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 public class OptionData {
 
+    static private OptionData dataInstance = null;
    /**
     * Profondeur maximal du jeu
     */
@@ -71,7 +72,7 @@ public class OptionData {
    /**
     * strategie choisie
     */
-   private IStrategy strategy = new Idiot();
+   private IStrategy strategy;
    /**
     * Nom du joueur
     */
@@ -83,10 +84,10 @@ public class OptionData {
 
 
     private OptionData() {
-        super();
+       this.listStrategy = new ArrayList<>();
         this.strategy = new Idiot();
-        this.listStrategy.add(new Idiot());
-        this.listStrategy.add(new Nice());
+        listStrategy.add(strategy);
+        listStrategy.add(new Nice());
     }
 
     public ArrayList<IStrategy> getListStrategy() {
@@ -101,12 +102,6 @@ public class OptionData {
         return playerName;
     }
 
-
-    static private OptionData DataInstance = new OptionData();
-
-    public void setTailleYRoom(int tailleYRoom) {
-        this.tailleYRoom = tailleYRoom;
-    }
     
         public void setTreasureLuck(int treasureLuck) {
         this.treasureLuck = treasureLuck;
@@ -114,6 +109,11 @@ public class OptionData {
 
     public int getTreasureLuck() {
         return treasureLuck;
+    } 
+    
+    
+    public void setTailleYRoom(int tailleYRoom) {
+        this.tailleYRoom = tailleYRoom;
     }
 
     public int getTailleYRoom() {
@@ -130,7 +130,20 @@ public class OptionData {
 
 
     public static OptionData getDataInstance() {
-        return DataInstance;
+        if (dataInstance == null) 
+        {
+            try 
+            {
+                dataInstance = new OptionData();
+            } 
+            catch (Exception e) 
+            {
+                e.printStackTrace();
+            }
+        }
+    
+        
+        return dataInstance;
     }
 
     public void setDepthmax(int depthmax) {

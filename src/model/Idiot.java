@@ -28,7 +28,7 @@ public class Idiot implements IStrategy {
      * L'optionData utilisé
     * 
     */
-    OptionData opdataCurrent = OptionData.getDataInstance();
+    
     /**
      * Construteur vide de la classe
      */
@@ -44,6 +44,8 @@ public class Idiot implements IStrategy {
      */  
     @Override
     public void CreationRoom(Room roomPere) {
+        
+        OptionData opdataCurrent = OptionData.getDataInstance();
         
         Cell cellCreated;
         Cell cellChosen;
@@ -113,6 +115,8 @@ public class Idiot implements IStrategy {
      */
     public Cell CreationCell(Room roomPere) {
         
+        OptionData opdataCurrent = OptionData.getDataInstance();
+        
         
         Cell cellCreated ;
 
@@ -148,6 +152,8 @@ public class Idiot implements IStrategy {
      */
     private Room MakeRoom(Room pere) {
         
+        
+        
         Room res  = new Room(this,pere);
         System.out.println("Nouvelle Room crée");
         return res;
@@ -158,6 +164,8 @@ public class Idiot implements IStrategy {
      * @return un objet CellUnit
      */
     private CellUnit MakeCellUnit(){
+        
+        OptionData opdataCurrent = OptionData.getDataInstance();
         
         CellUnit res = new CellUnit();
         
@@ -205,6 +213,7 @@ public class Idiot implements IStrategy {
      * @return la liste complete des Room
      */
     public ArrayList<Room> CreateArborescence() {
+        
        
        int RandX;
        int RandY;
