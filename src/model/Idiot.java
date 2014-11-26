@@ -25,9 +25,9 @@ import view.IHM_GameUI;
 public class Idiot implements IStrategy {
 
     /**
-     * L'optionData utilisé
-    * 
-    */
+     * Nombre de room crée total
+     */
+    int roomCreated = 0;
     
     /**
      * Construteur vide de la classe
@@ -123,7 +123,7 @@ public class Idiot implements IStrategy {
         Random rand = new Random();
         int Random = rand.nextInt(100);
         // si la Room n'est pas  au dernier etage et que le nombre maximal de salle n'est pas depassé
-        if( roomPere.numeroEtage() != 0 && roomPere.numberofRoom() < opdataCurrent.getDoormax() ) {
+        if( roomPere.numeroEtage() != 0 && roomPere.numberofRoom() < opdataCurrent.getDoormax() && this.roomCreated < opdataCurrent.getRoomMax() ) {
             //la Room a une certaine chance d'avoir une Room fils selon OptionData
             if(Random < opdataCurrent.getLadderLuck()) {
                 

@@ -19,7 +19,10 @@ public class OptionData {
     * Nombre maximal de Room dans une Room
     */
     private int doormax = 2;
-    
+   /**
+    * Nombre maximal de Room total
+    */
+    private int roomMax = 20;
     /**
      * Chance pour qu'un Monster apparaisse sur une CellUnit
      */
@@ -102,8 +105,17 @@ public class OptionData {
         return playerName;
     }
 
-    
-        public void setTreasureLuck(int treasureLuck) {
+
+    public void setRoomMax(int roomMax) {
+        this.roomMax = roomMax;
+    }
+
+    public int getRoomMax() {
+        return roomMax;
+    }
+
+
+    public void setTreasureLuck(int treasureLuck) {
         this.treasureLuck = treasureLuck;
     }
 

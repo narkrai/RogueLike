@@ -28,6 +28,6 @@ public class Nice implements IStrategy {
     }
     
     public String toString(){
-        return "Nice";
+        return "Nice (NON FAIT !)";
     }
 }
