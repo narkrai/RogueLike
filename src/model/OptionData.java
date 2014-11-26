@@ -84,6 +84,7 @@ public class OptionData {
 
     private OptionData() {
         super();
+        this.strategy = new Idiot();
         this.listStrategy.add(new Idiot());
         this.listStrategy.add(new Nice());
     }
