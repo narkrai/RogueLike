@@ -15,6 +15,7 @@ import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import model.IStrategy;
 import model.OptionData;
 
 /**
@@ -77,9 +78,13 @@ public class IHM_Options  extends JFrame{
         stratPan.setLayout(new GridLayout(2,0));
         JLabel sLabel = new JLabel("Strategy : ");
         strategyComboBox = new JComboBox<String>();
-        strategyComboBox.addItem("Idiot");
-        strategyComboBox.addItem("Nice (not implemented)");
-        strategyComboBox.setSelectedIndex(op.getStrategy());
+        /*strategyComboBox.addItem("Idiot");
+        strategyComboBox.addItem("Nice (not implemented)");*/
+        for (Object s : op.getListStrategy()) {
+            strategyComboBox.addItem(s.toString());
+        }
+        
+        //strategyComboBox.setSelectedIndex(op.getStrategy());
         stratPan.add(sLabel);
         stratPan.add(strategyComboBox);
         panOption.add(stratPan);
@@ -292,7 +297,7 @@ public class IHM_Options  extends JFrame{
      */
     public void cngeOption() { 
         op.setPlayerName(pTextField.getText());
-        op.setStrategy(strategyComboBox.getSelectedIndex());
+        op.setStrategy((IStrategy)strategyComboBox.getSelectedItem());
         op.setDepthmax(dSlider.getValue());
         op.setDoormax(maxDSlider.getValue());
         op.setTailleXRoom(xSlider.getValue());
@@ -314,7 +319,7 @@ public class IHM_Options  extends JFrame{
      * Methode qui va refresh les values avec ceux dans OptionData
      */
     public void refreshValue() {
-        strategyComboBox.setSelectedIndex(op.getStrategy());
+        strategyComboBox.setSelectedItem(op.getStrategy());
         dSlider.setValue(op.getDepthmax());
         dTextField.setText(Integer.toString(op.getDepthmax()));
         xSlider.setValue(op.getTailleXRoom());
