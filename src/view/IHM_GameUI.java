@@ -13,22 +13,21 @@ import model.Message;
 
 /**
  * Frame principale de l'application. Va construire et assembler toutes les petites frames/panels ensembles
+ * @author : Nicolas Nguyen
  */
 
 public class IHM_GameUI extends JFrame{
 
-    private JPanel eastPan;
-    private JPanel centerPan;
-    
-    private IHM_Board board;
-    //private IHM_Options fenetre;
-    private IHM_Recap sumPanel;
-    private IHM_Controls controls;
-    private IHM_Message msgPanel;
-    private IHM_GameOver gameOverPanel;
-    private IHM_Exit exitPanel;
-    private IHM_Stairs stairsPanel;
-    private static IHM_GameUI uniqueInstance = null;
+    private             JPanel          eastPan;
+    private             JPanel          centerPan;
+    private             IHM_Board       board;
+    private             IHM_Recap       sumPanel;
+    private             IHM_Controls    controls;
+    private             IHM_Message     msgPanel;
+    private             IHM_GameOver    gameOverPanel;
+    private             IHM_Exit        exitPanel;
+    private             IHM_Stairs      stairsPanel;
+    private static      IHM_GameUI      uniqueInstance = null;
 
     public static IHM_GameUI getInstance()
     {

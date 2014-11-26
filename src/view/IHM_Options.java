@@ -24,26 +24,27 @@ public class IHM_Options  extends JFrame{
 
     OptionData op = OptionData.getDataInstance();
     
-    private JPanel pan = null;
-    private JPanel panOption = null;
+    private     JPanel              pan;
+    private     JPanel              panOption;
+    // Pseudo
+    private     JTextField          pTextField;
     // Strategy
-    private JLabel sLabel =null;
-    private JComboBox<String> strategyComboBox = null;
+    private     JComboBox<String>   strategyComboBox;
     // Depth
-    private JLabel dSliderLabel = null;
-    private JSlider dSlider = null;
-    private JTextField dTextField = null;
+    private     JSlider             dSlider;
+    private     JTextField          dTextField;
+    // Max Door
+    private     JSlider             maxDSlider;
+    private     JTextField          maxDTextField;
     // X
-    private JLabel xSliderLabel = null;
-    private JSlider xSlider = null;
-    private JTextField xTextField = null;
+    private     JSlider             xSlider;
+    private     JTextField          xTextField;
     // Y
-    private JLabel ySliderLabel = null;
-    private JSlider ySlider = null;
-    private JTextField yTextField = null;
+    private     JSlider             ySlider;
+    private     JTextField          yTextField;
     
     /**
-     * Constructeur de la frame
+     * Constructeur de la framme Option
      */
     
     public IHM_Options(){
@@ -58,15 +59,23 @@ public class IHM_Options  extends JFrame{
         
         // Panel Option
         panOption = new JPanel();
-        panOption.setLayout(new GridLayout(2,2, 10, 10));
+        panOption.setLayout(new GridLayout(3,2, 10, 10));
         Border b = BorderFactory.createEmptyBorder(5,5,5,5);
         panOption.setBorder(b);
 
+        // Panel pour le pseudo
+        JPanel pseudoPan = new JPanel();
+        pseudoPan.setLayout(new GridLayout(2,0));
+        JLabel pLabel = new JLabel("Pseudo : ");
+        pTextField = new JTextField();
+        pseudoPan.add(pLabel);
+        pseudoPan.add(pTextField);
+        panOption.add(pseudoPan);
         
-        // Panel pour la stratégie, POS 1 dans panOption
+        // Panel pour la stratégie, POS 2 dans panOption
         JPanel stratPan = new JPanel();
         stratPan.setLayout(new GridLayout(2,0));
-        sLabel = new JLabel("Strategy : ");
+        JLabel sLabel = new JLabel("Strategy : ");
         strategyComboBox = new JComboBox<String>();
         strategyComboBox.addItem("Idiot");
         strategyComboBox.addItem("Nice (not implemented)");
@@ -75,10 +84,10 @@ public class IHM_Options  extends JFrame{
         stratPan.add(strategyComboBox);
         panOption.add(stratPan);
         
-        // Panel pour la profondeur, POS 2 dans panOption
+        // Panel pour la profondeur, POS 3 dans panOption
         JPanel dPan = new JPanel();
         dPan.setLayout(new GridLayout(3,0));
-        dSliderLabel = new JLabel("Max depth");
+        JLabel dSliderLabel = new JLabel("Max depth");
         dSlider = new JSlider(0,5);
         dSlider.setValue(op.getDepthmax());
         dTextField = new JTextField(Integer.toString(op.getDepthmax()));
@@ -117,10 +126,53 @@ public class IHM_Options  extends JFrame{
         dPan.add(dTextField);
         panOption.add(dPan);
         
-        // Panel pour le x, POS 3 dans panOption
+        // Panel pour doorMax, POS 4 dans panOption
+        
+        JPanel maxDPan = new JPanel();
+        maxDPan.setLayout(new GridLayout(3,0));
+        JLabel maxDSliderLabel = new JLabel("Max depth");
+        maxDSlider = new JSlider(0,5);
+        maxDSlider.setValue(op.getDepthmax());
+        maxDTextField = new JTextField(Integer.toString(op.getDepthmax()));
+        maxDTextField.setEditable(false);
+        maxDSlider.addChangeListener(new ChangeListener() {
+                                @Override
+                                public void stateChanged(ChangeEvent e) {
+                                        dTextField.setText(Integer.toString(dSlider.getValue()));
+                                }
+                        });
+        maxDTextField.addKeyListener(new KeyAdapter(){
+                    @Override
+                    public void keyReleased(KeyEvent ke) {
+                        String typed = maxDTextField.getText();
+                        maxDSlider.setValue(0);
+                        if(!typed.matches("\\d+") || typed.length() > 3) {
+                            return;
+                        }
+                        int value = Integer.parseInt(typed);
+                        maxDSlider.setValue(value);
+                    }
+                    
+                    public void keyTyped(KeyEvent ke) {
+                        char c = ke.getKeyChar();
+                        if (!((c >= '0') && (c <= '9') ||
+                                 (c == KeyEvent.VK_BACK_SPACE) ||
+                                 (c == KeyEvent.VK_DELETE))) {
+                                getToolkit().beep();
+                                ke.consume();
+                              }
+
+                    }
+                });
+        maxDPan.add(dSliderLabel);
+        maxDPan.add(dSlider);
+        maxDPan.add(dTextField);
+        panOption.add(maxDPan);
+        
+        // Panel pour le x, POS 5 dans panOption
         JPanel xPan = new JPanel();
         xPan.setLayout(new GridLayout(3,0));
-        xSliderLabel = new JLabel("Max number of rows");
+        JLabel xSliderLabel = new JLabel("Max number of rows");
         xSlider = new JSlider(2,10);
         xSlider.setValue(op.getTailleXRoom());
         xTextField = new JTextField(Integer.toString(op.getTailleXRoom()));
@@ -158,10 +210,10 @@ public class IHM_Options  extends JFrame{
         xPan.add(xTextField);
         panOption.add(xPan);
         
-        // Panel pour le y, POS 4 dans panOption
+        // Panel pour le y, POS 6 dans panOption
         JPanel yPan = new JPanel();
         yPan.setLayout(new GridLayout(3,0));
-        ySliderLabel = new JLabel("Max number of lines");
+        JLabel ySliderLabel = new JLabel("Max number of lines");
         ySlider = new JSlider(2,10);
         ySlider.setValue(op.getTailleYRoom());
         yTextField = new JTextField(Integer.toString(op.getTailleYRoom()));
@@ -239,10 +291,13 @@ public class IHM_Options  extends JFrame{
      * Va mettre à jour l'OptionData et ferme la fenêtre
      */
     public void cngeOption() { 
+        op.setPlayerName(pTextField.getText());
+        op.setStrategy(strategyComboBox.getSelectedIndex());
         op.setDepthmax(dSlider.getValue());
+        op.setDoormax(maxDSlider.getValue());
         op.setTailleXRoom(xSlider.getValue());
         op.setTailleYRoom(ySlider.getValue());
-        op.setStrategy(strategyComboBox.getSelectedIndex());
+
         Game.getInstance().restart();
         IHM_Controls.getInstance().setPlayable(true);
     }
