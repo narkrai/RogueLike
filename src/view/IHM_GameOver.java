@@ -80,6 +80,7 @@ public class IHM_GameOver extends JFrame{
                 Game.getInstance().restart();                   // Restart la game
                 IHM_Controls.getInstance().setPlayable(true);   // Remet la playability à true
                 IHM_Board.getInstance().refresh();              // Refresh la board pour la nouvelle game
+                IHM_Recap.getInstance().refresh();              // Refresh le recap pour la nouvelle game
             }
         });
         
