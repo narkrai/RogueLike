@@ -1,6 +1,9 @@
 package model;
 
 import controller.Game;
+
+import java.util.ArrayList;
+
 /**
  * L'Option est une classe qui permet de stocké les données utile à la generation des salles et de l'arborescence
  * @author Dinar
@@ -73,6 +76,21 @@ public class OptionData {
     * Nom du joueur
     */
    private String playerName = "Lambda ce heros";
+   /**
+    * Liste de toutes les strategies
+    */
+   private ArrayList<IStrategy> listStrategy;
+
+
+    private OptionData() {
+        super();
+        this.listStrategy.add(new Idiot());
+        this.listStrategy.add(new Nice());
+    }
+
+    public ArrayList<IStrategy> getListStrategy() {
+        return listStrategy;
+    }
 
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
@@ -109,9 +127,6 @@ public class OptionData {
         return tailleXRoom;
     }
 
-    private OptionData() {
-        super();
-    }
 
     public static OptionData getDataInstance() {
         return DataInstance;
