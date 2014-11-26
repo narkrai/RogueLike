@@ -220,6 +220,7 @@ public class Idiot implements IStrategy {
         //Tant que le jeu n'a pas de sortie on boucle
         while(r.aUneSortie() != 1)
         {
+            res.clear();
             System.out.println("r.aUneSortie() "+r.aUneSortie());
             
             System.out.println("aUneSortie "+r.aUneSortie());
