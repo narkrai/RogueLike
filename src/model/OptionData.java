@@ -68,8 +68,19 @@ public class OptionData {
    /**
     * strategie choisie
     */
-   private int strategy;
+   private IStrategy strategy = new Idiot();
+   /**
+    * Nom du joueur
+    */
+   private String playerName = "Lambda ce heros";
 
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
 
 
     static private OptionData DataInstance = new OptionData();
@@ -186,11 +197,11 @@ public class OptionData {
         return maxGoldTresaure;
     }
     
-    public void setStrategy(int strategy) {
+    public void setStrategy(IStrategy strategy) {
         this.strategy = strategy;
     }
 
-    public int getStrategy() {
+    public IStrategy getStrategy() {
         return strategy;
     }
 
