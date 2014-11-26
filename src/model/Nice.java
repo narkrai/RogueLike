@@ -26,4 +26,8 @@ public class Nice implements IStrategy {
         // TODO Implement this method
         return null;
     }
+    
+    public String toString(){
+        return "Nice";
+    }
 }

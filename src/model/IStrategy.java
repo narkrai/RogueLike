@@ -12,4 +12,9 @@ public interface IStrategy {
     public abstract Cell CreationCell(Room r);
     
     public abstract ArrayList<Room> CreateArborescence();
+
+    /**
+     * @return le nom de la strategie
+     */
+    public abstract String toString();
 }
