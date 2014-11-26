@@ -7,6 +7,7 @@ import java.util.Random;
  * La classe Monster définie tous les monstres que le joueur va rencontrer
  * Ils héritent de la classe Character
  * @author Dinar
+ * @author Nicolas Nguyen
  */
 public class Monster extends Character {
     
@@ -83,11 +84,11 @@ public class Monster extends Character {
             
             int goldNow = player.getGold()+this.getGold();
             player.setGold(goldNow) ;
-            res = new Action(VICTORY , "Vous avez battu "+this.getName()+" de force "+ this.getStrength()+". Vous recevez "+this.getGold()+ "pièces d'or.");
+            res = new Action(VICTORY , "You have killed "+this.getName()+" ("+ this.getStrength()+" strength). You looted "+this.getGold()+ "golds.");
         }
         else 
         {
-            res = new Action(LOSE, "Vous avez perdu contre "+this.getName()+" de force "+this.getStrength());
+            res = new Action(LOSE, "You have died from "+this.getName()+" ("+this.getStrength()+" strength)");
         }
         return res;
     }

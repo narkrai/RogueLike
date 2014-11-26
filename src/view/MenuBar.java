@@ -49,10 +49,7 @@ public class MenuBar extends JMenuBar{
         
         newGame.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                Game.getInstance().restart();
-                IHM_Board.getInstance().refresh();
-                IHM_Controls.getInstance().setPlayable(true);
-                IHM_Recap.getInstance().refresh();
+                IHM_GameUI.getInstance().newGame();
             }
         });
         

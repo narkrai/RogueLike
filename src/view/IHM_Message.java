@@ -20,6 +20,7 @@ import model.Message;
 public class IHM_Message extends JPanel{
     private     JTextArea       msgTextArea;    // JTextArea qui contient le message
     private     String          msg;            // String du message
+    private static      IHM_Message      uniqueInstance = null;
     
     /**
      * Constructeur de l'IHM_Message
@@ -50,6 +51,26 @@ public class IHM_Message extends JPanel{
         // Bordure
         Border b =  BorderFactory.createLineBorder(Color.black);
         this.setBorder(b);
+    }
+
+    public void setEmpty() {
+        this.msgTextArea.setText("Message : ");
+    }
+
+    public static IHM_Message getInstance()
+    {
+        if (uniqueInstance == null) 
+        {
+            try 
+            {
+            uniqueInstance = new IHM_Message();
+            } 
+            catch (Exception e) 
+            {
+                e.printStackTrace();
+            }
+        }
+        return uniqueInstance;
     }
     
     /**

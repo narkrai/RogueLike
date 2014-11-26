@@ -58,7 +58,7 @@ public class IHM_GameUI extends JFrame{
         gameOverPanel = new IHM_GameOver();
         exitPanel = new IHM_Exit();
         sumPanel = IHM_Recap.getInstance();
-        msgPanel = new IHM_Message();
+        msgPanel = IHM_Message.getInstance();
         
         // Panel au centre, le board
         board = IHM_Board.getInstance();
@@ -120,14 +120,19 @@ public class IHM_GameUI extends JFrame{
 
             break;
             case TELEPORT :
+            controls.setPlayable(false);
             stairsPanel = new IHM_Stairs(ar);
             stairsPanel.setVisible(true);
             break;  
         }  
     }
 
-    public void updateComposants() {
-        
+    public void newGame() {
+        Game.getInstance().restart();                   // Restart la game
+        IHM_Controls.getInstance().setPlayable(true);   // Remet la playability à true
+        IHM_Board.getInstance().refresh();              // Refresh la board pour la nouvelle game
+        IHM_Recap.getInstance().refresh();              // Refresh le recap pour la nouvelle game
+        IHM_Message.getInstance().setEmpty();
         
     }
 

@@ -32,9 +32,9 @@ public class IHM_Stairs extends JFrame{
         Border b = BorderFactory.createEmptyBorder(1,1,1,1);
         Font font = new Font("Arial", Font.BOLD, 12); // Police utilisé par la JTextArea pour match le reste de l'interface
         
-        this.setSize(300,300);
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
+        setSize(300,300);
+        setLocationRelativeTo(null);
+        setResizable(false);
 
         // JPanel de la frame
         JPanel pMsg = new JPanel();
@@ -87,6 +87,7 @@ public class IHM_Stairs extends JFrame{
                 setVisible(false);
                 IHM_Board.getInstance().refresh();
                 IHM_Recap.getInstance().refresh();
+                IHM_Controls.getInstance().setPlayable(true);
             }
         });
         

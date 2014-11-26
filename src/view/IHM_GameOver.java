@@ -26,9 +26,9 @@ public class IHM_GameOver extends JFrame{
      * Méthode constructeur de IHM_GameOver
      */
     public IHM_GameOver() {
-        this.setSize(300,300);
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
+        setSize(300,300);
+        setLocationRelativeTo(null);
+        setResizable(false);
 
         Border b = BorderFactory.createEmptyBorder(1,1,1,1);    // Bordure invisible
         Font font = new Font("Arial", Font.BOLD, 12);           // Police qui sera utilisé dans le JTextArea pour match la police des autres parties de l'interface
@@ -77,10 +77,7 @@ public class IHM_GameOver extends JFrame{
         bReplay.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);                              // Ferme la frame
-                Game.getInstance().restart();                   // Restart la game
-                IHM_Controls.getInstance().setPlayable(true);   // Remet la playability à true
-                IHM_Board.getInstance().refresh();              // Refresh la board pour la nouvelle game
-                IHM_Recap.getInstance().refresh();              // Refresh le recap pour la nouvelle game
+                IHM_GameUI.getInstance().newGame();
             }
         });
         
@@ -101,7 +98,7 @@ public class IHM_GameOver extends JFrame{
         /**
          * TODO compl?ter le message
          */
-        msg ="You have died from "+m.getMessage();
+        msg =m.getMessage();
         msgTextArea.setText(msg);
     }
 }

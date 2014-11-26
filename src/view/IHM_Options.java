@@ -182,8 +182,7 @@ public class IHM_Options  extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 changeOptions();
                 setVisible(false);
-                IHM_Board.getInstance().refresh();
-                IHM_Recap.getInstance().refresh();
+                IHM_GameUI.getInstance().newGame();
             }
         });      
         bClose.addActionListener(new ActionListener(){
