@@ -68,7 +68,7 @@ public class IHM_Options  extends JFrame{
         JPanel pseudoPan = new JPanel();
         pseudoPan.setLayout(new GridLayout(2,0));
         JLabel pLabel = new JLabel("Pseudo : ");
-        pTextField = new JTextField();
+        pTextField = new JTextField(op.getPlayerName());
         pseudoPan.add(pLabel);
         pseudoPan.add(pTextField);
         panOption.add(pseudoPan);
@@ -78,13 +78,10 @@ public class IHM_Options  extends JFrame{
         stratPan.setLayout(new GridLayout(2,0));
         JLabel sLabel = new JLabel("Strategy : ");
         strategyComboBox = new JComboBox<String>();
-        /*strategyComboBox.addItem("Idiot");
-        strategyComboBox.addItem("Nice (not implemented)");*/
         for (Object s : op.getListStrategy()) {
             strategyComboBox.addItem(s.toString());
         }
         
-        //strategyComboBox.setSelectedIndex(op.getStrategy());
         stratPan.add(sLabel);
         stratPan.add(strategyComboBox);
         panOption.add(stratPan);
@@ -103,29 +100,6 @@ public class IHM_Options  extends JFrame{
                                         dTextField.setText(Integer.toString(dSlider.getValue()));
                                 }
                         });
-        dTextField.addKeyListener(new KeyAdapter(){
-                    @Override
-                    public void keyReleased(KeyEvent ke) {
-                        String typed = dTextField.getText();
-                        dSlider.setValue(0);
-                        if(!typed.matches("\\d+") || typed.length() > 3) {
-                            return;
-                        }
-                        int value = Integer.parseInt(typed);
-                        dSlider.setValue(value);
-                    }
-                    
-                    public void keyTyped(KeyEvent ke) {
-                        char c = ke.getKeyChar();
-                        if (!((c >= '0') && (c <= '9') ||
-                                 (c == KeyEvent.VK_BACK_SPACE) ||
-                                 (c == KeyEvent.VK_DELETE))) {
-                                getToolkit().beep();
-                                ke.consume();
-                              }
-
-                    }
-                });
         dPan.add(dSliderLabel);
         dPan.add(dSlider);
         dPan.add(dTextField);
@@ -146,29 +120,6 @@ public class IHM_Options  extends JFrame{
                                         maxDTextField.setText(Integer.toString(maxDSlider.getValue()));
                                 }
                         });
-        maxDTextField.addKeyListener(new KeyAdapter(){
-                    @Override
-                    public void keyReleased(KeyEvent ke) {
-                        String typed = maxDTextField.getText();
-                        maxDSlider.setValue(0);
-                        if(!typed.matches("\\d+") || typed.length() > 3) {
-                            return;
-                        }
-                        int value = Integer.parseInt(typed);
-                        maxDSlider.setValue(value);
-                    }
-                    
-                    public void keyTyped(KeyEvent ke) {
-                        char c = ke.getKeyChar();
-                        if (!((c >= '0') && (c <= '9') ||
-                                 (c == KeyEvent.VK_BACK_SPACE) ||
-                                 (c == KeyEvent.VK_DELETE))) {
-                                getToolkit().beep();
-                                ke.consume();
-                              }
-
-                    }
-                });
         maxDPan.add(maxDSliderLabel);
         maxDPan.add(maxDSlider);
         maxDPan.add(maxDTextField);
@@ -188,28 +139,6 @@ public class IHM_Options  extends JFrame{
                                         xTextField.setText(Integer.toString(xSlider.getValue()));
                                 }
                         });
-        xTextField.addKeyListener(new KeyAdapter(){
-                    @Override
-                    public void keyReleased(KeyEvent ke) {
-                        String typed = xTextField.getText();
-                        xSlider.setValue(0);
-                        if(!typed.matches("\\d+") || typed.length() > 3) {
-                            return;
-                        }
-                        int value = Integer.parseInt(typed);
-                        xSlider.setValue(value);
-                    }
-                    
-                    public void keyTyped(KeyEvent ke) {
-                        char c = ke.getKeyChar();
-                        if (!((c >= '0') && (c <= '9') ||
-                                 (c == KeyEvent.VK_BACK_SPACE) ||
-                                 (c == KeyEvent.VK_DELETE))) {
-                                getToolkit().beep();
-                                ke.consume();
-                              }
-                    }
-                });
         xPan.add(xSliderLabel);
         xPan.add(xSlider);
         xPan.add(xTextField);
@@ -231,30 +160,6 @@ public class IHM_Options  extends JFrame{
                                         yTextField.setText(Integer.toString(ySlider.getValue()));
                                 }
                         });
-        yTextField.addKeyListener(new KeyAdapter(){
-                    @Override
-                    public void keyReleased(KeyEvent ke) {
-                        
-                        String typed = yTextField.getText();
-                        ySlider.setValue(0);
-                        if(!typed.matches("\\d+") || typed.length() > 3) {
-                            return;
-                        }
-                        int value = Integer.parseInt(typed);
-                        ySlider.setValue(value);
-                    }
-                    
-                    public void keyTyped(KeyEvent ke) {
-                        char c = ke.getKeyChar();
-                        if (!((c >= '0') && (c <= '9') ||
-                                 (c == KeyEvent.VK_BACK_SPACE) ||
-                                 (c == KeyEvent.VK_DELETE))) {
-                                getToolkit().beep();
-                                ke.consume();
-                              }
-
-                    }
-                });
         yPan.add(ySliderLabel);
         yPan.add(ySlider);
         yPan.add(yTextField);

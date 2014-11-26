@@ -18,6 +18,7 @@ public class MenuBar extends JMenuBar{
         JMenu help = new JMenu("?");
         JMenuItem newGame = new JMenuItem("New game");
         JMenuItem option = new JMenuItem("Option");
+        JMenuItem hs = new JMenuItem("High Score");
         JMenuItem apropos = new JMenuItem("A propos");
         
         
@@ -27,6 +28,7 @@ public class MenuBar extends JMenuBar{
         
         // Ajoute les sous-menu dans les menu
         game.add(newGame);
+        game.add(hs);
         game.add(option);
         help.add(apropos);
         
@@ -34,6 +36,14 @@ public class MenuBar extends JMenuBar{
         option.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 optionFrame.setVisible(true);
+            }
+        });
+        
+        hs.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                /*
+                 * NOT IMPLEMENTED YET
+                 */
             }
         });
         
