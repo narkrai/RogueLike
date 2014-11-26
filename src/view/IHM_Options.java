@@ -20,13 +20,11 @@ import model.OptionData;
 
 /**
  * Frame Option qui va afficher et mettre à jour OptionData en fonction des choix de l'utilisateur.
+ * @author : Nicolas Nguyen
  */
 public class IHM_Options  extends JFrame{
 
-    OptionData op = OptionData.getDataInstance();
-    
-    private     JPanel              pan;
-    private     JPanel              panOption;
+    OptionData op = OptionData.getDataInstance();           // On récupère l'OptionData
     // Pseudo
     private     JTextField          pTextField;
     // Strategy
@@ -55,11 +53,11 @@ public class IHM_Options  extends JFrame{
         this.setLocationRelativeTo(null);
         
         // Panel principal
-        pan = new JPanel();
+        JPanel pan = new JPanel();
         pan.setLayout(new BorderLayout());
         
         // Panel Option
-        panOption = new JPanel();
+        JPanel panOption = new JPanel();
         panOption.setLayout(new GridLayout(3,2, 10, 10));
         Border b = BorderFactory.createEmptyBorder(5,5,5,5);
         panOption.setBorder(b);
