@@ -10,6 +10,7 @@ import model.IStrategy;
 import model.Idiot;
 import model.Item;
 import model.Message;
+import model.OptionData;
 import model.Player;
 import model.Room;
 import model.Stair;
@@ -81,7 +82,7 @@ public class Game {
      */
     private Game() 
     {
-        this.strategie = new Idiot() ;
+        this.strategie = OptionData.getDataInstance().getStrategy() ;
         this.addRoom();
     }
     
@@ -127,7 +128,7 @@ public class Game {
         player.setGold(0);
         player.setMonsterKilled(0);
         player.setStrength(10);
-        player.setName("LamdbaMan");
+        player.setName(OptionData.getDataInstance().getPlayerName());
         Room r = this.getCurrentRoom();
         Cell c = this.getCurrentCell();
         r.lightNear(c.getPositionX(),c.getPositionY());
