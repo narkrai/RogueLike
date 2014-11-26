@@ -87,7 +87,7 @@ public class Monster extends Character {
         }
         else 
         {
-            res = new Action(LOSE, "Vous avez perdu contre "+this.getName()+" de force "+this.getStrength()+". Vous recevez "+this.getGold() +"pièces d'or.");
+            res = new Action(LOSE, "Vous avez perdu contre "+this.getName()+" de force "+this.getStrength());
         }
         return res;
     }
