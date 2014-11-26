@@ -76,7 +76,7 @@ public class OptionData {
    /**
     * Nom du joueur
     */
-   private String playerName = "Lambda ce heros";
+   private String playerName = "Rien";
    /**
     * Liste de toutes les strategies
     */

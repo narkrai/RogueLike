@@ -50,7 +50,7 @@ public class IHM_Options  extends JFrame{
     
     public IHM_Options(){
         this.setTitle("Option");
-        this.setSize(300,240);
+        this.setSize(300,300);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         
@@ -135,15 +135,15 @@ public class IHM_Options  extends JFrame{
         
         JPanel maxDPan = new JPanel();
         maxDPan.setLayout(new GridLayout(3,0));
-        JLabel maxDSliderLabel = new JLabel("Max depth");
-        maxDSlider = new JSlider(0,5);
+        JLabel maxDSliderLabel = new JLabel("Max door per room");
+        maxDSlider = new JSlider(1,5);
         maxDSlider.setValue(op.getDepthmax());
         maxDTextField = new JTextField(Integer.toString(op.getDepthmax()));
         maxDTextField.setEditable(false);
         maxDSlider.addChangeListener(new ChangeListener() {
                                 @Override
                                 public void stateChanged(ChangeEvent e) {
-                                        dTextField.setText(Integer.toString(dSlider.getValue()));
+                                        maxDTextField.setText(Integer.toString(maxDSlider.getValue()));
                                 }
                         });
         maxDTextField.addKeyListener(new KeyAdapter(){
@@ -169,9 +169,9 @@ public class IHM_Options  extends JFrame{
 
                     }
                 });
-        maxDPan.add(dSliderLabel);
-        maxDPan.add(dSlider);
-        maxDPan.add(dTextField);
+        maxDPan.add(maxDSliderLabel);
+        maxDPan.add(maxDSlider);
+        maxDPan.add(maxDTextField);
         panOption.add(maxDPan);
         
         // Panel pour le x, POS 5 dans panOption
@@ -277,7 +277,7 @@ public class IHM_Options  extends JFrame{
         pButton.add(bClose,c1);
         bSave.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                cngeOption();
+                changeOptions();
                 setVisible(false);
                 IHM_Board.getInstance().refresh();
             }
@@ -295,14 +295,13 @@ public class IHM_Options  extends JFrame{
      * Methode appelée lorsque l'utilisateur appuie sur le bouton OK
      * Va mettre à jour l'OptionData et ferme la fenêtre
      */
-    public void cngeOption() { 
+    public void changeOptions() { 
         op.setPlayerName(pTextField.getText());
-        op.setStrategy((IStrategy)strategyComboBox.getSelectedItem());
+        op.setStrategy(op.getListStrategy().get(strategyComboBox.getSelectedIndex()));
         op.setDepthmax(dSlider.getValue());
         op.setDoormax(maxDSlider.getValue());
         op.setTailleXRoom(xSlider.getValue());
         op.setTailleYRoom(ySlider.getValue());
-
         Game.getInstance().restart();
         IHM_Controls.getInstance().setPlayable(true);
     }
@@ -320,6 +319,9 @@ public class IHM_Options  extends JFrame{
      */
     public void refreshValue() {
         strategyComboBox.setSelectedItem(op.getStrategy());
+        pTextField.setText(op.getPlayerName());
+        maxDSlider.setValue(op.getDoormax());
+        maxDTextField.setText(Integer.toString(op.getDoormax()));
         dSlider.setValue(op.getDepthmax());
         dTextField.setText(Integer.toString(op.getDepthmax()));
         xSlider.setValue(op.getTailleXRoom());
