@@ -1,22 +1,30 @@
 package view;
 
-import java.awt.*;
-
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
 
-/**
- * JFrame pour l'info des auteurs
- * Pourrait intégrer les règles si j'ai le temps
- * @author : Nicolas Nguyen
- */
+import model.OptionData;
 
-public class IHM_APropos extends JFrame {
-    
-    public IHM_APropos() {
-        this.setTitle("A propos");
+public class IHM_Help extends JFrame{
+    public IHM_Help() {
+        Border b = BorderFactory.createEmptyBorder(5,5,5,5); 
+        
+        this.setTitle("RogueLike");
         this.setSize(300,300);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -30,15 +38,15 @@ public class IHM_APropos extends JFrame {
         c.gridy = 0;
         pButton.add(bClose,c);
         this.add(pButton, BorderLayout.SOUTH);
-        
+
         // JPanel pour la partie texte de la JFrame
         JPanel pMsg = new JPanel();
         String text = "<html><h2><b>Rogue like</h2></p> <br><p>proposé par Karim Dinar et Nicolas Nguyen </p></html>";
         JLabel msg = new JLabel();
         msg.setText(text);
         msg.setPreferredSize(new Dimension(180, 120));
-
         pMsg.add(msg);
+        
         this.add(pMsg, BorderLayout.CENTER);
         
         // Actionlistener sur le bouton Close
@@ -48,5 +56,4 @@ public class IHM_APropos extends JFrame {
             }
         });
     }
-
 }

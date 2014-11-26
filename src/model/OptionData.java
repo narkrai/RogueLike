@@ -79,7 +79,7 @@ public class OptionData {
    /**
     * Nom du joueur
     */
-   private String playerName = "Player";
+   private String playerName;
    /**
     * Liste de toutes les strategies
     */
@@ -141,7 +141,7 @@ public class OptionData {
     }
 
 
-    public static OptionData getDataInstance() {
+    public static OptionData getInstance() {
         if (dataInstance == null) 
         {
             try 

@@ -20,6 +20,8 @@ public class IHM_Recap extends JPanel{
     private     String      gold            = "";
     private     String      level           = "";
     private     String      monster         = "";
+    
+    private static      IHM_Recap      uniqueInstance = null;
 
     /**
      * Constructeur de la classe IHM_Recap, la partie droite de l'interface qui récapitule la situation dans le jeu : force, or, niveau et monstres proches
@@ -81,6 +83,22 @@ public class IHM_Recap extends JPanel{
         // Bordure noire autour du panel
         Border b =  BorderFactory.createLineBorder(Color.black);
         this.setBorder(b);
+    }
+    
+    public static IHM_Recap getInstance()
+    {
+        if (uniqueInstance == null) 
+        {
+            try 
+            {
+            uniqueInstance = new IHM_Recap();
+            } 
+            catch (Exception e) 
+            {
+                e.printStackTrace();
+            }
+        }
+        return uniqueInstance;
     }
     
     /**

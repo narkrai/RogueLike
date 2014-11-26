@@ -45,7 +45,7 @@ public class Idiot implements IStrategy {
     @Override
     public void CreationRoom(Room roomPere) {
         
-        OptionData opdataCurrent = OptionData.getDataInstance();
+        OptionData opdataCurrent = OptionData.getInstance();
         
         Cell cellCreated;
         Cell cellChosen;
@@ -115,7 +115,7 @@ public class Idiot implements IStrategy {
      */
     public Cell CreationCell(Room roomPere) {
         
-        OptionData opdataCurrent = OptionData.getDataInstance();
+        OptionData opdataCurrent = OptionData.getInstance();
         
         
         Cell cellCreated ;
@@ -165,7 +165,7 @@ public class Idiot implements IStrategy {
      */
     private CellUnit MakeCellUnit(){
         
-        OptionData opdataCurrent = OptionData.getDataInstance();
+        OptionData opdataCurrent = OptionData.getInstance();
         
         CellUnit res = new CellUnit();
         

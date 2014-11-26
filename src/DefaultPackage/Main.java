@@ -3,6 +3,7 @@ package DefaultPackage;
 import controller.Game;
 
 import view.IHM_GameUI;
+import view.IHM_Welcome;
 
 public class Main {
     
@@ -10,7 +11,7 @@ public class Main {
     
     public static void main(String[] args ) {
         
-        IHM_GameUI.getInstance();
+        new IHM_Welcome();
     }
     
 

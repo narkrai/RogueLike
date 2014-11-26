@@ -57,11 +57,10 @@ public class IHM_GameUI extends JFrame{
         
         gameOverPanel = new IHM_GameOver();
         exitPanel = new IHM_Exit();
-        sumPanel = new IHM_Recap();
+        sumPanel = IHM_Recap.getInstance();
         msgPanel = new IHM_Message();
         
         // Panel au centre, le board
-        //board = new IHM_Board(Game.getInstance().getCurrentRoom().getTailleX(),Game.getInstance().getCurrentRoom().getTailleY());
         board = IHM_Board.getInstance();
         board.refresh();
         centerPan = new JPanel();
@@ -107,7 +106,6 @@ public class IHM_GameUI extends JFrame{
             board.refresh();
             sumPanel.refresh();
             msgPanel.refresh(ar);
-            
             break;
             case GAMEOVER :
             controls.setPlayable(false);

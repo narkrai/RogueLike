@@ -26,7 +26,6 @@ public class IHM_GameOver extends JFrame{
      * Méthode constructeur de IHM_GameOver
      */
     public IHM_GameOver() {
-        this.setTitle("Game Over!");
         this.setSize(300,300);
         this.setLocationRelativeTo(null);
         this.setResizable(false);

@@ -11,7 +11,7 @@ import javax.swing.JMenuItem;
 
 public class MenuBar extends JMenuBar{
     private IHM_Options optionFrame = new IHM_Options();
-    private IHM_APropos about = new IHM_APropos();
+    private IHM_Help helpFrame = new IHM_Help();
     public MenuBar() {
         // Déclaration des JMenu et JMenuItem
         JMenu game = new JMenu("Game");
@@ -52,12 +52,13 @@ public class MenuBar extends JMenuBar{
                 Game.getInstance().restart();
                 IHM_Board.getInstance().refresh();
                 IHM_Controls.getInstance().setPlayable(true);
+                IHM_Recap.getInstance().refresh();
             }
         });
         
         apropos.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                about.setVisible(true);
+                helpFrame.setVisible(true);
             }
         });
 

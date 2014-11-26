@@ -82,7 +82,7 @@ public class Game {
      */
     private Game() 
     {
-        this.strategie = OptionData.getDataInstance().getStrategy() ;
+        this.strategie = OptionData.getInstance().getStrategy() ;
         this.addRoom();
     }
     
@@ -128,7 +128,7 @@ public class Game {
         player.setGold(0);
         player.setMonsterKilled(0);
         player.setStrength(10);
-        player.setName(OptionData.getDataInstance().getPlayerName());
+        player.setName(OptionData.getInstance().getPlayerName());
         Room r = this.getCurrentRoom();
         Cell c = this.getCurrentCell();
         r.lightNear(c.getPositionX(),c.getPositionY());

@@ -210,7 +210,7 @@ public class Room extends Cell{
      */
     @Override
     public int numeroEtage() {
-        OptionData op = OptionData.getDataInstance();
+        OptionData op = OptionData.getInstance();
         int res  = 0 ;
         
         if(super.getConteneur() == null){

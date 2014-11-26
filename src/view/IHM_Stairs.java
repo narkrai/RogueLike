@@ -32,7 +32,6 @@ public class IHM_Stairs extends JFrame{
         Border b = BorderFactory.createEmptyBorder(1,1,1,1);
         Font font = new Font("Arial", Font.BOLD, 12); // Police utilisé par la JTextArea pour match le reste de l'interface
         
-        this.setTitle("Game Over!");
         this.setSize(300,300);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -87,6 +86,7 @@ public class IHM_Stairs extends JFrame{
                 Game.getInstance().TeleportInRoom(m.getRoom());
                 setVisible(false);
                 IHM_Board.getInstance().refresh();
+                IHM_Recap.getInstance().refresh();
             }
         });
         

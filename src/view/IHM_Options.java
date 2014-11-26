@@ -24,7 +24,7 @@ import model.OptionData;
  */
 public class IHM_Options  extends JFrame{
 
-    OptionData op = OptionData.getDataInstance();           // On récupère l'OptionData
+    OptionData op = OptionData.getInstance();           // On récupère l'OptionData
     // Pseudo
     private     JTextField          pTextField;
     // Strategy
@@ -183,6 +183,7 @@ public class IHM_Options  extends JFrame{
                 changeOptions();
                 setVisible(false);
                 IHM_Board.getInstance().refresh();
+                IHM_Recap.getInstance().refresh();
             }
         });      
         bClose.addActionListener(new ActionListener(){
