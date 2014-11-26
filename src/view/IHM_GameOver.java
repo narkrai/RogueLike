@@ -101,7 +101,7 @@ public class IHM_GameOver extends JFrame{
         /**
          * TODO compl?ter le message
          */
-        msg ="You have died from ";
+        msg ="You have died from "+m.getMessage();
         msgTextArea.setText(msg);
     }
 }
