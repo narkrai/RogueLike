@@ -23,10 +23,8 @@ public class Player extends Character {
      * @param strength force du Player
      * @param name nom du Player
      */
-    private Player(int gold, int strength, String name) {
-        this.setGold(gold);
-        this.setStrength(strength);
-        this.setName(name);
+    private Player() {
+        super();
     }
 
     public void setMonsterKilled(int monsterKilled) {
@@ -44,7 +42,7 @@ public class Player extends Character {
     public static Player getInstance(){
         if (uniquePlayer == null) {
             try {
-            uniquePlayer = new Player(0,10,"Jean Kevin de la tour ");
+            uniquePlayer = new Player();
            
         } catch (Exception e) {
             e.printStackTrace();

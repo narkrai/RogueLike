@@ -30,10 +30,12 @@ public class IHM_Recap extends JPanel{
         
         Border c =  BorderFactory.createEmptyBorder(5,5,30,5);  // Bordure invisible entre chaque JLabel
         
-        strength    = "<html><p>Strength :</p></html>";
-        gold        = "<html><p>Gold : gold</p></html>";
-        level       = "<html><p>Current level : </p></html>";
-        monster     = "<html><p>Monsters nearby : </p></html>";
+        int x = Game.getInstance().getCurrentCell().getPositionX();
+        int y = Game.getInstance().getCurrentCell().getPositionY();
+        strength    = "<html><p>Strength : "+Game.getInstance().getPlayer().getStrength()+"</p></html>";
+        gold        = "<html><p>Gold : "+Game.getInstance().getPlayer().getGold()+" gold</p></html>";
+        level       = "<html><p>Current level : "+Game.getInstance().getCurrentLevel() +"</p></html>";
+        monster     = "<html><p>Monsters nearby : "+Game.getInstance().getCurrentRoom().nbMonsterNear(x, y)+ "</p></html>";
         
         // Force
         JPanel strengthPanel = new JPanel();
@@ -76,8 +78,6 @@ public class IHM_Recap extends JPanel{
         this.add(levelLabel);
         this.add(monsterLabel);
         
-        refresh(new Message());
-        
         // Bordure noire autour du panel
         Border b =  BorderFactory.createLineBorder(Color.black);
         this.setBorder(b);
@@ -87,11 +87,13 @@ public class IHM_Recap extends JPanel{
      * Méthode qui va refresh les informations.
      * @param Message
      */
-    public void refresh(Message ar) {
+    public void refresh() {
+        int x = Game.getInstance().getCurrentCell().getPositionX();
+        int y = Game.getInstance().getCurrentCell().getPositionY();
         strength    = "<html><p>Strength : "+Game.getInstance().getPlayer().getStrength()+"</p></html>";
         gold        = "<html><p>Gold : "+Game.getInstance().getPlayer().getGold()+" gold</p></html>";
         level       = "<html><p>Current level : "+Game.getInstance().getCurrentLevel() +"</p></html>";
-        monster     = "<html><p>Monsters nearby : "+ar.getMonsterNearby()+ "</p></html>";
+        monster     = "<html><p>Monsters nearby : "+Game.getInstance().getCurrentRoom().nbMonsterNear(x, y)+ "</p></html>";
 
         strengthLabel.setText(strength);
         goldLabel.setText(gold);

@@ -105,7 +105,7 @@ public class IHM_GameUI extends JFrame{
             
             case RIEN :
             board.refresh();
-            sumPanel.refresh(ar);
+            sumPanel.refresh();
             msgPanel.refresh(ar);
             
             break;
