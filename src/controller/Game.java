@@ -486,7 +486,7 @@ public class Game {
             if( c instanceof CellUnit ) {
                 CellUnit cC = (CellUnit) c ;
                 
-                if( cC.getItem() == null) {
+                if( !(cC.getItem() instanceof Stair)) {
                     cC.setItem(this.player);
                     r.lightNear(cC.getPositionX(), cC.getPositionY());
                     
