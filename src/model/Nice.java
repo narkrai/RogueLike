@@ -5,7 +5,6 @@ import controller.MonsterFactory;
 import java.util.ArrayList;
 import java.util.Random;
 
-import view.IHM_Welcome;
 /**
  * La Classe Nice est une strategie inspire de Idiot mais (( tres ) nettement) amelioré  pour la création de 
  * l'arborescence de Room à partir de l'OptionData

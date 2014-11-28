@@ -1,8 +1,7 @@
 package model;
 
-import controller.Game;
 
-import model.Action;
+
 /**
  * La classe herite de Tresaure ,elle contient les pieces d'or que le joueur va ramasser 
  * @author Dinar

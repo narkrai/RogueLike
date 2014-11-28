@@ -1,15 +1,14 @@
 package model;
 
-import controller.Game;
 import controller.MonsterFactory;
 
-import java.io.Console;
+
 
 import java.util.ArrayList;
 
 import java.util.Random;
 
-import view.IHM_GameUI;
+
 
 /**
  * La Classe idiot est une strategie envisable pour la création de l'arborescence de Room à partir de l'OptionData

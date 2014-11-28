@@ -7,7 +7,6 @@ import model.Cell;
 import model.CellUnit;
 import model.Exit;
 import model.IStrategy;
-import model.Idiot;
 import model.Item;
 import model.Message;
 import model.OptionData;
@@ -40,7 +39,7 @@ public class Game {
     //constante de valeurs entre Game et action
     private final int NORMAL = 0 ;
     private final int VICTORY = 1;
-    private final int LOSE = 2;
+    //private final int LOSE = 2;
     
     //constante correspondant aux movements
     private final int RIGHT = 0;
@@ -403,7 +402,6 @@ public class Game {
                    CellUnit cU = (CellUnit) cTest ;
                    if(cU.getItem() == player) 
                    {
-                       System.out.println("La case trouve est "+cU.toString());
                        res = cU.getConteneur();
                        estTrouve = true;
                    }
@@ -515,8 +513,6 @@ public class Game {
             for(int y = 0 ; y < r.getTailleY(); y++) {
                 
                 res[x][y] = r.getCell(x, y).getCHARACTER();
-                //System.out.println("get BOOL :"+ r.getCell(x, y).isDiscovered() );
-                System.out.println("get char :"+ r.getCell(x, y).getCHARACTER() );
                 
             }
         }

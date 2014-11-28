@@ -1,8 +1,6 @@
 package model;
 
-import controller.Game;
 
-import model.Action;
 
 /**
  * Classe d'item qui permet au joueur de gagner le jeu

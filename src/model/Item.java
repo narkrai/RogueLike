@@ -1,6 +1,5 @@
 package model;
 
-import controller.Game;
 
 /**
  * Classe pere regroupant les items contenus dans les CellUnit

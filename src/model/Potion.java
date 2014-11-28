@@ -1,6 +1,5 @@
 package model;
 
-import controller.Game;
 
 /**
  * Classe qui gere les potions que le Player va gouter dans ces aventures epiques

@@ -4,7 +4,6 @@ import model.Monster;
 
 public  class MonsterFactory {
     
-    private static MonsterFactory instance=null;
     
     private  static MonsterType[] ListMonster = {
         new MonsterType("Dragon", 25, 50, 300, 500, 0),
