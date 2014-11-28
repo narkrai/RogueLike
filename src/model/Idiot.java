@@ -27,7 +27,7 @@ public class Idiot implements IStrategy {
     /**
      * Nombre de room crée total
      */
-    int roomCreated = 0;
+    private int roomCreated = 0;
     
     /**
      * Construteur vide de la classe
@@ -50,10 +50,11 @@ public class Idiot implements IStrategy {
         Cell cellCreated;
         Cell cellChosen;
         
-        roomPere.setContenus(new ArrayList<Cell>());
         Random rand = new Random();
         int randX;
         int randY;
+        
+        roomPere.setContenus(new ArrayList<Cell>());
         
         roomPere.setTailleX(opdataCurrent.getTailleXRoom());
         roomPere.setTailleY(opdataCurrent.getTailleYRoom());
@@ -156,7 +157,11 @@ public class Idiot implements IStrategy {
         
         Room res  = new Room(this,pere);
         System.out.println("Nouvelle Room crée");
+        
+        this.roomCreated++;
         return res;
+        
+       
     }
     /**
      *Permet la création d'une CellUnit selon l'OptionData et de mettre un objet au hasard
@@ -215,7 +220,9 @@ public class Idiot implements IStrategy {
     public ArrayList<Room> CreateArborescence() {
         
        
-        int nbOld = OptionData.getInstance().getRoomMax();
+       int nbOld = OptionData.getInstance().getRoomMax();
+       
+       roomCreated = 0;
        
        int RandX;
        int RandY;
