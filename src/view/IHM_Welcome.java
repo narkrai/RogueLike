@@ -46,7 +46,7 @@ public class IHM_Welcome extends JFrame {
         
         // JPanel pour la partie texte de la JFrame
         JPanel pMsg = new JPanel();
-        String text = "<html><h2><b>Rogue like</h2></p> <br><p>proposé par Karim Dinar et Nicolas Nguyen </p></html>";
+        String text = "<html><h2><b>Rogue like</h2></p> <br><p>by Karim Dinar and Nicolas Nguyen </p></html>";
         JLabel msg = new JLabel();
         msg.setText(text);
         msg.setPreferredSize(new Dimension(180, 120));

@@ -1,7 +1,5 @@
 package DefaultPackage;
 
-
-
 import view.IHM_Welcome;
 
 public class Main {

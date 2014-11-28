@@ -3,17 +3,12 @@ package model;
 /**
  * Classe Action. Représente l'objet envoyé par les différentes méthodes "Actions"
  * Cette classe permet la communication entre les Items et le Game
- * @author Nguyen
+ * @author Nicolas Nguyen
  */
 public class Action {
 
-    //constante de valeurs entre Game et action
-    //private final int NORMAL = 0;
-    //private final int VICTORY = 1;
-    //private final int LOSE = 2;
-
     /**
-     * numero du signal (NORMAL VICTORY ou  LOSE)
+     * numero du signal (NORMAL VICTORY ou LOSE)
      */
     private int signal;
 
