@@ -10,7 +10,7 @@ public abstract class Item {
      *Le caractere de l'Item
      * @return le caractere du item
      */
-    public abstract char getCHARACTER();
+    public abstract char getCharacter();
 
     /**
      * les Actions fait par les items

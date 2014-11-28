@@ -36,7 +36,7 @@ public class Stair extends Item {
     }
 
     @Override
-    public char getCHARACTER() {
+    public char getCharacter() {
 
         return this.CHARACTER;
     }

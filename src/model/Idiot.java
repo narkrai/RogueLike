@@ -44,7 +44,7 @@ public class Idiot implements IStrategy {
      *
      */
     @Override
-    public void CreationRoom(Room roomPere) {
+    public void creationRoom(Room roomPere) {
 
         OptionData opdataCurrent = OptionData.getInstance();
 
@@ -65,7 +65,7 @@ public class Idiot implements IStrategy {
         for (int x = 0; x < roomPere.getTailleX(); x++) {
             for (int y = 0; y < roomPere.getTailleY(); y++) {
 
-                cellCreated = CreationCell(roomPere);
+                cellCreated = creationCell(roomPere);
                 cellCreated.setPositionX(x);
                 cellCreated.setPositionY(y);
                 cellCreated.setConteneur(roomPere);
@@ -109,7 +109,7 @@ public class Idiot implements IStrategy {
      * @param roomPere room parent
      * @return la Cell crée
      */
-    public Cell CreationCell(Room roomPere) {
+    public Cell creationCell(Room roomPere) {
 
         OptionData opdataCurrent = OptionData.getInstance();
 
@@ -215,7 +215,7 @@ public class Idiot implements IStrategy {
      * Cette methode cree egalement un objet sortie sur une des cases  d'une Room au niveau 0
      * @return la liste complete des Room
      */
-    public ArrayList<Room> CreateArborescence() {
+    public ArrayList<Room> createArborescence() {
 
 
         int nbOld = OptionData.getInstance().getRoomMax();

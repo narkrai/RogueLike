@@ -36,7 +36,7 @@ public class Nice implements IStrategy {
     private boolean cheminSortant = false;
 
     @Override
-    public void CreationRoom(Room roomPere) {
+    public void creationRoom(Room roomPere) {
         OptionData opdataCurrent = OptionData.getInstance();
 
 
@@ -158,7 +158,7 @@ public class Nice implements IStrategy {
                 //des cases sont deja crées il ne faut pas les recréer
                 if (roomPere.getCell(x, y) == null) {
 
-                    cellCreated = CreationCell(roomPere);
+                    cellCreated = creationCell(roomPere);
                     cellCreated.setPositionX(x);
                     cellCreated.setPositionY(y);
                     cellCreated.setConteneur(roomPere);
@@ -197,7 +197,7 @@ public class Nice implements IStrategy {
      * @param roomPere room parent
      * @return la Cell crée
      */
-    public Cell CreationCell(Room roomPere) {
+    public Cell creationCell(Room roomPere) {
 
         OptionData opdataCurrent = OptionData.getInstance();
 
@@ -284,7 +284,7 @@ public class Nice implements IStrategy {
 
 
     @Override
-    public ArrayList<Room> CreateArborescence() {
+    public ArrayList<Room> createArborescence() {
 
         roomCreated = 0;
         cheminSortant = false;

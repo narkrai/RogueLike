@@ -47,7 +47,7 @@ public class Chest extends Treasure {
     }
 
     @Override
-    public char getCHARACTER() {
+    public char getCharacter() {
 
         return this.CHARACTER;
     }

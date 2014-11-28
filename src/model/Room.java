@@ -43,7 +43,7 @@ public class Room extends Cell {
     public Room(IStrategy strat) {
 
 
-        strat.CreationRoom(this);
+        strat.creationRoom(this);
 
 
     }
@@ -58,7 +58,7 @@ public class Room extends Cell {
 
         this.setConteneur(conteneur);
 
-        strat.CreationRoom(this);
+        strat.creationRoom(this);
 
     }
 

@@ -35,7 +35,7 @@ public class Potion extends Treasure {
 
         String message = "";
         if (this.strength < 0) {
-            message = "Vous avez bu une potion toxique  pour votre sante. Vous perdez" + (-1 * this.strength) + ".";
+            message = "Vous avez bu une potion toxique  pour votre sante. Vous perdez " + (-1 * this.strength) + ".";
         } else {
             message = "Vous avez bu une potion benefique pour votre force .Vous gagnez  " + this.strength + ".";
         }
@@ -43,7 +43,7 @@ public class Potion extends Treasure {
     }
 
     @Override
-    public char getCHARACTER() {
+    public char getCharacter() {
 
         return this.CHARACTER;
     }

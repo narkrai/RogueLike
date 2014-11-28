@@ -33,7 +33,7 @@ public class CellUnit extends Cell {
         if (this.isDiscovered()) {
 
             if (this.getItem() != null) {
-                res = this.getItem().getCHARACTER();
+                res = this.getItem().getCharacter();
 
             } else {
                 res = '.';

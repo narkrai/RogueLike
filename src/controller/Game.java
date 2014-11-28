@@ -121,7 +121,7 @@ public class Game {
      */
     public void addRoom() 
     {
-        this.rooms = this.strategie.CreateArborescence();
+        this.rooms = this.strategie.createArborescence();
        
         player = Player.getInstance();
         player.setGold(0);
