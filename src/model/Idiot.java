@@ -14,7 +14,7 @@ import view.IHM_GameUI;
 /**
  * La Classe idiot est une strategie envisable pour la création de l'arborescence de Room à partir de l'OptionData
  *
- * *Les Room ont tous la  meme taille
+ * *Les Rooms ont tous la  meme taille
  * *les Items sont placés aléatoirement
  * *les Room ont tous un unique pere
  * *Il n'y qu'une seule sortie
@@ -293,9 +293,6 @@ public class Idiot implements IStrategy {
             //de nouvelle Rooms
             else {
 
-                /* r = new Room(this);*/
-
-                System.out.println("JE BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOUUUUUUUUUUUUUUUUUUUUUUUCCCCCCCCCCCCCLLLLLLLLLLLLLLLLLLLLEEEEEEEEEEEEEE !!!");
                 Room roomTaken = null;
                 int i = 0;
                 /*
@@ -312,7 +309,7 @@ public class Idiot implements IStrategy {
 
 
                         roomTaken = res.get(i);
-                        System.out.println("Niveau de cette salle :" + roomTaken.numeroEtage());
+
                     }
 
                     i++;
@@ -321,12 +318,12 @@ public class Idiot implements IStrategy {
                     this.roomCreated = 0;
                     r = null;
                     r = new Room(this);
-                    System.out.println("PPPniveau min pere = " + r.AvoirLeNiveauMinDesFils());
+
                 } else {
 
 
                     roomTaken = new Room(this, roomTaken.getConteneur());
-                    System.out.println("FFFniveau min pere = " + r.AvoirLeNiveauMinDesFils());
+
                 }
 
 

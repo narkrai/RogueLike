@@ -76,7 +76,7 @@ public class CellUnit extends Cell {
      * @return nombre de Gold de la CellUnit (sans les Gold des Monsters)
      */
     @Override
-    public int GetTotalGold() {
+    public int getTotalGold() {
         int res = 0;
         if (this.item instanceof Chest) {
             Chest t = (Chest) this.item;
@@ -90,7 +90,7 @@ public class CellUnit extends Cell {
      * @return nombre de Monster de la CellUnit (0 ou 1)
      */
     @Override
-    public int GetTotalMonster() {
+    public int getTotalMonster() {
         int i = 0;
 
         if (this.item instanceof Monster) {

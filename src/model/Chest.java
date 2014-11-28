@@ -3,25 +3,37 @@ package model;
 import controller.Game;
 
 import model.Action;
-
+/**
+ * La classe herite de Tresaure ,elle contient les pieces d'or que le joueur va ramasser 
+ * @author Dinar
+ */
 public class Chest extends Treasure {
+    /**
+     * Nombre de Gold 
+     */
     private int gold;
-
+/**
+ * character de l'objet
+ */
     final char CHARACTER = '$';
 
+
+
+    /**
+     *Constructeur
+     * @param gold nb de gold
+     */
+    public Chest(int gold) {
+        super();
+        this.gold = gold;
+
+    }
     public void setGold(int gold) {
         this.gold = gold;
     }
 
     public int getGold() {
         return gold;
-    }
-
-
-    public Chest(int gold) {
-        super();
-        this.gold = gold;
-
     }
 
     /**

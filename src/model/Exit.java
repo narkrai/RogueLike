@@ -6,7 +6,7 @@ import model.Action;
 
 /**
  * Classe d'item qui permet au joueur de gagner le jeu
- * @author Nguynen
+ * @author Nguyen
  */
 public class Exit extends Item {
     /**

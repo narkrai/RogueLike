@@ -1,9 +1,7 @@
 package model;
 
-import controller.Game;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * La Room contient un emsemble de Cell (y compris des autres Rooms)
@@ -13,14 +11,14 @@ public class Room extends Cell {
 
 
     /**
-     * Le caracter de la Room
+     * Le caractere de la Room
      */
     final char CHARACTER = '>';
 
     /**
-     * les contenus
+     * le contenu de la Room ( ou Cell )
      */
-    private ArrayList<Cell> Contenus = new ArrayList<Cell>();
+    private ArrayList<Cell> contenus = new ArrayList<Cell>();
 
     private int tailleX;
     private int tailleY;
@@ -76,9 +74,9 @@ public class Room extends Cell {
         Cell res = null;
         boolean estTrouve = false;
         if (x < tailleX && y < tailleY) {
-            for (int i = 0; i < this.Contenus.size() && !estTrouve; i++) {
+            for (int i = 0; i < this.contenus.size() && !estTrouve; i++) {
 
-                Cell c = this.Contenus.get(i);
+                Cell c = this.contenus.get(i);
 
                 if (c.getPositionX() == x && c.getPositionY() == y) {
                     res = c;
@@ -98,7 +96,7 @@ public class Room extends Cell {
      */
     public void lightNear(int x, int y) {
 
-        ArrayList<Cell> tabCell = CellNear(x, y);
+        ArrayList<Cell> tabCell = cellNear(x, y);
 
         for (Cell c : tabCell) {
             c.setDiscovered(true);
@@ -115,7 +113,7 @@ public class Room extends Cell {
 
         int res = 0;
 
-        ArrayList<Cell> tabCell = CellNear(x, y);
+        ArrayList<Cell> tabCell = cellNear(x, y);
 
         for (Cell c : tabCell) {
 
@@ -136,7 +134,7 @@ public class Room extends Cell {
      * @param y coordonnées y
      * @return Cells environnantes
      */
-    public ArrayList<Cell> CellNear(int x, int y) {
+    public ArrayList<Cell> cellNear(int x, int y) {
 
         ArrayList<Cell> res = new ArrayList<Cell>();
         Cell center = this.getCell(x, y);
@@ -178,7 +176,7 @@ public class Room extends Cell {
 
 
     public ArrayList<Cell> getContenus() {
-        return Contenus;
+        return contenus;
     }
 
     public int getTailleX() {
@@ -194,13 +192,13 @@ public class Room extends Cell {
      *
      * @return le nombre de Cell contenus
      */
-    public int GetSizeContenus() {
-        return Contenus.size();
+    public int getSizeContenus() {
+        return contenus.size();
     }
 
 
     public void setContenus(ArrayList<Cell> Contenus) {
-        this.Contenus = Contenus;
+        this.contenus = Contenus;
     }
 
     public void setTailleX(int tailleX) {
@@ -236,12 +234,12 @@ public class Room extends Cell {
      * @return le total de Gold que la Cell contient (lors Gold des Monsters)
      */
     @Override
-    public int GetTotalGold() {
+    public int getTotalGold() {
 
         int res = 0;
-        for (Cell c : Contenus) {
+        for (Cell c : contenus) {
 
-            res += c.GetTotalGold();
+            res += c.getTotalGold();
         }
 
         return res;
@@ -252,12 +250,12 @@ public class Room extends Cell {
      * @return le total de Monster que la Cell contient
      */
     @Override
-    public int GetTotalMonster() {
+    public int getTotalMonster() {
 
         int res = 0;
-        for (Cell c : Contenus) {
+        for (Cell c : contenus) {
 
-            res += c.GetTotalMonster();
+            res += c.getTotalMonster();
         }
 
         return res;
@@ -271,8 +269,8 @@ public class Room extends Cell {
     public int numberofRoom() {
 
         int res = 0;
-        if (this.Contenus != null) {
-            for (Cell c : this.Contenus) {
+        if (this.contenus != null) {
+            for (Cell c : this.contenus) {
                 if (c instanceof Room) {
                     res++;
                 }
@@ -293,7 +291,7 @@ public class Room extends Cell {
         if (super.getConteneur() == null) {
             oK = true;
         } else {
-            for (Cell c : this.Contenus) {
+            for (Cell c : this.contenus) {
                 if (c instanceof CellUnit) {
                     CellUnit ce = (CellUnit) c;
                     if (!oK && ce.getItem() instanceof Stair) {
@@ -314,8 +312,8 @@ public class Room extends Cell {
 
         int res = 0;
 
-        if (Contenus != null) {
-            for (Cell c : this.Contenus) {
+        if (contenus != null) {
+            for (Cell c : this.contenus) {
 
                 res += c.aUneSortie();
 
@@ -352,7 +350,7 @@ public class Room extends Cell {
      * @param c la Cell
      */
     public void AjoutCell(Cell c) {
-        this.Contenus.add(c);
+        this.contenus.add(c);
 
     }
 

@@ -106,13 +106,13 @@ public abstract class Cell {
      * Fonction abstraite permettant de savoir le nombre de gold de la Cell
      * @return le total de Gold que la Cell contient (lors Gold des Monsters)
      */
-    public abstract int GetTotalGold();
+    public abstract int getTotalGold();
 
     /**
      *Fonction abstraite permettant de savoir le nombre de Monster de la Cell
      * @return le total de Monster que la Cell contient
      */
-    public abstract int GetTotalMonster();
+    public abstract int getTotalMonster();
 
 
 }

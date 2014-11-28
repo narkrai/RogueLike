@@ -107,8 +107,8 @@ public class IHM_Stairs extends JFrame{
      * @param Message
      */
     public void refresh(Message m) {
-            msg = "There are "+Integer.toString(m.getRoom().GetTotalMonster())+
-                "monsters, and a total of "+Integer.toString(m.getRoom().GetTotalGold())+" golds in the next rooms.";
+            msg = "There are "+Integer.toString(m.getRoom().getTotalMonster())+
+                "monsters, and a total of "+Integer.toString(m.getRoom().getTotalGold())+" golds in the next rooms.";
             msgTextArea.setText(msg);
     }    
 }
