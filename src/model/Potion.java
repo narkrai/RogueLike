@@ -1,13 +1,14 @@
 package model;
 
 import controller.Game;
+
 /**
  * Classe qui gere les potions que le Player va gouter dans ces aventures epiques
  * Fils de Tresaure
  * @author Dinar
  */
-public class Potion extends Treasure{
-    
+public class Potion extends Treasure {
+
     private int strength;
     final char CHARACTER = 'p';
 
@@ -23,6 +24,7 @@ public class Potion extends Treasure{
     public int getStrength() {
         return this.strength;
     }
+
     /**
      * Permet de faire gagner ou perdre de la force du Player
      * @param player le joueur
@@ -30,21 +32,20 @@ public class Potion extends Treasure{
      */
     @Override
     public Action action(Player p) {
-        p.setStrength(p.getStrength()+this.getStrength());
-    
-    String message = "";
-        if(this.strength <  0) {
-            message = "Vous avez bu une potion toxique  pour votre sante. Vous perdez"+(-1*this.strength)+"."; 
-        }
-        else {
-            message = "Vous avez bu une potion benefique pour votre force .Vous gagnez  "+this.strength+".";
+        p.setStrength(p.getStrength() + this.getStrength());
+
+        String message = "";
+        if (this.strength < 0) {
+            message = "Vous avez bu une potion toxique  pour votre sante. Vous perdez" + (-1 * this.strength) + ".";
+        } else {
+            message = "Vous avez bu une potion benefique pour votre force .Vous gagnez  " + this.strength + ".";
         }
         return new Action(0, message);
     }
 
     @Override
     public char getCHARACTER() {
-        
+
         return this.CHARACTER;
     }
 }

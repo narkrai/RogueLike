@@ -4,31 +4,34 @@ package model;
  * Objet qui va être envoyé lorsqu'on envoit un message à afficher dans les IHM (sauf les messages actions)
  */
 public class Message {
-    
+
     /**
      * Integer qui va différentier le type du message. 1 : Il ne se passe rien, 2 : Game over, 3 : Victoire, 4 : Teleportation dans une nouvelle room
      */
     private int signal;
+
     /**
      * String qui va permettre de transmettre un message de type "string"
      */
     private String message;
+
     /**
      * Room, pour avoir des informations sur la room courante
      */
     private Room room;
+
     /**
      * Integer qui va nous informer sur le nombre de montre proche du joueur
      */
     private int monsterNearby;
-    
+
     /**
      * Constructeur sans paramètre
      */
     public Message() {
         super();
     }
-    
+
     /**
      * Constructeur de message avec paramètres
      * @param signal
@@ -41,7 +44,7 @@ public class Message {
         this.message = message;
         this.room = room;
     }
-    
+
     /**
      * Setter de signal
      * @param signal
@@ -89,7 +92,7 @@ public class Message {
     public Room getRoom() {
         return room;
     }
-    
+
     /**
      * Setter de monsterNearby
      * @param monsterNearby
@@ -97,7 +100,7 @@ public class Message {
     public void setMonsterNearby(int monsterNearby) {
         this.monsterNearby = monsterNearby;
     }
-    
+
     /**
      * Getter de monsterNearby
      * @return

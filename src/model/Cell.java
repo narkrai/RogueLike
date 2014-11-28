@@ -1,4 +1,5 @@
 package model;
+
 /**
  * Les Cells sont les cases contenus dans une Room .
  * Grace au design patter Composite, les Cells peuvent etre , soit des Rooms,soit des CellUnit.
@@ -10,22 +11,26 @@ public abstract class Cell {
      * Conteneur de la Cell (par défaut vide)
      */
     private Room conteneur = null;
+
     /**
      * Position X de la Cell (n'a de sens uniquement si la Cell posséde un conteneur
      */
     private int positionX;
+
     /**
      * Position Y de la Cell (n'a de sens uniquement si la Cell posséde un conteneur
      */
     private int positionY;
+
     /**
      * La Cell a-t'elle été decouverte par le Player ? ( Faux par défaut)
      */
     private boolean discovered = false;
+
     /**
      * Le symbole Ascii d'une Cell par defaut (c'est-a-dire une Cell non découvert;
      */
-    private  char CHARACTER = ' ';
+    private char CHARACTER = ' ';
 
 
     /**
@@ -34,27 +39,25 @@ public abstract class Cell {
     public Cell() {
 
     }
-    
+
     public void setCHARACTER(char CHARACTER) {
         this.CHARACTER = CHARACTER;
     }
-    
-   
 
-        
-    public  char getCHARACTER() {
+
+    public char getCHARACTER() {
         return CHARACTER;
     }
-    
+
     public Cell(Room conteneur) {
         this.conteneur = conteneur;
     }
-    
-    
-     public Room getConteneur() {
+
+
+    public Room getConteneur() {
         return conteneur;
     }
-     
+
     public void setConteneur(Room conteneur) {
         this.conteneur = conteneur;
     }
@@ -66,7 +69,7 @@ public abstract class Cell {
     public int getPositionX() {
         return positionX;
     }
-    
+
     public boolean isDiscovered() {
         return discovered;
     }
@@ -79,32 +82,32 @@ public abstract class Cell {
         return positionY;
     }
 
-     
 
     public void setDiscovered(boolean discovered) {
-        this.discovered = discovered;   
+        this.discovered = discovered;
     }
-    
+
     /**
-     * Fonction abstraite permettant de savoir le nombre de Item "Sortie" qu'une Cell posséde 
+     * Fonction abstraite permettant de savoir le nombre de Item "Sortie" qu'une Cell posséde
      * Cette valeur ne peut etre  en théorie  uniquement de 0 ou 1 .
      *
      * @return Nombre de sortie
      */
-    public  abstract int aUneSortie();
+    public abstract int aUneSortie();
+
     /**
      *Fonction abstraite permettant de savoir le numero d'etage courant de la Cell
      * @return le numero d'etage (compris en théorie entre 0 et un nombre négatif
      */
     public abstract int numeroEtage();
-    
-    
+
+
     /**
      * Fonction abstraite permettant de savoir le nombre de gold de la Cell
      * @return le total de Gold que la Cell contient (lors Gold des Monsters)
      */
     public abstract int GetTotalGold();
-    
+
     /**
      *Fonction abstraite permettant de savoir le nombre de Monster de la Cell
      * @return le total de Monster que la Cell contient

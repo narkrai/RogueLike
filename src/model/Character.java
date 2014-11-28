@@ -7,12 +7,12 @@ package model;
  */
 public abstract class Character extends Item {
 
-    private int strength ;
+    private int strength;
     private int gold;
     private String name;
     private int level;
 
-    
+
     public void setStrength(int strength) {
         this.strength = strength;
     }

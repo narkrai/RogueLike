@@ -11,31 +11,38 @@ import java.util.ArrayList;
 public class OptionData {
 
     static private OptionData dataInstance = null;
-   /**
-    * Profondeur maximal du jeu
-    */
-    private int depthmax = 2 ;
-   /**
-    * Nombre maximal de Room dans une Room
-    */
+
+    /**
+     * Profondeur maximal du jeu
+     */
+    private int depthmax = 2;
+
+    /**
+     * Nombre maximal de Room dans une Room
+     */
     private int doormax = 2;
-   /**
-    * Nombre maximal de Room total
-    */
+
+    /**
+     * Nombre maximal de Room total
+     */
     private int roomMax = 20;
+
     /**
      * Chance pour qu'un Monster apparaisse sur une CellUnit
      */
     private int monsterLuck = 10;
+
     /**
      * Chance pour qu'une Room apparaisse sur une Cell
      */
     private int ladderLuck = 10;
+
     /**
-     *     
+     *
      * Chance pour qu'une Potion apparaisse sur une CellUnit
      */
     private int potionLuck = 10;
+
     /**
      * Chance pour qu'un Chest apparaisse sur une CellUnit
      */
@@ -45,18 +52,22 @@ public class OptionData {
      * Chance pour que rien n'apparaisse sur une CellUnit
      */
     private int voidLuck = 60;
+
     /**
      * Nombre de force minimun d'une potion
      */
     private int minPowerPotion = -7;
+
     /**
      * Nombre de force maximun d'une potion
      */
     private int maxPowerPotion = 10;
+
     /**
      * Nombre de Gold minimun d'un Chest
      */
-    private int minGoldTresaure =5;
+    private int minGoldTresaure = 5;
+
     /**
      * Nombre de Gold  maximun d'un Chest
      */
@@ -71,23 +82,25 @@ public class OptionData {
      * Longueur d'une room
      */
     private int tailleXRoom = 5;
-   
-   /**
-    * strategie choisie
-    */
-   private IStrategy strategy;
-   /**
-    * Nom du joueur
-    */
-   private String playerName;
-   /**
-    * Liste de toutes les strategies
-    */
-   private ArrayList<IStrategy> listStrategy;
+
+    /**
+     * strategie choisie
+     */
+    private IStrategy strategy;
+
+    /**
+     * Nom du joueur
+     */
+    private String playerName;
+
+    /**
+     * Liste de toutes les strategies
+     */
+    private ArrayList<IStrategy> listStrategy;
 
 
     private OptionData() {
-       this.listStrategy = new ArrayList<>();
+        this.listStrategy = new ArrayList<>();
         this.strategy = new Idiot();
         listStrategy.add(strategy);
         listStrategy.add(new Nice());
@@ -121,9 +134,9 @@ public class OptionData {
 
     public int getTreasureLuck() {
         return treasureLuck;
-    } 
-    
-    
+    }
+
+
     public void setTailleYRoom(int tailleYRoom) {
         this.tailleYRoom = tailleYRoom;
     }
@@ -142,19 +155,15 @@ public class OptionData {
 
 
     public static OptionData getInstance() {
-        if (dataInstance == null) 
-        {
-            try 
-            {
+        if (dataInstance == null) {
+            try {
                 dataInstance = new OptionData();
-            } 
-            catch (Exception e) 
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-    
-        
+
+
         return dataInstance;
     }
 
@@ -201,7 +210,6 @@ public class OptionData {
     }
 
 
-
     public int getVoidLuck() {
         return voidLuck;
     }
@@ -237,7 +245,7 @@ public class OptionData {
     public int getMaxGoldTresaure() {
         return maxGoldTresaure;
     }
-    
+
     public void setStrategy(IStrategy strategy) {
         this.strategy = strategy;
     }

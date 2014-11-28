@@ -1,22 +1,25 @@
 package model;
- /**
-  * La classe Player définit le joueur 
-  * Il hérite de la classe Character
-  * @author Dinar
-  */
+
+/**
+ * La classe Player définit le joueur
+ * Il hérite de la classe Character
+ * @author Dinar
+ */
 public class Player extends Character {
 
     /**
      * Nombre de Monsters tués par le Player
      */
-    private int monsterKilled=0;
+    private int monsterKilled = 0;
+
     /**
      * objet Player unique
      */
     private static Player uniquePlayer = null;
-    
-    
+
+
     final char CHARACTER = '@';
+
     /**
      * Constructeur de Player
      * @param gold somme du Player
@@ -39,14 +42,14 @@ public class Player extends Character {
      * obtention de l'instance unique
      * @return
      */
-    public static Player getInstance(){
+    public static Player getInstance() {
         if (uniquePlayer == null) {
             try {
-            uniquePlayer = new Player();
-           
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                uniquePlayer = new Player();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return uniquePlayer;
     }
@@ -63,7 +66,7 @@ public class Player extends Character {
 
     @Override
     public char getCHARACTER() {
-       
+
         return this.CHARACTER;
     }
 }
