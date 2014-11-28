@@ -143,7 +143,7 @@ public class Nice implements IStrategy {
                 Stair st = new Stair(roomPere);
                 cC.setItem(st);
 
-                System.out.println("Chemin vers pere crée");
+              
             }
 
 
@@ -163,14 +163,13 @@ public class Nice implements IStrategy {
                     cellCreated.setPositionY(y);
                     cellCreated.setConteneur(roomPere);
                     roomPere.AjoutCell(cellCreated);
-                    System.out.println(x + " , " + y);
                 }
             }
 
         }
 
 
-        System.out.println("Room terminé etage" + roomPere.numeroEtage() + " et a un chemin vers pere");
+       
 
 
     }
@@ -184,7 +183,7 @@ public class Nice implements IStrategy {
 
 
         Room res = new Room(this, pere);
-        System.out.println("Nouvelle Room crée");
+       
 
         this.roomCreated++;
         return res;
@@ -212,16 +211,15 @@ public class Nice implements IStrategy {
             //la Room a une certaine chance d'avoir une Room fils selon OptionData
             if (Random < opdataCurrent.getLadderLuck()) {
 
-                System.out.println("Valeur du rand :" + Random);
+              
                 cellCreated = MakeRoom(roomPere);
 
             } else {
                 cellCreated = MakeCellUnit();
-                System.out.println("Nouvelle cell crée");
+               
             }
 
         } else {
-            System.out.println("Nouvelle cell crée");
             cellCreated = MakeCellUnit();
         }
 
