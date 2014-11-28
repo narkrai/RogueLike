@@ -43,6 +43,7 @@ public class MenuBar extends JMenuBar{
         hs.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 highscoreFrame.setVisible(true);
+                highscoreFrame.refresh();
             }
         });
         

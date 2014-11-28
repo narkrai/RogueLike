@@ -116,7 +116,7 @@ public class IHM_Exit extends JFrame{
         
         // Ecriture dans le fichier
         try {
-            FileWriter write = new FileWriter("text.txt", true);
+            FileWriter write = new FileWriter("score.txt", true);
             PrintWriter text = new PrintWriter(write);
             
             text.println(hs.toString());
