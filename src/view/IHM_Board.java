@@ -21,7 +21,7 @@ public class IHM_Board extends JTextArea{
      * Méthode utilisé pour intégration du design pattern singleton
      * @return Instance IHM_Board
      */
-    public static   IHM_Board       getInstance() {
+    public static IHM_Board getInstance() {
         if (uniqueInstance == null) {
             try {
             uniqueInstance = new IHM_Board(Game.getInstance().getCurrentRoom().getTailleX(),Game.getInstance().getCurrentRoom().getTailleY());
@@ -39,7 +39,7 @@ public class IHM_Board extends JTextArea{
      * @param y : taille y de la map
      */
     public IHM_Board(int x, int y) {       
-        Font resultFont = new Font("monospaced", Font.PLAIN, 15);
+        Font resultFont = new Font("monospaced", Font.PLAIN, 15);       // Font spécial, chaque caractère est de la même taille, idéal pour un affichage
         Border b = BorderFactory.createLineBorder(Color.black);
         
         this.setColumns(x*4);

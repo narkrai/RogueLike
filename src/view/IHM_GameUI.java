@@ -15,36 +15,22 @@ import model.Message;
  * Frame principale de l'application. Va construire et assembler toutes les petites frames/panels ensembles
  * @author : Nicolas Nguyen
  */
-
 public class IHM_GameUI extends JFrame{
 
-    private             JPanel          eastPan;
-    private             JPanel          centerPan;
-    private             IHM_Board       board;
-    private             IHM_Recap       sumPanel;
-    private             IHM_Controls    controls;
-    private             IHM_Message     msgPanel;
-    private             IHM_GameOver    gameOverPanel;
-    private             IHM_Exit        exitPanel;
-    private             IHM_Stairs      stairsPanel;
-    private static      IHM_GameUI      uniqueInstance = null;
+    private             JPanel          eastPan;                    // Panel dans le East, contient le Recap et la console
+    private             JPanel          centerPan;                  // Panel dans le Center, contient la board
+    private             IHM_Board       board;                      // Board, ce qui contient la carte
+    private             IHM_Recap       sumPanel;                   // Recap, ce qui contient la force du joueur, le niveau courant et les monstres proches
+    private             IHM_Controls    controls;                   // TextField où le joueur fait ses input pour se déplacer
+    private             IHM_Message     msgPanel;                   // Console, résume ce qu'il se passe
+    private             IHM_GameOver    gameOverPanel;              // JFrame qui s'affiche lorsque le joueur meurt
+    private             IHM_Exit        exitPanel;                  // JFrame qui s'affiche lorsque le joueur trouve la sortie
+    private             IHM_Stairs      stairsPanel;                // JFrame qui s'affiche lorsque le joeur trouve un escalier montant
+    private static      IHM_GameUI      uniqueInstance = null;      // Instance de la GameUI
 
-    public static IHM_GameUI getInstance()
-    {
-        if (uniqueInstance == null) 
-        {
-            try 
-            {
-            uniqueInstance = new IHM_GameUI();
-            } 
-            catch (Exception e) 
-            {
-                e.printStackTrace();
-            }
-        }
-        return uniqueInstance;
-    }
-
+    /**
+     * Constructeur de la gameUI
+     */
     public IHM_GameUI() {
         this.setTitle("Rogue");
         this.setSize(750,500);
@@ -66,7 +52,6 @@ public class IHM_GameUI extends JFrame{
         centerPan = new JPanel();
         centerPan.setBorder(b);
         centerPan.setLayout(new BorderLayout());
-        //centerPan.setPreferredSize(new Dimension(200,200));
         centerPan.add(board);
         
         this.add(centerPan, BorderLayout.CENTER);
@@ -88,6 +73,22 @@ public class IHM_GameUI extends JFrame{
         // Ajoute la menuBar à la frame
         this.setJMenuBar(new MenuBar());
         this.setVisible(true);
+    }
+    
+    public static IHM_GameUI getInstance()
+    {
+        if (uniqueInstance == null) 
+        {
+            try 
+            {
+            uniqueInstance = new IHM_GameUI();
+            } 
+            catch (Exception e) 
+            {
+                e.printStackTrace();
+            }
+        }
+        return uniqueInstance;
     }
     
     /**

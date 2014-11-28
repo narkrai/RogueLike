@@ -1,37 +1,23 @@
 package view;
 
-import controller.Game;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-
-import java.io.FileWriter;
 import java.io.IOException;
-
-import java.io.PrintWriter;
-
 import java.util.ArrayList;
-
-import java.util.Collection;
-
 import java.util.Collections;
-
 import javax.swing.border.Border;
-
-import javax.swing.text.Highlighter;
-
 import model.HighScore;
-import model.Message;
 
 /**
- * JFrame qui va afficher les highscores
+ * JFrame qui va afficher les highscores.
+ * Lors de l'appel de la fonction refresh(), elle va lire le fichier "score.txt" et, pour chaque ligne, crée un objet "HighScore" qui sera stocké dans un ArrayList.
+ * Cette ArrayList est trié puis on affiche les 5 premiers.
  * @author : Nicolas Nguyen
  */
 public class IHM_HighScore extends JFrame{
@@ -51,19 +37,6 @@ public class IHM_HighScore extends JFrame{
 
         Border b = BorderFactory.createEmptyBorder(1,1,1,1);    // Bordure invisible
         Font font = new Font("Arial", Font.BOLD, 12);           // Police qui sera utilisé dans le JTextArea pour match la police des autres parties de l'interface
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         JPanel pMsg = new JPanel();                             // JPanel pour toute la frame
         pMsg.setBorder(b);
@@ -112,50 +85,47 @@ public class IHM_HighScore extends JFrame{
         
     }
     
+    /**
+     * Méthode refresh() qui va afficher les 5 meilleurs scores enregistrés sur le fichier "score.txt".
+     * La méthode lit le fichier, transforme le contenue en ArrayList<HighScore>, la trie et affiche les 5 premiers scores.
+     */
     public void refresh() {
         File myFile = new File("score.txt");
         msg="";
         
         try {
-
-            FileReader reader = new FileReader("score.txt");
-            BufferedReader br = new BufferedReader(reader);
-            String aLine;
-            int i=0;
+            FileReader reader = new FileReader("score.txt");                                // Ouverture du fichier "score.txt"
+            BufferedReader br = new BufferedReader(reader);                                 // Crée un buffer avec le fichier "score.txt"
+            String aLine;                                                                   // Un string qui contient la ligne courante
+            int i=0;                                                                        // Int compteur
+            ArrayList<HighScore> hsList = new ArrayList<HighScore>();                       // Initialise l'ArrayList de HighScore
             
-            ArrayList<HighScore> hsList = new ArrayList<HighScore>();
-            
+            // Lecture du fichier et ajout des highscore dans l'arraylist
             while ((aLine = br.readLine()) != null) {
                 String[] aPlayer = aLine.split(";");
                 hsList.add(new HighScore(aPlayer[0], Integer.parseInt(aPlayer[1])));
             }
             
-            Collections.sort(hsList, Collections.reverseOrder());
+            Collections.sort(hsList, Collections.reverseOrder());                           // Trie de l'arrayList en décroissant
             
+            // Si on a assez de HighScore pour en afficher 5
             if (hsList.size() > 5) {
                 for (i=0; i<5; i++) {                   
                     msg+=hsList.get(i).getName()+" - "+hsList.get(i).getScore()+"\n";
                 }
             }
-            else {
+            else { // sinon
                 for (i=0; i<hsList.size(); i++) {
                     msg+=hsList.get(i).getName()+" - "+hsList.get(i).getScore()+"\n";
                 }
             }
 
             msgTextArea.setText(msg);
-            
-            
-            reader.close();
-             
-        } catch (FileNotFoundException e) 
-        {
+            reader.close();                                                                     // Fermeture du File
+        } catch (FileNotFoundException e){
             System.out.println("File not found");
-        } catch (IOException e)
-                {
+        } catch (IOException e){
             System.out.println("IOException occurred");
         }
-        
     }
-    
 }
