@@ -6,7 +6,18 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import view.IHM_Welcome;
-
+/**
+ * La Classe Nice est une strategie inspiré de Idiot mais (( très ) nettement amelioré
+ *
+ * *Les Room ont tous la  meme taille
+ * *les Items sont placés aléatoirement
+ * *les Room ont tous un unique pere
+ * *Il n'y qu'une seule sortie
+ * *La création du chemin gagnant  ( c'est-à-dire le chemin entre le Player et la Sortie) est fait en antériori
+ * *Generation leger en temps de calcul
+ * *Aucune astuce tel que le rajout de salle ( contrairement à son compère Idiot)
+ * @author Dinar
+ */
 public class Nice implements IStrategy {
     public Nice() {
         super();
