@@ -32,7 +32,7 @@ public class IHM_Help extends JFrame{
         Border b = BorderFactory.createEmptyBorder(1,1,1,1);
         Font font = new Font("Arial", Font.BOLD, 12); // Police utilisé par la JTextArea pour match le reste de l'interface
         
-        this.setSize(300,650);
+        this.setSize(300,520);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
@@ -59,8 +59,8 @@ public class IHM_Help extends JFrame{
         "             Le joueur peut monter ou descendre d'etage, la sortie se trouvant dans une unique salle de \n "+ 
         "                          l'etage 0 \n "+ 
         "             Si le joueur réussi à sortir, il aura peut-etre la chance de figurer sur le highscore");
-        msgTextArea.setColumns(17);
-        msgTextArea.setRows(12);
+        msgTextArea.setColumns(20);
+        msgTextArea.setRows(50);
         msgTextArea.setWrapStyleWord(true);
         msgTextArea.setLineWrap(true);
         msgTextArea.setEditable(false);  
