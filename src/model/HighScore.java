@@ -9,6 +9,14 @@ public class HighScore implements Comparable<HighScore>{
       score = c;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
     @Override
     public int compareTo(HighScore h) {
         if(score < h.score) 
@@ -19,6 +27,6 @@ public class HighScore implements Comparable<HighScore>{
     }
     
     public String toString() {
-        return name+" "+score;
+        return name+";"+score;
     }
 }

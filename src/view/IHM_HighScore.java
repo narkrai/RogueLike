@@ -126,20 +126,20 @@ public class IHM_HighScore extends JFrame{
             ArrayList<HighScore> hsList = new ArrayList<HighScore>();
             
             while ((aLine = br.readLine()) != null) {
-                String[] aPlayer = aLine.split(" ");
+                String[] aPlayer = aLine.split(";");
                 hsList.add(new HighScore(aPlayer[0], Integer.parseInt(aPlayer[1])));
             }
             
             Collections.sort(hsList, Collections.reverseOrder());
             
             if (hsList.size() > 5) {
-                for (i=0; i<5; i++) {
-                    msg+=hsList.get(i)+"\n";
+                for (i=0; i<5; i++) {                   
+                    msg+=hsList.get(i).getName()+" - "+hsList.get(i).getScore()+"\n";
                 }
             }
             else {
                 for (i=0; i<hsList.size(); i++) {
-                    msg+=hsList.get(i)+"\n";
+                    msg+=hsList.get(i).getName()+" - "+hsList.get(i).getScore()+"\n";
                 }
             }
 
