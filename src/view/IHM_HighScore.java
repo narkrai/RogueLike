@@ -7,8 +7,27 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+import java.io.PrintWriter;
+
+import java.util.ArrayList;
+
+import java.util.Collection;
+
+import java.util.Collections;
+
 import javax.swing.border.Border;
 
+import javax.swing.text.Highlighter;
+
+import model.HighScore;
 import model.Message;
 
 /**
@@ -23,7 +42,7 @@ public class IHM_HighScore extends JFrame{
     private     JTextArea   msgTextArea;        // JTextArea qui va contenir les scores
     
     /**
-     * Méthode constructeur de IHM_GameOver
+     * Méthode constructeur de IHM_HighScore
      */
     public IHM_HighScore() {
         setSize(300,300);
@@ -32,6 +51,19 @@ public class IHM_HighScore extends JFrame{
 
         Border b = BorderFactory.createEmptyBorder(1,1,1,1);    // Bordure invisible
         Font font = new Font("Arial", Font.BOLD, 12);           // Police qui sera utilisé dans le JTextArea pour match la police des autres parties de l'interface
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         JPanel pMsg = new JPanel();                             // JPanel pour toute la frame
         pMsg.setBorder(b);
@@ -56,6 +88,8 @@ public class IHM_HighScore extends JFrame{
         msgTextArea.setFocusable(false);
         msgTextArea.setFont(font);        
         pMsg.add(msgTextArea);
+        
+        refresh();
                
         this.add(pMsg, BorderLayout.CENTER);
                
@@ -77,5 +111,51 @@ public class IHM_HighScore extends JFrame{
         });
         
     }
+    
+    public void refresh() {
+        File myFile = new File("score.txt");
+        msg="";
+        
+        try {
 
+            FileReader reader = new FileReader("score.txt");
+            BufferedReader br = new BufferedReader(reader);
+            String aLine;
+            int i=0;
+            
+            ArrayList<HighScore> hsList = new ArrayList<HighScore>();
+            
+            while ((aLine = br.readLine()) != null) {
+                String[] aPlayer = aLine.split(" ");
+                hsList.add(new HighScore(aPlayer[0], Integer.parseInt(aPlayer[1])));
+            }
+            
+            Collections.sort(hsList, Collections.reverseOrder());
+            
+            if (hsList.size() > 5) {
+                for (i=0; i<5; i++) {
+                    msg+=hsList.get(i)+"\n";
+                }
+            }
+            else {
+                for (i=0; i<hsList.size(); i++) {
+                    msg+=hsList.get(i)+"\n";
+                }
+            }
+
+            msgTextArea.setText(msg);
+            
+            
+            reader.close();
+             
+        } catch (FileNotFoundException e) 
+        {
+            System.out.println("File not found");
+        } catch (IOException e)
+                {
+            System.out.println("IOException occurred");
+        }
+        
+    }
+    
 }

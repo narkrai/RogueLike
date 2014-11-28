@@ -7,9 +7,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.swing.border.Border;
 
+import model.HighScore;
 import model.Message;
+import model.OptionData;
 import model.Player;
 
 /**
@@ -101,6 +109,24 @@ public class IHM_Exit extends JFrame{
         int score = Player.getInstance().getGold()*2 + Player.getInstance().getStrength()*3;
         msg = "Your score : "+score+".";
         msgTextArea.setText(msg);
+        
+        HighScore hs = new HighScore(OptionData.getInstance().getPlayerName(), score);
+        
+        
+        
+        // Ecriture dans le fichier
+        try {
+            FileWriter write = new FileWriter("text.txt", true);
+            PrintWriter text = new PrintWriter(write);
+            
+            text.println(hs.toString());
+            text.flush();
+            write.close();
+        } 
+        catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+        
     }
     
 }
