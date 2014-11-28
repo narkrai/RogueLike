@@ -25,7 +25,7 @@ public class OptionData {
     /**
      * Nombre maximal de Room total
      */
-    private int roomMax = 20;
+    private int roomMax = 30;
 
     /**
      * Chance pour qu'un Monster apparaisse sur une CellUnit
