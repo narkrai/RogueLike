@@ -32,7 +32,7 @@ public class IHM_Help extends JFrame{
         Border b = BorderFactory.createEmptyBorder(1,1,1,1);
         Font font = new Font("Arial", Font.BOLD, 12); // Police utilisé par la JTextArea pour match le reste de l'interface
         
-        this.setSize(300,300);
+        this.setSize(300,650);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
@@ -44,12 +44,21 @@ public class IHM_Help extends JFrame{
         // Titre
         JLabel msgTitreLabel = new JLabel();
         msgTitreLabel.setHorizontalAlignment(JLabel.CENTER);
-        String msgTitre = "<html><h2><b>Rule of the game</b></h2></p></html>";
+        String msgTitre = "<html><h2><b>Rule of the game</b></h2></html>";
         msgTitreLabel.setText(msgTitre);
         pMsg.add(msgTitreLabel);
 
         // Message
-        JTextArea msgTextArea = new JTextArea("rule");
+        JTextArea msgTextArea = new JTextArea("  Le but du jeu est trouver la sortie de l'ensemble de salles et ce en emportant le maximum de gold. \n" + 
+        "              Le joueur possede une force de départ et peut l'augmenter en buvant des potions, \n" + 
+        "            attention tout de meme car certaines potions régresse la force du joueur \n" + 
+        "             Des monstres rodent dans les salles, mais sont invisible pour le joueur, le joueur peut uniquement \n" + 
+        "           connaitre le nombre à proximité \n "+ 
+        "             Lorsque que le joueur tombe sur un monstre, il le combat et risque de mourir, issue du combat depend de \n" + 
+        "                          des forces du joueur et du monstre \n "+ 
+        "             Le joueur peut monter ou descendre d'etage, la sortie se trouvant dans une unique salle de \n "+ 
+        "                          l'etage 0 \n "+ 
+        "             Si le joueur réussi à sortir, il aura peut-etre la chance de figurer sur le highscore");
         msgTextArea.setColumns(17);
         msgTextArea.setRows(12);
         msgTextArea.setWrapStyleWord(true);
