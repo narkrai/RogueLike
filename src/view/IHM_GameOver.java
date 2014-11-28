@@ -1,12 +1,20 @@
 package view;
 
-import controller.Game;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 import model.Message;
@@ -15,6 +23,7 @@ import model.Message;
  * JFrame qui va s'afficher lorsque le joueur perd
  * @author : Nicolas Nguyen
  */
+@SuppressWarnings("oracle.jdeveloper.java.serialversionuid-field-missing")
 public class IHM_GameOver extends JFrame{
         
     private     String      msgTitre;           // String du titre
@@ -87,7 +96,6 @@ public class IHM_GameOver extends JFrame{
                 setVisible(false);                              // Ferme la frame
             }
         });
-        
     }
 
     /**
@@ -95,10 +103,7 @@ public class IHM_GameOver extends JFrame{
      * @param Message
      */
     public void refresh(Message m) {
-        /**
-         * TODO compl?ter le message
-         */
-        msg =m.getMessage();
+        msg = m.getMessage();
         msgTextArea.setText(msg);
     }
 }

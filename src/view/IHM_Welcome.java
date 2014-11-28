@@ -17,6 +17,7 @@ import model.OptionData;
  * @author : Nicolas Nguyen
  */
 
+@SuppressWarnings("oracle.jdeveloper.java.serialversionuid-field-missing")
 public class IHM_Welcome extends JFrame {
     
     private JTextField pTextField;

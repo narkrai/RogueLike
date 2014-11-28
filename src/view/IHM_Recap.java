@@ -2,13 +2,17 @@ package view;
 
 import controller.Game;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-import model.Message;
-
+@SuppressWarnings("oracle.jdeveloper.java.serialversionuid-field-missing")
 public class IHM_Recap extends JPanel{
     
     private     JLabel      strengthLabel;
@@ -85,6 +89,10 @@ public class IHM_Recap extends JPanel{
         this.setBorder(b);
     }
     
+    /**
+     * Méthode utilisé pour intégration du design pattern singleton
+     * @return IHM_Recap
+     */
     public static IHM_Recap getInstance()
     {
         if (uniqueInstance == null) 
@@ -118,5 +126,4 @@ public class IHM_Recap extends JPanel{
         levelLabel.setText(level);
         monsterLabel.setText(monster);
     }
-    
 }

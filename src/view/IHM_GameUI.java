@@ -2,11 +2,12 @@ package view;
 
 import controller.Game;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 import model.Message;
@@ -15,6 +16,7 @@ import model.Message;
  * Frame principale de l'application. Va construire et assembler toutes les petites frames/panels ensembles
  * @author : Nicolas Nguyen
  */
+@SuppressWarnings("oracle.jdeveloper.java.serialversionuid-field-missing")
 public class IHM_GameUI extends JFrame{
 
     private             JPanel          eastPan;                    // Panel dans le East, contient le Recap et la console
@@ -26,7 +28,7 @@ public class IHM_GameUI extends JFrame{
     private             IHM_GameOver    gameOverPanel;              // JFrame qui s'affiche lorsque le joueur meurt
     private             IHM_Exit        exitPanel;                  // JFrame qui s'affiche lorsque le joueur trouve la sortie
     private             IHM_Stairs      stairsPanel;                // JFrame qui s'affiche lorsque le joeur trouve un escalier montant
-    private static      IHM_GameUI      uniqueInstance = null;      // Instance de la GameUI
+    private static      IHM_GameUI      uniqueInstance = null;      // Instance de la GameUI, pour le singleton
 
     /**
      * Constructeur de la gameUI
@@ -38,8 +40,8 @@ public class IHM_GameUI extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         
-        Border b = BorderFactory.createEmptyBorder(1,1,1,1);
-        Border b2 = BorderFactory.createEmptyBorder(1,0,1,1);
+        Border b = BorderFactory.createEmptyBorder(1,1,1,1);        // Bordure noire
+        Border b2 = BorderFactory.createEmptyBorder(1,0,1,1);       // Bordure noire mais 1px en moins, pour plus joli
         
         gameOverPanel = new IHM_GameOver();
         exitPanel = new IHM_Exit();
@@ -75,6 +77,10 @@ public class IHM_GameUI extends JFrame{
         this.setVisible(true);
     }
     
+    /**
+     * Méthode utilisé pour intégration du design pattern singleton
+     * @return Instance IHM_GameUI
+     */
     public static IHM_GameUI getInstance()
     {
         if (uniqueInstance == null) 
@@ -96,13 +102,12 @@ public class IHM_GameUI extends JFrame{
      * @param MessageIHM
      */
     public void analyse (Message ar) {
-        final int RIEN = 0;
-        final int GAMEOVER = 1;
-        final int WIN = 2 ;
-        final int TELEPORT = 3 ;
+        final int RIEN = 0;         // signal = 0 = rien
+        final int GAMEOVER = 1;     // signal = 1 = gameOver
+        final int WIN = 2 ;         // signal = 2 = win
+        final int TELEPORT = 3 ;    // signal = 3 = teleport
         
         switch(ar.getSignal()) {
-            
             case RIEN :
             board.refresh();
             sumPanel.refresh();
@@ -112,13 +117,11 @@ public class IHM_GameUI extends JFrame{
             controls.setPlayable(false);
             gameOverPanel.refresh(ar);
             gameOverPanel.setVisible(true);
-            //messageIHM
             break;
             case WIN :
             controls.setPlayable(false);
-            exitPanel.refresh(ar);
+            exitPanel.refresh();
             exitPanel.setVisible(true);
-
             break;
             case TELEPORT :
             controls.setPlayable(false);
@@ -128,6 +131,9 @@ public class IHM_GameUI extends JFrame{
         }  
     }
 
+    /**
+     * Methode qui va faire une nouvelle game
+     */
     public void newGame() {
         Game.getInstance().restart();                   // Restart la game
         IHM_Controls.getInstance().setPlayable(true);   // Remet la playability à true
@@ -136,8 +142,4 @@ public class IHM_GameUI extends JFrame{
         IHM_Message.getInstance().setEmpty();
         
     }
-
-    public void putComposants() {
-    }
-
 }

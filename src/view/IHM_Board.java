@@ -2,36 +2,22 @@ package view;
 
 import controller.Game;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 
+import javax.swing.BorderFactory;
+import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 /**
  * JTextArea qui va contenir la carte
  * @author Nicolas Nguyen
  */
-
+@SuppressWarnings("oracle.jdeveloper.java.serialversionuid-field-missing")
 public class IHM_Board extends JTextArea{
     
     private         String          map;                            // String de la map
     private static  IHM_Board       uniqueInstance  =   null;       // Variable d'instance, pour le singleton
-    
-    /**
-     * Méthode utilisé pour intégration du design pattern singleton
-     * @return Instance IHM_Board
-     */
-    public static IHM_Board getInstance() {
-        if (uniqueInstance == null) {
-            try {
-            uniqueInstance = new IHM_Board(Game.getInstance().getCurrentRoom().getTailleX(),Game.getInstance().getCurrentRoom().getTailleY());
-            } 
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return uniqueInstance;
-    }
     
     /**
      * Méthode constructeur de la map. 
@@ -50,6 +36,23 @@ public class IHM_Board extends JTextArea{
         this.setFocusable(false);
         this.setFont(resultFont);
     }
+    
+    /**
+     * Méthode utilisé pour intégration du design pattern singleton
+     * @return Instance IHM_Board
+     */
+    public static IHM_Board getInstance() {
+        if (uniqueInstance == null) {
+            try {
+            uniqueInstance = new IHM_Board(Game.getInstance().getCurrentRoom().getTailleX(),Game.getInstance().getCurrentRoom().getTailleY());
+            } 
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return uniqueInstance;
+    }
+    
     
     /**
      * Methode qui va refresh la board.

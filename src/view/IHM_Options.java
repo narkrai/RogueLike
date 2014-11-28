@@ -2,28 +2,36 @@ package view;
 
 import controller.Game;
 
-import javax.swing.*;
-import java.awt.*;
-
+import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
 
-import java.awt.event.KeyEvent;
-
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import model.IStrategy;
 import model.OptionData;
 
 /**
  * Frame Option qui va afficher et mettre à jour OptionData en fonction des choix de l'utilisateur.
  * @author : Nicolas Nguyen
  */
+@SuppressWarnings("oracle.jdeveloper.java.serialversionuid-field-missing")
 public class IHM_Options  extends JFrame{
 
+    @SuppressWarnings("oracle.jdeveloper.java.field-not-serializable")
     OptionData op = OptionData.getInstance();           // On récupère l'OptionData
     // Pseudo
     private     JTextField          pTextField;

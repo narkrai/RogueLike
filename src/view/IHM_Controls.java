@@ -2,13 +2,7 @@ package view;
 
 import controller.Game;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import java.awt.event.KeyAdapter;
-
 import java.awt.event.KeyEvent;
-
 import java.awt.event.KeyListener;
 
 import javax.swing.JTextField;
@@ -17,6 +11,8 @@ import javax.swing.JTextField;
  * JTextField utilisé pour entrer les commandes de jeu pour se déplacer.
  * @author : Nicolas Nguyen
  */
+
+@SuppressWarnings("oracle.jdeveloper.java.serialversionuid-field-missing")
 public class IHM_Controls extends JTextField{
     
     private                 boolean             playable;                   // Boolean pour indiquer au jeu s'il est encore jouable ou non, désactive si non
@@ -30,22 +26,6 @@ public class IHM_Controls extends JTextField{
         KeyListener kl = new MyKeyListener();
         this.addKeyListener(kl);
         this.setFocusable(true);
-    }
-    
-    /**
-     * Setter pour la variable playable
-     * @param playable
-     */
-    public void setPlayable(boolean playable) {
-        this.playable = playable;
-    }
-    
-    /**
-     * Getter pour la variable playable
-     * @return
-     */
-    public boolean isPlayable() {
-        return playable;
     }
     
     /**
@@ -65,7 +45,23 @@ public class IHM_Controls extends JTextField{
     }
     
     /**
-     * KeyListener, lit la touche et fait l'action associé à la touche
+     * Setter pour la variable playable
+     * @param playable
+     */
+    public void setPlayable(boolean playable) {
+        this.playable = playable;
+    }
+    
+    /**
+     * Getter pour la variable playable
+     * @return
+     */
+    public boolean isPlayable() {
+        return playable;
+    }
+        
+    /**
+     * Class interne MyKeyListener, lit la touche et fait l'action associé à la touche
      */
     public class MyKeyListener implements KeyListener {
         @Override
@@ -91,8 +87,7 @@ public class IHM_Controls extends JTextField{
         
         @Override
         public void keyReleased(KeyEvent e) {
-            e.consume();
-                
+            e.consume(); 
         }
     }
 }

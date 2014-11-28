@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -20,6 +19,7 @@ import model.HighScore;
  * Cette ArrayList est trié puis on affiche les 5 premiers.
  * @author : Nicolas Nguyen
  */
+@SuppressWarnings("oracle.jdeveloper.java.serialversionuid-field-missing")
 public class IHM_HighScore extends JFrame{
         
     private     String      msgTitre;           // String du titre
@@ -87,10 +87,10 @@ public class IHM_HighScore extends JFrame{
     
     /**
      * Méthode refresh() qui va afficher les 5 meilleurs scores enregistrés sur le fichier "score.txt".
-     * La méthode lit le fichier, transforme le contenue en ArrayList<HighScore>, la trie et affiche les 5 premiers scores.
+     * La methode lit le fichier, transforme le contenue en ArrayList de HighScore, la trie et affiche les 5 premiers scores.
      */
+
     public void refresh() {
-        File myFile = new File("score.txt");
         msg="";
         
         try {

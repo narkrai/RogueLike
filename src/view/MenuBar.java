@@ -1,7 +1,5 @@
 package view;
 
-import controller.Game;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,19 +7,31 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+/**
+ * Menu de l'interface
+ * @author Nicolas Nguyen
+ */
+
+@SuppressWarnings("oracle.jdeveloper.java.serialversionuid-field-missing")
 public class MenuBar extends JMenuBar{
-    private IHM_Options optionFrame = new IHM_Options();
-    private IHM_Help helpFrame = new IHM_Help();
-    private IHM_HighScore highscoreFrame = new IHM_HighScore();
+    
+    private     IHM_Options         optionFrame     = new IHM_Options();        // JFrame Option
+    private     IHM_Help            helpFrame       = new IHM_Help();           // JFrame Help
+    private     IHM_HighScore       highscoreFrame  = new IHM_HighScore();      // JFrame HighScore
+    
+    /**
+     * Constructeur du MenuBar
+     */
     public MenuBar() {
-        // Déclaration des JMenu et JMenuItem
+        // Déclaration des JMenu
         JMenu game = new JMenu("Game");
         JMenu help = new JMenu("?");
+        
+        // Déclaration des JMenuItem
         JMenuItem newGame = new JMenuItem("New game");
         JMenuItem option = new JMenuItem("Option");
         JMenuItem hs = new JMenuItem("High Score");
         JMenuItem apropos = new JMenuItem("A propos");
-        
         
         // Ajoute les menu dans la barre
         this.add(game);
@@ -58,7 +68,5 @@ public class MenuBar extends JMenuBar{
                 helpFrame.setVisible(true);
             }
         });
-
-        
     }
 }
