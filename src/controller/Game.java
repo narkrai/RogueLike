@@ -127,7 +127,7 @@ public class Game {
         player = Player.getInstance();
         player.setGold(0);
         player.setMonsterKilled(0);
-        player.setStrength(100000000);
+        player.setStrength(10);
         player.setName(OptionData.getInstance().getPlayerName());
         Room r = this.getCurrentRoom();
         Cell c = this.getCurrentCell();

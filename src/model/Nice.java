@@ -7,13 +7,15 @@ import java.util.Random;
 
 import view.IHM_Welcome;
 /**
- * La Classe Nice est une strategie inspiré de Idiot mais (( très ) nettement amelioré
+ * La Classe Nice est une strategie inspire de Idiot mais (( tres ) nettement) amelioré  pour la création de 
+ * l'arborescence de Room à partir de l'OptionData
  *
  * *Les Room ont tous la  meme taille
  * *les Items sont placés aléatoirement
  * *les Room ont tous un unique pere
  * *Il n'y qu'une seule sortie
- * *La création du chemin gagnant  ( c'est-à-dire le chemin entre le Player et la Sortie) est fait en antériori
+ * *La creation du chemin gagnant  ( c'est-à-dire le chemin entre le Player et la Sortie) est fait en antériori de l'
+ * arborescence meme
  * *Generation leger en temps de calcul
  * *Aucune astuce tel que le rajout de salle ( contrairement à son compère Idiot)
  * @author Dinar
@@ -23,9 +25,13 @@ public class Nice implements IStrategy {
         super();
     }
 
-
+    /**
+     * Le pere de tous est unique Room qui n'a pas de conteneur et qui contient toutes les Rooms
+     */
     private Room PeredeTous;
-
+    /**
+     * Permet de savoir l'etage courant (uniquement utile au chemin gagnant)
+     */
     private int etageCourant;
     private int roomCreated = 0;
     private boolean cheminSortant = false;
@@ -64,8 +70,7 @@ public class Nice implements IStrategy {
 
         }
 
-        //Construction du chemin gagnant ou de la sortie 
-
+        //Construction du chemin gagnant par des rooms jusqu'a l'etage 0
         if (!(this.etageCourant == 0)) {
 
 
@@ -87,7 +92,7 @@ public class Nice implements IStrategy {
 
                 }
             }
-        }
+        }//Si on est a l'etage 0 on cree une sortie est une seule
         else if ( !this.cheminSortant && (roomPere.numeroEtage() == 0)) {
             
                             
@@ -304,14 +309,5 @@ public class Nice implements IStrategy {
         return "Nice (recommandé)";
     }
 
-    public static void main(String[] args) {
-
-       IStrategy s = new Nice();
-       
-       s.CreateArborescence();
-       
-       
-       
-    }
 
 }
