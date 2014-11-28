@@ -17,20 +17,22 @@ import model.Message;
 import view.IHM_Controls.MyKeyListener;
 
 /**
- * Frame qui va s'ouvrir lorsque le joueur passe sur un escalier. Il peut valider ou non la prise de l'escalier.
+ * Frame qui va s'ouvrir lorsque le joueur passe sur un escalier.
+ * Il affiche les informations (nombre monstre & gold) sur les rooms suivantes
+ * Il peut valider ou non la prise de l'escalier.
  * @author : Nicolas Nguyen
  */
 
 public class IHM_Stairs extends JFrame{
     
-    private     JTextArea   msgTextArea;
-    private     String      msg;
-    private     Message     m;
+    private     JTextArea   msgTextArea;        // JTextArea qui contient le message
+    private     String      msg;                // Message affiché dans le JTextArea
+    private     Message     m;                  // On garde l'objet Message
 
     public IHM_Stairs(Message message) {
-        m = message;
-        Border b = BorderFactory.createEmptyBorder(1,1,1,1);
-        Font font = new Font("Arial", Font.BOLD, 12); // Police utilisé par la JTextArea pour match le reste de l'interface
+        m = message;                                                                        // On garde l'objet Message
+        Border b = BorderFactory.createEmptyBorder(1,1,1,1);                                // Bordure invisible
+        Font font = new Font("Arial", Font.BOLD, 12);                                       // Police utilisé par la JTextArea pour match le reste de l'interface
         
         setSize(300,300);
         setLocationRelativeTo(null);
@@ -64,7 +66,7 @@ public class IHM_Stairs extends JFrame{
                
         this.add(pMsg, BorderLayout.CENTER);
                
-        refresh(m);
+        refresh(m);                                                                         // On met le bon message dans le JTextArea
         
         // Panel des boutons
         JPanel pButton = new JPanel(new GridBagLayout());
@@ -83,10 +85,10 @@ public class IHM_Stairs extends JFrame{
         // Action quand on clique sur OK
         bOk.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                Game.getInstance().TeleportInRoom(m.getRoom());
-                setVisible(false);
-                IHM_Board.getInstance().refresh();
-                IHM_Recap.getInstance().refresh();
+                Game.getInstance().TeleportInRoom(m.getRoom());                             // Le joueur se téléporte sur dans la nouvelle Room
+                setVisible(false);                                                          
+                IHM_Board.getInstance().refresh();                                          // Refresh la map affiché avec la nouvelle Room
+                IHM_Recap.getInstance().refresh();                                          // Refresh le recap
                 IHM_Controls.getInstance().setPlayable(true);
             }
         });
@@ -95,6 +97,7 @@ public class IHM_Stairs extends JFrame{
         bCancel.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
+                IHM_Controls.getInstance().setPlayable(true);
             }
         });
     }
@@ -104,7 +107,8 @@ public class IHM_Stairs extends JFrame{
      * @param Message
      */
     public void refresh(Message m) {
-            msg = "There are "+Integer.toString(m.getRoom().GetTotalMonster())+" monsters, and a total of "+Integer.toString(m.getRoom().GetTotalGold())+" golds in the next rooms.";
+            msg = "There are "+Integer.toString(m.getRoom().GetTotalMonster())+
+                "monsters, and a total of "+Integer.toString(m.getRoom().GetTotalGold())+" golds in the next rooms.";
             msgTextArea.setText(msg);
     }    
 }

@@ -12,6 +12,7 @@ import javax.swing.JMenuItem;
 public class MenuBar extends JMenuBar{
     private IHM_Options optionFrame = new IHM_Options();
     private IHM_Help helpFrame = new IHM_Help();
+    private IHM_HighScore highscoreFrame = new IHM_HighScore();
     public MenuBar() {
         // Déclaration des JMenu et JMenuItem
         JMenu game = new JMenu("Game");
@@ -41,9 +42,7 @@ public class MenuBar extends JMenuBar{
         
         hs.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                /*
-                 * NOT IMPLEMENTED YET
-                 */
+                highscoreFrame.setVisible(true);
             }
         });
         
