@@ -370,6 +370,6 @@ public class Idiot implements IStrategy {
     }
 
     public String toString() {
-        return "Idiot";
+        return "Idiot (déconseillé)";
     }
 }

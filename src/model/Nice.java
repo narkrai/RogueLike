@@ -23,8 +23,9 @@ public class Nice implements IStrategy {
     public void CreationRoom(Room roomPere) {
         OptionData opdataCurrent = OptionData.getInstance();
 
+
+
         Cell cellCreated;
-        Cell cellChosen;
 
         roomPere.setContenus(new ArrayList<Cell>());
         Random rand = new Random();
@@ -35,7 +36,7 @@ public class Nice implements IStrategy {
         roomPere.setTailleY(opdataCurrent.getTailleYRoom());
 
         //Creation du joueur dans la Room pere de tous
-        if (roomPere == null) {
+        if (roomPere.getConteneur() == null) {
 
             randX = rand.nextInt(roomPere.getTailleX());
             randY = rand.nextInt(roomPere.getTailleY());
@@ -52,7 +53,7 @@ public class Nice implements IStrategy {
 
         }
 
-        //Construction du chemin gagnant
+        //Construction du chemin gagnant ou de la sortie 
 
         if (!(this.etageCourant == 0)) {
 
@@ -74,14 +75,42 @@ public class Nice implements IStrategy {
                     roomIsPlaced = true;
 
                 }
+            }
+        }
+        else if ( !this.cheminSortant && (roomPere.numeroEtage() == 0)) {
+            
+                            
+            boolean exitIsPlaced = false;
+            while (!exitIsPlaced) {
 
+                randX = rand.nextInt(roomPere.getTailleX());
+                randY = rand.nextInt(roomPere.getTailleY());
+
+                if (roomPere.getCell(randX, randY) == null) {
+                    CellUnit cUCreated = new CellUnit(); 
+                    cUCreated.setPositionX(randX);
+                    cUCreated.setPositionY(randY);
+                    roomPere.AjoutCell(cUCreated);
+                    cUCreated.setItem(new Exit());
+                    
+                    
+                    exitIsPlaced = true;
+                    
+                    this.cheminSortant = true;
+
+                }
 
             }
-
+            
+            
         }
+        
+        
+        
+        
 
 
-        //puis creation de escalier descendant
+        //creation de escalier descendant
         while (!roomPere.aCheminVersPere()) {
             randX = rand.nextInt(roomPere.getTailleX());
             randY = rand.nextInt(roomPere.getTailleY());
@@ -253,6 +282,7 @@ public class Nice implements IStrategy {
         for (Room rF : PeredeTous.avoirLesRoomsFils()) {
             res.add(rF);
         }
+        res.add(PeredeTous);
 
 
         return res;
@@ -260,7 +290,7 @@ public class Nice implements IStrategy {
 
 
     public String toString() {
-        return "Nice (NON FAIT !)";
+        return "Nice (recommandé)";
     }
 
     public static void main(String[] args) {

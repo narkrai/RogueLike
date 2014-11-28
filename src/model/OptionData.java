@@ -101,9 +101,9 @@ public class OptionData {
 
     private OptionData() {
         this.listStrategy = new ArrayList<>();
-        this.strategy = new Idiot();
+        this.strategy = new Nice();
         listStrategy.add(strategy);
-        listStrategy.add(new Nice());
+        listStrategy.add(new Idiot());
     }
 
     public ArrayList<IStrategy> getListStrategy() {
