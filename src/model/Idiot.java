@@ -296,10 +296,14 @@ public class Idiot implements IStrategy {
           System.out.println("JE BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOUUUUUUUUUUUUUUUUUUUUUUUCCCCCCCCCCCCCLLLLLLLLLLLLLLLLLLLLEEEEEEEEEEEEEE !!!");
            Room roomTaken = null;
           int i = 0 ;
-           
-           if(this.roomCreated == OptionData.getInstance().getRoomMax() ) {
-               OptionData.getInstance().setRoomMax(this.roomCreated + 1);
-           }
+            /*
+             * Si le nombre de salle maximal est egal au nombre de salles effectif, on incremente le nombre de salle possible
+             * (faute de givre , on se contente de merles)
+             */
+            if(this.roomCreated == OptionData.getInstance().getRoomMax() ) {
+                OptionData.getInstance().setRoomMax(this.roomCreated + 1);
+            }
+
            
           while(roomTaken == null) {
            if(res.get(i).numeroEtage() == r.AvoirLeNiveauMinDesFils()) {
@@ -313,12 +317,15 @@ public class Idiot implements IStrategy {
           }
           if(roomTaken.getConteneur() == null)
           {
+              this.roomCreated = 0 ; 
               r = null ;
               r = new Room(this);
               System.out.println("PPPniveau min pere = "+r.AvoirLeNiveauMinDesFils());
           }
           else{
-              roomTaken = null;
+              
+        
+              
               roomTaken = new Room(this,roomTaken.getConteneur());  
               System.out.println("FFFniveau min pere = "+r.AvoirLeNiveauMinDesFils());
           }
@@ -356,7 +363,7 @@ public class Idiot implements IStrategy {
         
         }
         
-        
+        //On remet la valeur initial du nombre de salle
         OptionData.getInstance().setRoomMax(nbOld); 
         return res;
             
