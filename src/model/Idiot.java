@@ -215,6 +215,8 @@ public class Idiot implements IStrategy {
     public ArrayList<Room> CreateArborescence() {
         
        
+        int nbOld = OptionData.getInstance().getRoomMax();
+       
        int RandX;
        int RandY;
         Random rand = new Random();
@@ -289,7 +291,37 @@ public class Idiot implements IStrategy {
        //de nouvelle Rooms
        else{
            
-           r = new Room(this);
+          /* r = new Room(this);*/
+           
+          System.out.println("JE BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOUUUUUUUUUUUUUUUUUUUUUUUCCCCCCCCCCCCCLLLLLLLLLLLLLLLLLLLLEEEEEEEEEEEEEE !!!");
+           Room roomTaken = null;
+          int i = 0 ;
+           
+           if(this.roomCreated == OptionData.getInstance().getRoomMax() ) {
+               OptionData.getInstance().setRoomMax(this.roomCreated + 1);
+           }
+           
+          while(roomTaken == null) {
+           if(res.get(i).numeroEtage() == r.AvoirLeNiveauMinDesFils()) {
+               
+               
+               roomTaken = res.get(i);
+               System.out.println("Niveau de cette salle :"+roomTaken.numeroEtage()); 
+           }
+           
+              i++;
+          }
+          if(roomTaken.getConteneur() == null)
+          {
+              r = null ;
+              r = new Room(this);
+              System.out.println("PPPniveau min pere = "+r.AvoirLeNiveauMinDesFils());
+          }
+          else{
+              roomTaken = null;
+              roomTaken = new Room(this,roomTaken.getConteneur());  
+              System.out.println("FFFniveau min pere = "+r.AvoirLeNiveauMinDesFils());
+          }
         
              
         }
@@ -323,12 +355,14 @@ public class Idiot implements IStrategy {
             
         
         }
-       
+        
+        
+        OptionData.getInstance().setRoomMax(nbOld); 
         return res;
             
-            
+           
     
-    
+        
     
 
     }
